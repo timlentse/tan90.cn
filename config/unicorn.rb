@@ -1,10 +1,10 @@
 # Variable setting
-rails_root = File.expand_path("~/www.elong.com.hotel/current")
+rails_root = File.expand_path("~/fishtrip/current")
 pid         "#{rails_root}/tmp/pids/unicorn.pid"
 stderr_path "#{rails_root}/log/unicorn.err"
 stdout_path "#{rails_root}/log/unicorn.log"
 
-listen "/tmp/unicorn.www.elong.com.hotel.sock"
+listen "/tmp/hotel.timlentse.com.sock"
 
 preload_app true
 

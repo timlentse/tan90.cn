@@ -9,15 +9,17 @@
     <footer>
       <div class="row">
         <div class="col-md-12 col-md-offset-2">
+          <% @footer_links.each do |country, links| %>
           <ul>
-            <li><p class="head"><%= Seo::COUNTRY[@params[:country]] %>民宿</p></li>
-            <% @footer_links.each_slice(12) do |sli| %>
+            <li><p class="head"><%= Seo::COUNTRY[country] %>民宿</p></li>
+            <% links.each_slice(12) do |sli| %>
               <% sli.each do |link| %>
                 <li class="inner"><p><a class="footer-link" href="<%= link['uri'] %>"><%= link['text'] %></a></p></li>
               <% end %>
               <div class="clearfix"></div>
             <% end %>
           </ul>
+        <% end %>
         </div>
         <div class='col-md-12'>
           <p class="copy">Copyright © fishtrip.cn 2013 All Rights Reserved      京ICP备12028711号    京公安网备11010702000590    鱼行天下（北京）旅行社有限公司</p>

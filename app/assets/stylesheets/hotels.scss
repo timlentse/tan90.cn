@@ -1,7 +1,10 @@
 body {
   padding-top: 50px; 
   font-family: Microsoft YaHei UI, Microsoft YaHei, 宋体, Calibri, sans-serif;
-  background: #f6f1e5
+  background: #f6f1e5 url(asset-path('bg_banner.jpg')) no-repeat center top
+}
+.home {
+  background: #0C2067 url(asset-path('bg_banner.jpg')) no-repeat center top
 }
 .container-fluid.footer ul {
   list-style:none;

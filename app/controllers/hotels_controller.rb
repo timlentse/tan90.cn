@@ -5,8 +5,13 @@ class HotelsController < ApplicationController
   before_filter :set_params
 
   def index
-    @home_url = 'http://hotel.timlentse.com/taiwan/'
-    redirect_to @home_url, status: 301
+    Seo.init_var(@params, 'index', [])
+    @seo = {
+      :title=>'台湾，日本，泰国，韩国民宿，客栈预订',
+      :keywords=>'民宿,客栈',
+      :description=>'为你推荐台湾，日本，泰国，韩国民宿客栈'
+    }
+    @footer_links = Seo.get_footer_links
   end
 
   def country
