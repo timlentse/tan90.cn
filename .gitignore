@@ -17,3 +17,4 @@
 /tmp
 /vendor/bundle
 /test
+/config/database.yml
