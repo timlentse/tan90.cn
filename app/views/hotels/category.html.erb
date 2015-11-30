@@ -1,0 +1,28 @@
+< @hotels.each do |hotel| %>
+  <div class="col-xs-6 col-sm-6 col-md-3 cus-padding">
+    <div class="thumbnail">
+      <a href="<%= hotel.shared_uri %>" target="_blank">
+        <img src="<%= hotel.image_uri.empty? ? "http://www.elongstatic.com/web/hotel/pic/no-pic-b.jpg" : hotel.image_uri %>" alt="<%= hotel.name %>">
+      </a>
+      <div class="caption">
+        <a href="<%= hotel.shared_uri %>" target="_blank">
+          <p class="hotel-name"><%= hotel.name %></p>
+        </a>
+        <p class="city-center"><%= hotel.city %></p>
+        <p class='address'><%= hotel.address %></p>
+        <% if hotel.comment.empty? %>
+          <p class='com-overview'><a href="<%= hotel.shared_uri %>">查看点评</p>
+        <% else %>
+          <p class='com-overview'><a href="<%= hotel.shared_uri %>"><%= hotel.comment %></a></p>
+        <% end %>
+        <% if hotel.price==0 %>
+          <p class="booking"><a href="<%= hotel.shared_uri %>"  target="_blank" class="btn btn-primary btn-xs" role="button">查看详情</a> 
+        <% else %>
+          <p class="booking"><a href="<%= hotel.shared_uri %>"  target="_blank" class="btn btn-primary btn-xs" role="button">预订</a> 
+          <span class="pull-right"><span class="dollor-sign">￥</span><strong class="price"><%= hotel.price %></strong>起</span> 
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

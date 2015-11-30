@@ -1,0 +1,44 @@
+<% if @breadcrumb and !@breadcrumb.empty? %>
+  <div class='container-fluid crumb'>
+    <div class='row'>
+      <% if @is_mobile %>
+        <ol class="breadcrumb">
+          <% @breadcrumb.each do |crumb| %>
+            <% if crumb[:url] %>
+              <li><a href="<%= crumb[:url] %>"><%= crumb[:text] %></a></li>
+            <% else %>
+              <li class="active"><span><%= crumb[:text] %></span></li>
+            <% end %>
+          <% end %>
+        </ol>
+      <% else %>
+        <div class="btn-group btn-breadcrumb col-offset">
+          <% @breadcrumb.each do |crumb| %>
+            <% if crumb[:url] %>
+              <a href="<%= crumb[:url] %>" class="btn btn-success"><%= crumb[:text] %></a>
+            <% else %>
+              <span class="btn btn-success"> <%= crumb[:text] %> </span>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div class="container">
+  <div class='row'>
+    <div class="col-md-12 cus-padding" id="hotel-list">
+      <%= render @hotels %>
+    </div>
+    <nav>
+      <ul class="pager">
+        <% if @hotels.size==20 %>
+          <li class="next"><a data-page='2'>下一页<span aria-hidden="true">&rarr;</span></a></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</div>
+<%= javascript_include_tag 'hotels' %>
+

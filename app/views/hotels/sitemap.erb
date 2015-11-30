@@ -1,0 +1,10 @@
+<div class="row">
+  <ul class="sitemap offset-md">
+    <% @links.each do |category, links| %>
+      <h2><a href="/<%= category %>/"><%= Seo::CATEGORY[category] %></a></h2>
+      <% links['links'].each do |link| %>
+        <li><a href="<%= link['link'] %>"><%= link['text'] %></a></li>
+      <% end %>
+      <div class="clearfix"></div>
+    <% end %>
+</div>

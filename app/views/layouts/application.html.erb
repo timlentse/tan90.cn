@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title><%= @seo[:title] %></title>
+    <meta name="keywords" content="<%= @seo[:keywords] %>">
+    <meta name="description" content="<%= @seo[:description] %>">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-sitea">
+    <meta name="appplicable-device" content="pc,mobile">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'favicon.ico' %>
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+    <script type="text/javascript">
+$(document).ready(function(){
+  $(function () {
+    $('[data-toggle="popover"]').popover({"trigger": "hover"});
+  })
+});
+    </script>
+  </body>
+</html>

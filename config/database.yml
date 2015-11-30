@@ -1,0 +1,25 @@
+default: &default
+  adapter: 'mysql2'
+  pool: 5
+  timeout: 5000
+  encoding: 'utf8'
+
+development:
+  <<: *default
+  host: '192.168.15.50'
+  username: 'test'
+  password: 'test'
+  database: 'test'
+  port: 3306
+
+production:
+  <<: *default
+  host: 'localhost'
+  username: 'test'
+  password: 'test'
+  database: 'test'
+  port: 3306
+
+test:
+  <<: *default
+  database: 'test'
