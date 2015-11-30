@@ -1,8 +1,8 @@
 lock '3.4.0'
 
-set :application, 'www.elong.com.hotel'
-set :repo_url, 'git@code.corp.elong.com:jinglun.xie/hotels.git'
-set :deploy_to, '~/www.elong.com.hotel'
+set :application, 'hotel.timlentse.com'
+set :repo_url, 'git@github.com:timlentse/fishtrip.git'
+set :deploy_to, '~/fishtrip'
 
 # Deploy the current branch
 set :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp  }.call
