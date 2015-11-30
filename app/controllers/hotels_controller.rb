@@ -35,6 +35,7 @@ class HotelsController < ApplicationController
     if @params[:page]
       redirect_to URI(request.original_url).path, status: 301
     else
+      @params[:city_id] = find_city_id(params[:city_en])
       render_page('city')
     end
   end
@@ -52,10 +53,12 @@ class HotelsController < ApplicationController
   private
 
   def set_params
-    @params = params.permit(:country, :page, :city_en)
+    @params = params.permit(:country, :page)
   end
 
   def find_city_id(city_en)
+    city = City.find_by(:name_en=>city_en)
+    city.nil? ? 0 : city.id
   end
 
   def render_page(page_type)

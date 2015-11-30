@@ -7,12 +7,13 @@ class Hotel < ActiveRecord::Base
 
   # Filter function
   def self.search(args={})
-    @query_string = self.get_query_string(args)
+    # @query_string = self.get_query_string(args)
     @page_id = args[:page]
+    args.delete(:page)
     if @page_id and @page_id.to_i>1
-      @hotels = self.where(@query_string).offset((@page_id.to_i-1)*20).limit(20)
+      @hotels = self.where(args).offset((@page_id.to_i-1)*20).limit(20)
     else
-      @hotels = self.where(@query_string).limit(20)
+      @hotels = self.where(args).limit(20)
     end
   end
 
