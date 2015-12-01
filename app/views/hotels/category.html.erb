@@ -2,7 +2,8 @@
 <div class="col-xs-6 col-sm-6 col-md-3 cus-padding">
   <div class="thumbnail">
     <a href="<%= hotel.shared_uri %>" target="_blank">
-      <img src="<%= hotel.image_uri.empty? ? "http://www.elongstatic.com/web/hotel/pic/no-pic-b.jpg" : hotel.image_uri %>" alt="<%= hotel.name %>">
+      <% @img_url="http://7xotew.com1.z0.glb.clouddn.com/#{hotel.fishtrip_hotel_id}.jpg" %>
+      <img src="<%= @img_url %>" alt="<%= hotel.name %>">
     </a>
     <div class="caption">
       <a href="<%= hotel.shared_uri %>" target="_blank">
