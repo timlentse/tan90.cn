@@ -1,0 +1,104 @@
+<% if @breadcrumb and !@breadcrumb.empty? %>
+  <div class='container-fluid crumb'>
+    <div class='row'>
+      <% if @is_mobile %>
+        <ol class="breadcrumb">
+          <% @breadcrumb.each do |crumb| %>
+            <% if crumb[:url] %>
+              <li><a href="<%= crumb[:url] %>"><%= crumb[:text] %></a></li>
+            <% else %>
+              <li class="active"><span><%= crumb[:text] %></span></li>
+            <% end %>
+          <% end %>
+        </ol>
+      <% else %>
+        <div class="btn-group btn-breadcrumb col-offset">
+          <% @breadcrumb.each do |crumb| %>
+            <% if crumb[:url] %>
+              <a href="<%= crumb[:url] %>" class="btn btn-success"><%= crumb[:text] %></a>
+            <% else %>
+              <span class="btn btn-success"> <%= crumb[:text] %> </span>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <p class="lead">Shop Name</p>
+      <div class="list-group">
+        <a href="#desc" class="list-group-item active">酒店信息</a>
+        <a href="#comment" class="list-group-item">评论</a>
+        <a href="/<%= "#{@hotel.country}/#{@hotel.city_en}" %>/" class="list-group-item">更多酒店</a>
+      </div>
+    </div>
+
+    <div class="col-md-9" id="desc">
+      <div class="thumbnail">
+        <% @img_url="http://7xotew.com1.z0.glb.clouddn.com/#{@hotel.fishtrip_hotel_id}-large.jpg" %>
+        <img class="img-responsive" src="<%= @img_url %>" alt="<%= @hotel.name %>">
+        <div class="caption-full">
+          <h4 class="pull-right">￥<%= @hotel.price %></h4>
+          <h4><a href="<%= @hotel.shared_uri %>"><%= @hotel.name %></a>
+          </h4>
+          <p> <%= @hotel.desc %></p>
+        </div>
+        <div class="ratings">
+          <p class="pull-right"><%= @hotel.comment %></p>
+          <p>
+          <% if @hotel.score.nil? %>
+            <span class="glyphicon glyphicon-star-empty"></span>
+            <span class="glyphicon glyphicon-star-empty"></span>
+            <span class="glyphicon glyphicon-star-empty"></span>
+            <span class="glyphicon glyphicon-star-empty"></span>
+            <span class="glyphicon glyphicon-star-empty"></span>
+          <% else %>
+            <% @hotel.score.to_i.times{ %>
+              <span class="glyphicon glyphicon-star"></span>
+            <% } %>
+            <% if (@hotel.score-@hotel.score.to_i)>0 %>
+              <span class="glyphicon glyphicon-star-empty"></span>
+            <% end %>
+          <% end %>
+          <%= @hotel.score %> 分
+          </p>
+        </div>
+      </div>
+
+      <div class="well" id="comment">
+        <div class="text-right">
+          <a class="btn btn-success">点评</a>
+        </div>
+        <hr>
+        <% @comments.each do |comment| %>
+          <div class="row">
+            <div class="col-md-12">
+              <% if comment.score.nil? %>
+                <span class="glyphicon glyphicon-star-empty"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+              <% else %>
+                <% comment.score.to_i.times{ %>
+                  <span class="glyphicon glyphicon-star"></span>
+                <% } %>
+                <% if (comment.score-comment.score.to_i)>0 %>
+                  <span class="glyphicon glyphicon-star-empty"></span>
+                <% end %>
+              <% end %>
+              <%= "#{comment.score}分/#{comment.author}" %>
+              <span class="pull-right"><%= comment.comment_time %></span>
+              <p> <%= comment.content %> </p>
+            </div>
+          </div>
+          <hr>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

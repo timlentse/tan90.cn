@@ -1,4 +1,5 @@
 class Hotel < ActiveRecord::Base
+  has_many :comments, :primary_key=>'fishtrip_hotel_id'
   HOT = {
     'taiwan'=> {:ids=>["9566344830", "9837406394", "9392469101", "9168466069", "9258344719", "9449314665", "9541514029", "8807730148", "9570405924", "8819789346", "8742736353", "9739806411"]},
     "japan"=>{:ids=>["9601835114", "9254173377", "9929823957", "10060857817", "9937744842", "10681287023", "9567009714", "10463630361", "9235329397", "10649934587", "10278534447"]},
@@ -7,7 +8,6 @@ class Hotel < ActiveRecord::Base
 
   # Filter function
   def self.search(args={})
-    # @query_string = self.get_query_string(args)
     @page_id = args[:page]
     args.delete(:page)
     if @page_id and @page_id.to_i>1
@@ -15,15 +15,6 @@ class Hotel < ActiveRecord::Base
     else
       @hotels = self.where(args).limit(20)
     end
-  end
-
-  def self.get_query_string(args={})
-    @query_array = []
-    args.each do |key, value|
-      next if key=="page"
-      @query_array.push("#{key.to_s}='#{value}'") 
-    end
-    @query_array.join(" and ")
   end
 
   def self.search_hot(country)

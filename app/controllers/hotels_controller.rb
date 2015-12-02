@@ -1,17 +1,18 @@
 require 'seo'
 require 'city'
+require 'comment'
 
 class HotelsController < ApplicationController
   before_filter :set_params
 
   def index
-    Seo.init_var(@params, 'index', [])
-    @seo = {
+    @seo = Seo.new('index', [])
+    @tdk = {
       :title=>'台湾，日本，泰国，韩国民宿，客栈预订',
       :keywords=>'民宿,客栈',
       :description=>'为你推荐台湾，日本，泰国，韩国民宿客栈'
     }
-    @footer_links = Seo.get_footer_links
+    @footer_links = @seo.get_footer_links
   end
 
   def country
@@ -22,10 +23,10 @@ class HotelsController < ApplicationController
       if @hotels.empty?
         render_404
       else
-        Seo.init_var(@params, 'country', @hotels)
-        @seo = Seo.tdk
-        @breadcrumb = Seo.get_breadcrumb
-        @footer_links = Seo.get_footer_links
+        @seo = Seo.new('country', @hotels)
+        @tdk = @seo.tdk
+        @breadcrumb = @seo.get_breadcrumb
+        @footer_links = @seo.get_footer_links
         render 'list.html.erb'
       end
     end
@@ -43,6 +44,16 @@ class HotelsController < ApplicationController
   def post_city
     @hotels = Hotel.search(@params)
     render 'list.js.erb'
+  end
+
+  def detail
+    @hotels = Hotel.where(:fishtrip_hotel_id=>params[:id])
+    @seo = Seo.new('detail', @hotels)
+    @hotel = @hotels.take
+    @comments = @hotel.comments
+    @footer_links = @seo.get_footer_links
+    @tdk = @seo.tdk
+    @breadcrumb = @seo.get_breadcrumb
   end
 
   def sitemap
@@ -66,10 +77,10 @@ class HotelsController < ApplicationController
     if @hotels.empty?
       render_404
     else
-      Seo.init_var(@params, page_type, @hotels)
-      @seo = Seo.tdk
-      @breadcrumb = Seo.get_breadcrumb
-      @footer_links = Seo.get_footer_links
+      @seo = Seo.new(page_type, @hotels)
+      @tdk = @seo.tdk
+      @breadcrumb = @seo.get_breadcrumb
+      @footer_links = @seo.get_footer_links
       render 'list.html.erb'
     end
   end

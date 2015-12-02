@@ -2,17 +2,22 @@ class Seo
 
   COUNTRY={'taiwan'=>'台湾', 'japan'=>'日本', 'thailand'=>'泰国', 'korea'=>'韩国'}
 
-  def self.init_var(params, page_type, hotels)
-    @page_type, @params = page_type, params
+  def initialize(page_type, hotels)
+    @page_type = page_type
     unless page_type=='index'
-      @hotel_name_join = hotels.map(&:name).join('，')
       @hotel = hotels[0]
-      @country = COUNTRY[@params[:country]]
+      @country = COUNTRY[@hotel.country]
+      @country_en = @hotel.country
       @city_name = @hotel.city
+      if page_type=='detail'
+        @hotel_name_join = @hotel.name
+      else
+        @hotel_name_join = hotels.map(&:name).join('，')
+      end
     end
   end
 
-  def self.tdk
+  def tdk
     {
       :title=>get_title,
       :keywords=>get_keywords,
@@ -21,22 +26,24 @@ class Seo
     }
   end
 
-  def self.get_breadcrumb
+  def get_breadcrumb
     case @page_type 
     when 'country'
       [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿"}]
     when 'city'
       [{:text=>"#{@country}民宿", :url=>"/#{@hotel.country}/"},{:text=>"#{@city_name}民宿"}]
+    when 'detail'
+      [{:text=>"#{@country}民宿", :url=>"/#{@hotel.country}/"},{:text=>"#{@city_name}民宿", :url=>"/#{@hotel.country}/#{@hotel.city_en}/"}, {:text=>@hotel.name}]
     end
   end
 
-  def self.get_sitemap_links
+  def get_sitemap_links
   end
 
-  def self.get_footer_links
+  def get_footer_links
     @links = {}
-    if @params[:country]
-      @links[@params[:country]] = City.where(:country=>@params[:country]).map do |city|
+    if @country_en
+      @links[@country_en] = City.where(:country=>@country_en).map do |city|
         {'uri'=>"/#{city.country}/#{city.name_en}/", 'text'=>"#{city.name}民宿"}
       end
     else
@@ -49,19 +56,19 @@ class Seo
     @links
   end
 
-  def self.get_h1
+  def get_h1
     "#{@city_name}民宿"
   end
 
-  def self.get_title
+  def get_title
     "#{@city_name}民宿_#{@city_name}酒店预订"
   end
 
-  def self.get_keywords
+  def get_keywords
     "#{@country}, #{@city_name},民宿,预订"
   end
 
-  def self.get_description
+  def get_description
     "#{@city_name}酒店，为你推荐#{@hotel_name_join}。"
   end
 
