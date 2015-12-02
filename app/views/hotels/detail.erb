@@ -29,7 +29,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <p class="lead">Shop Name</p>
+      <p class="lead"><%= @hotel.name %></p>
       <div class="list-group">
         <a href="#desc" class="list-group-item active">酒店信息</a>
         <a href="#comment" class="list-group-item">评论</a>
@@ -40,12 +40,14 @@
     <div class="col-md-9" id="desc">
       <div class="thumbnail">
         <% @img_url="http://7xotew.com1.z0.glb.clouddn.com/#{@hotel.fishtrip_hotel_id}-large.jpg" %>
-        <img class="img-responsive" src="<%= @img_url %>" alt="<%= @hotel.name %>">
+          <img class="img-responsive" src="<%= @img_url %>" alt="<%= @hotel.name %>">
         <div class="caption-full">
           <h4 class="pull-right">￥<%= @hotel.price %></h4>
           <h4><a href="<%= @hotel.shared_uri %>"><%= @hotel.name %></a>
           </h4>
-          <p> <%= @hotel.desc %></p>
+          <p><a class="btn btn-info pull-right" href="<%= @hotel.shared_uri %>">预订
+          </a></p>
+          <p style="padding-left:10px;"><%= @hotel.desc %></p>
         </div>
         <div class="ratings">
           <p class="pull-right"><%= @hotel.comment %></p>
