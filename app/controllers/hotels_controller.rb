@@ -50,6 +50,7 @@ class HotelsController < ApplicationController
     @hotels = Hotel.where(:fishtrip_hotel_id=>params[:id])
     @seo = Seo.new('detail', @hotels)
     @hotel = @hotels.take
+    @tuijian = @hotel.tuijian.nil? ? [] : JSON.parse(@hotel.tuijian)
     @comments = @hotel.comments
     @footer_links = @seo.get_footer_links
     @tdk = @seo.tdk

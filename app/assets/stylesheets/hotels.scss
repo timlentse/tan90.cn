@@ -12,6 +12,17 @@ body {
 .navbar {
   min-height: 30px;
 }
+#sider-bar {
+  background-color:#fff;
+}
+#sider-bar ul{
+  list-style:none;
+  padding: 10px 10px 10px 10px;
+}
+.itr-head {
+  padding-left:10px;
+  padding-right:10px;
+}
 .navbar-brand,
 .navbar li a {
   line-height: 30px;
