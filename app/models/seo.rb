@@ -9,7 +9,7 @@ class Seo
       @country = COUNTRY[@hotel.country]
       @country_en = @hotel.country
       @city_name = @hotel.city
-      if page_type=='detail'
+      if @page_type=='detail'
         @hotel_name_join = @hotel.name
       else
         @hotel_name_join = hotels.map(&:name).join('，')
@@ -57,15 +57,27 @@ class Seo
   end
 
   def get_h1
-    "#{@city_name}民宿"
+    if @page_type=='detail'
+      @hotel.name
+    else
+      "#{@city_name}民宿"
+    end
   end
 
   def get_title
+    if @page_type=='detail'
+      "#{@hotel.name}_#{@hotel.name}预订"
+    else
     "#{@city_name}民宿_#{@city_name}酒店预订"
+    end
   end
 
   def get_keywords
-    "#{@country}, #{@city_name},民宿,预订"
+    if @page_type=='detail'
+      "#{@hotel.name},#{@city_name},民宿"
+    else
+      "#{@country},#{@city_name},民宿"
+    end
   end
 
   def get_description

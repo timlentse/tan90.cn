@@ -18,3 +18,4 @@
 /vendor/bundle
 /test
 /config/database.yml
+/public/sitemap

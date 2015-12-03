@@ -11,7 +11,7 @@ set :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp  }.call
 set :linked_file, %w{Gemfile.lock .bundle/config config/database.yml}
 
 # Default value for linked_dirs is []
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/sitemap', '.bundle')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/sitemap', '.bundle', 'public/assets')
 
 namespace :deploy do
 
