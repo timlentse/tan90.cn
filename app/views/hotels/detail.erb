@@ -28,39 +28,38 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
-      <p class="lead"><%= @hotel.name %></p>
-      <div id="sider-bar" class="affix" data-spy="affix" data-offset-bottom="200">
-        <ul>
-          <% unless @tuijian.empty? %>
-            <p>推荐理由</p>
-            <% @tuijian.each do |tuijian|  %>
-              <li> <%= tuijian %> </li>
-              <hr>
-            <% end %>
-          <% end %>
-          <% unless @hotel.traffic %>
-            <p>交通指引</p>
-            <li> <%= @hotel.traffic %> </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
 
-    <div class="col-md-9" id="desc">
+    <div class="col-md-6" id="desc">
+        <div id="sider-bar">
+          <ul>
+            <% unless @tuijian.empty? %>
+              <p>推荐理由</p>
+              <% @tuijian.each do |tuijian|  %>
+                <li> <%= tuijian %> </li>
+                <hr>
+              <% end %>
+            <% end %>
+            <% if @hotel.traffic %>
+              <p>交通指引</p>
+              <li> <%= @hotel.traffic %> </li>
+            <% end %>
+          </ul>
+        </div>
+
       <div class="thumbnail">
         <% @img_url="http://7xotew.com1.z0.glb.clouddn.com/#{@hotel.fishtrip_hotel_id}-large.jpg" %>
         <img class="img-responsive" src="<%= @img_url %>" alt="<%= @hotel.name %>">
-        <div class="caption-full">
-          <h4 class="itr-head"><a href="<%= @hotel.shared_uri %>"><%= @hotel.name %></a>
-            <span class="pull-right">￥<%= @hotel.price %></span>
-          </h4>
-          <p><a class="btn btn-info pull-right" href="<%= @hotel.shared_uri %>">预订
-          </a></p>
-          <p style="padding-left:10px;"><%= @hotel.desc %></p>
-        </div>
+      </div>
+
+      <div class="isr" >
+        <h4 class="itr-head"><a href="<%= @hotel.shared_uri %>"><%= @hotel.name %></a>
+          <span class="pull-right">￥<%= @hotel.price %></span>
+        </h4>
+        <p><a class="btn btn-info pull-right" href="<%= @hotel.shared_uri %>">预订
+        </a></p>
+        <p style="padding-left:10px;"><%= @hotel.desc %></p>
         <div class="ratings">
-          <p class="pull-right"><%= @hotel.comment %></p>
+          <p class="pull-right"><a href="<%= @hotel.shared_uri %>"><%= @hotel.comment %></a></p>
           <p>
           <% if @hotel.score.nil? %>
             <span class="glyphicon glyphicon-star-empty"></span>
@@ -81,41 +80,35 @@
         </div>
       </div>
 
-      <div class="well" id="comment">
-        <h4><%= @hotel.name %>点评</h4>
-        <hr>
+    </div>
+
+    <div class="col-md-6" >
+      <div>
+        <div class="comment">
+          <h4><%= @hotel.name %>点评</h4>
+        </div>
         <% @comments.each do |comment| %>
-          <div class="row">
-            <div class="col-md-12">
-              <% if comment.score.nil? %>
+          <div class="col-md-12 isr ratings">
+            <% if comment.score.nil? %>
+              <span class="glyphicon glyphicon-star-empty"></span>
+              <span class="glyphicon glyphicon-star-empty"></span>
+              <span class="glyphicon glyphicon-star-empty"></span>
+              <span class="glyphicon glyphicon-star-empty"></span>
+              <span class="glyphicon glyphicon-star-empty"></span>
+            <% else %>
+              <% comment.score.to_i.times{ %>
+                <span class="glyphicon glyphicon-star"></span>
+              <% } %>
+              <% if (comment.score-comment.score.to_i)>0 %>
                 <span class="glyphicon glyphicon-star-empty"></span>
-                <span class="glyphicon glyphicon-star-empty"></span>
-                <span class="glyphicon glyphicon-star-empty"></span>
-                <span class="glyphicon glyphicon-star-empty"></span>
-                <span class="glyphicon glyphicon-star-empty"></span>
-              <% else %>
-                <% comment.score.to_i.times{ %>
-                  <span class="glyphicon glyphicon-star"></span>
-                <% } %>
-                <% if (comment.score-comment.score.to_i)>0 %>
-                  <span class="glyphicon glyphicon-star-empty"></span>
-                <% end %>
               <% end %>
-              <%= "#{comment.score}分/#{comment.author}" %>
-              <span class="pull-right"><%= comment.comment_time %></span>
-              <p> <%= comment.content %> </p>
-            </div>
+            <% end %>
+            <%= "#{comment.score}分/#{comment.author}" %>
+            <span class="pull-right"><%= comment.comment_time %></span>
+            <p style="color:#000"> <%= comment.content %> </p>
           </div>
-          <hr>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-<script>
-$('#sider-bar').affix({
-  top:0,
-  bottom: 100
-}
-})
-</script>

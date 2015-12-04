@@ -4,16 +4,17 @@ class Seo
 
   def initialize(page_type, hotels)
     @page_type = page_type
-    unless page_type=='index'
-      @hotel = hotels[0]
+    unless @page_type=='index'
+      if @page_type=='detail'
+        @hotel = hotels
+        @hotel_name_join = @hotel.name
+      else
+        @hotel = hotels[0]
+        @hotel_name_join = hotels.map(&:name).join('，')
+      end
       @country = COUNTRY[@hotel.country]
       @country_en = @hotel.country
       @city_name = @hotel.city
-      if @page_type=='detail'
-        @hotel_name_join = @hotel.name
-      else
-        @hotel_name_join = hotels.map(&:name).join('，')
-      end
     end
   end
 
@@ -68,7 +69,7 @@ class Seo
     if @page_type=='detail'
       "#{@hotel.name}_#{@hotel.name}预订"
     else
-    "#{@city_name}民宿_#{@city_name}酒店预订"
+      "#{@city_name}民宿_#{@city_name}酒店预订"
     end
   end
 

@@ -6,7 +6,8 @@ class HotelsController < ApplicationController
   before_filter :set_params
 
   def index
-    @seo = Seo.new('index', [])
+    @page_type = 'index'
+    @seo = Seo.new(@page_type, [])
     @tdk = {
       :title=>'台湾，日本，泰国，韩国民宿，客栈预订',
       :keywords=>'民宿,客栈',
@@ -16,6 +17,7 @@ class HotelsController < ApplicationController
   end
 
   def country
+    @page_type = 'country'
     if @params[:page]
       redirect_to URI(request.original_url).path, status: 301
     else
@@ -23,7 +25,7 @@ class HotelsController < ApplicationController
       if @hotels.empty?
         render_404
       else
-        @seo = Seo.new('country', @hotels)
+        @seo = Seo.new(@page_type, @hotels)
         @tdk = @seo.tdk
         @breadcrumb = @seo.get_breadcrumb
         @footer_links = @seo.get_footer_links
@@ -32,26 +34,27 @@ class HotelsController < ApplicationController
     end
   end
 
-  def get_city
+  def city_for_get
+    @page_type = 'city'
     if @params[:page]
       redirect_to URI(request.original_url).path, status: 301
     else
       @params[:city_id] = find_city_id(params[:city_en])
-      render_page('city')
+      self.render_page
     end
   end
 
-  def post_city
+  def city_for_post
     @hotels = Hotel.search(@params)
     render 'list.js.erb'
   end
 
   def detail
-    @hotels = Hotel.where(:fishtrip_hotel_id=>params[:id])
-    @seo = Seo.new('detail', @hotels)
-    @hotel = @hotels.take
+    @page_type = 'detail'
+    @hotel = Hotel.find_by(:fishtrip_hotel_id=>params[:id])
     @tuijian = @hotel.tuijian.nil? ? [] : JSON.parse(@hotel.tuijian)
     @comments = @hotel.comments
+    @seo = Seo.new(@page_type, @hotel)
     @footer_links = @seo.get_footer_links
     @tdk = @seo.tdk
     @breadcrumb = @seo.get_breadcrumb
@@ -73,12 +76,12 @@ class HotelsController < ApplicationController
     city.nil? ? 0 : city.id
   end
 
-  def render_page(page_type)
+  def render_page
     @hotels = Hotel.search(@params)
     if @hotels.empty?
       render_404
     else
-      @seo = Seo.new(page_type, @hotels)
+      @seo = Seo.new(@page_type, @hotels)
       @tdk = @seo.tdk
       @breadcrumb = @seo.get_breadcrumb
       @footer_links = @seo.get_footer_links
