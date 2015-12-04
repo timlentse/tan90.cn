@@ -40,7 +40,7 @@ class HotelsController < ApplicationController
       redirect_to URI(request.original_url).path, status: 301
     else
       @params[:city_id] = find_city_id(params[:city_en])
-      self.render_page
+      render_page
     end
   end
 
