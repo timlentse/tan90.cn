@@ -7,6 +7,7 @@ class Sitemap
     @index_file_name = "public/sitemap/sitemap#{@sitemap_type}_index.xml"
     @header = %Q(<?xml version="1.0" encoding="UTF-8" ?>\n <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n)
     @xml_path_list = []
+    @base_url = @sitemap_type=='mobile' ? "http://m.timlentse.com" : "http://hotel.timlentse.com"
   end
 
   def work
@@ -51,7 +52,7 @@ EOF
       sitemap_item=<<EOF
   <sitemap> 
     <loc>
-      http://hotel.huoche.cn/sitemap/#{file}
+      #{@base_url}/sitemap/#{file}
     </loc>
   </sitemap>
 EOF
