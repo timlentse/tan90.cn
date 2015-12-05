@@ -11,9 +11,9 @@ class Hotel < ActiveRecord::Base
     @page_id = args[:page]
     args.delete(:page)
     if @page_id and @page_id.to_i>1
-      @hotels = self.where(args).offset((@page_id.to_i-1)*20).limit(20)
+      @hotels = self.where(args).offset((@page_id.to_i-1)*21).limit(21)
     else
-      @hotels = self.where(args).limit(20)
+      @hotels = self.where(args).limit(21)
     end
   end
 

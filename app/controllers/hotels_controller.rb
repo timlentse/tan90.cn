@@ -8,11 +8,7 @@ class HotelsController < ApplicationController
   def index
     @page_type = 'index'
     @seo = Seo.new(@page_type, [])
-    @tdk = {
-      :title=>'台湾，日本，泰国，韩国民宿，客栈预订',
-      :keywords=>'民宿,客栈',
-      :description=>'为你推荐台湾，日本，泰国，韩国民宿客栈'
-    }
+    @tdk = @seo.tdk
     @footer_links = @seo.get_footer_links
   end
 

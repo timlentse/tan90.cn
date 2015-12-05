@@ -18,27 +18,47 @@ class Seo
     end
   end
 
-  def tdk
-    {
-      :title=>get_title,
-      :keywords=>get_keywords,
-      :description=>get_description,
-      :h1=>get_h1
-    }
-  end
-
   def get_breadcrumb
     case @page_type 
     when 'country'
       [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿"}]
     when 'city'
-      [{:text=>"#{@country}民宿", :url=>"/#{@hotel.country}/"},{:text=>"#{@city_name}民宿"}]
+      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/#{@hotel.country}/"},{:text=>"#{@city_name}民宿"}]
     when 'detail'
-      [{:text=>"#{@country}民宿", :url=>"/#{@hotel.country}/"},{:text=>"#{@city_name}民宿", :url=>"/#{@hotel.country}/#{@hotel.city_en}/"}, {:text=>@hotel.name}]
+      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/#{@hotel.country}/"},{:text=>"#{@city_name}民宿", :url=>"/#{@hotel.country}/#{@hotel.city_en}/"}, {:text=>@hotel.name}]
     end
   end
 
-  def get_sitemap_links
+  def tdk
+    case @page_type
+    when 'index'
+      {
+        :title=>'台湾，日本，泰国，韩国民宿，客栈预订',
+        :keywords=>'民宿,客栈',
+        :description=>'为你推荐台湾，日本，泰国，韩国民宿客栈'
+      }
+    when 'detail'
+      {
+        :title=>"#{@hotel.name}_#{@hotel.name}预订",
+        :keywords=>"#{@hotel.name},#{@city_name},民宿",
+        :description=>"#{@city_name}民宿，为你推荐#{@hotel_name_join}。",
+        :h1=>@hotel.name
+      }
+    when 'city'
+      {
+        :title=>"#{@city_name}民宿_#{@city_name}酒店预订",
+        :keywords=>"#{@city_name},民宿",
+        :description=>"#{@city_name}酒店，为你推荐#{@hotel_name_join}。",
+        :h1=>"#{@city_name}民宿"
+      }
+    when 'country'
+      {
+        :title=>"#{@country}民宿,#{@country}酒店预订",
+        :keywords=>"#{@country},民宿,价格",
+        :description=>"#{@country}民宿,为你推荐#{@hotel_name_join}。",
+        :h1=>"#{@country}民宿"
+      }
+    end
   end
 
   def get_footer_links
@@ -55,34 +75,6 @@ class Seo
       end
     end
     @links
-  end
-
-  def get_h1
-    if @page_type=='detail'
-      @hotel.name
-    else
-      "#{@city_name}民宿"
-    end
-  end
-
-  def get_title
-    if @page_type=='detail'
-      "#{@hotel.name}_#{@hotel.name}预订"
-    else
-      "#{@city_name}民宿_#{@city_name}酒店预订"
-    end
-  end
-
-  def get_keywords
-    if @page_type=='detail'
-      "#{@hotel.name},#{@city_name},民宿"
-    else
-      "#{@country},#{@city_name},民宿"
-    end
-  end
-
-  def get_description
-    "#{@city_name}酒店，为你推荐#{@hotel_name_join}。"
   end
 
 end
