@@ -22,6 +22,8 @@ class Seo
     case @page_type 
     when 'country'
       [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿"}]
+    when 'query'
+      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/#{@hotel.country}/"},{:text=>"#{@city_name}民宿搜索页"}]
     when 'city'
       [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/#{@hotel.country}/"},{:text=>"#{@city_name}民宿"}]
     when 'detail'
@@ -47,6 +49,13 @@ class Seo
     when 'city'
       {
         :title=>"#{@city_name}民宿_#{@city_name}酒店预订",
+        :keywords=>"#{@city_name},民宿",
+        :description=>"#{@city_name}酒店，为你推荐#{@hotel_name_join}。",
+        :h1=>"#{@city_name}民宿"
+      }
+    when 'query'
+      {
+        :title=>"#{@city_name}民宿搜索结果",
         :keywords=>"#{@city_name},民宿",
         :description=>"#{@city_name}酒店，为你推荐#{@hotel_name_join}。",
         :h1=>"#{@city_name}民宿"

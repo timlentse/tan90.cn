@@ -1,6 +1,6 @@
 body {
   padding-top: 50px; 
-  font-family: Microsoft YaHei UI, Microsoft YaHei, 宋体, Calibri, sans-serif;
+  font-family:"Lato Regular", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   background: #f6f1e5 url(asset-path('bg_banner.jpg')) no-repeat center top
 }
 ul {
@@ -13,12 +13,25 @@ ul {
   background-color:#fff;
   margin-bottom:10px;
 }
+.search-btn {
+  width:120px;
+  height:40px;
+}
+.search .form-control {
+  height:40px;
+}
 .comment {
   background-color:#fff;
   padding:10px 10px 10px 10px;
 }
-.navbar {
-  min-height: 30px;
+.content {
+  color:#999;
+}
+.comment-title {
+  text-align:center;
+}
+.author{
+  color:#47b2e2;
 }
 .sider-bar {
   background-color:#fff;
@@ -34,7 +47,7 @@ ul {
 .navbar li a {
   line-height: 30px;
   height:30px;
-  padding-top: 0;
+  padding-top:10px;
 }
 .instr-img {
   padding-left: 0.5%;
@@ -61,7 +74,7 @@ h2 {
   padding-left:0.5%;
 }
 .more h2 {
-  font-size:14px;
+  font-size:0.9em;
   color:#999
 }
 .more a:first-child {
@@ -69,7 +82,7 @@ h2 {
 }
 .more a {
   color: #999;
-  font-size:13px;
+  font-size:0.8em;
 }
 .inner{
   float:left;
@@ -84,11 +97,11 @@ h2 {
 }
 .sitemap h2 a {
   padding-left:0px;
-  font-size:15px;
+  font-size:1em;
   color:#000;
 }
 .sitemap li a {
-  font-size:12px;
+  font-size:0.8em;
   color:#37e;
 }
 .caption {
@@ -96,7 +109,7 @@ h2 {
   padding: 5px 9px 5px 9px;
 }
 .hotel-name {
-  font-size: 16px;
+  font-size: 1.3em;
   color: #0896ff;
   white-space: nowrap;
   overflow: hidden;
@@ -110,38 +123,38 @@ h2 {
   margin-bottom: 2px;
 }
 .com-overview {
-  font-size:12px;
+  font-size:0.8em;
   color: #333;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .dollor-sign {
-  font-size:16px;
+  font-size:1em;
   color:#f00;
 }
 .price {
   color: #f00;
-  font-size: 18px;
+  font-size: 1.3em;
 }
 .caption .location {
-  font-size:12px;
-  color: #666;
+  font-size:0.8em;
+  color: #999;
   margin:0 0 2px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .caption .address {
-  font-size:12px;
-  color: #666;
+  font-size:0.8em;
+  color: #999;
   white-space: nowrap;
   margin:0 0 2px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .caption .hover-toggle-button span {
-  font-size:12px;
+  font-size:0.8em;
   margin: 0 0 4px 0;
   padding: 5px;
   border: 1px solid #ccc;
@@ -156,7 +169,7 @@ h2 {
 .ratings {
   padding-right: 10px;
   padding-left: 10px;
-  color: #d17581;
+  color:#fd5a46;
 }
 .thumbnail {
   padding: 0;
@@ -196,14 +209,14 @@ address {
   margin-bottom: 10px;
 }
 .head {
-  font-size: 20px;
+  font-size:1.3em;
 }
 .footer-link {
-  font-size: 13px;
+  font-size: 0.9em;
   color: #777;
 }
 .copy {
-  font-size: 12px;
+  font-size: 0.8em;
   text-align: center;
   color: #999;
 }
@@ -263,7 +276,7 @@ address {
 // Media Query
 @media (max-width: 768px) {
   .title {
-    font-size:14px;
+    font-size:0.85em;
     margin-top:10px;
   }
   .footer {
@@ -305,7 +318,7 @@ address {
     width:300px;
   }
   .title {
-    font-size:15px;
+    font-size:0.9em;
     margin-top:10px;
   }
 }
@@ -327,8 +340,14 @@ address {
     width:300px;
   }
   .title {
-    font-size:17px;
-    margin-top:10px;
+    font-size:1.2em;
+    margin-top:20px;
   }
 }
-
+.search{
+  margin-top: 25%;
+  margin-bottom:25%;
+  background:rgba(0,0,0,0.3);
+  border-radius: 5px;
+  padding-top: 10px;
+}

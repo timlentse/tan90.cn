@@ -41,6 +41,7 @@ class HotelsController < ApplicationController
   end
 
   def city_for_post
+    @params[:city_id] = find_city_id(params[:city_en])
     @hotels = Hotel.search(@params)
     render 'list.js.erb'
   end
@@ -56,9 +57,16 @@ class HotelsController < ApplicationController
     @breadcrumb = @seo.get_breadcrumb
   end
 
-  def sitemap
-    @seo={:title=>'酒店名录', :keywords=>'酒店,名录', :description=>'酒店大全汇总', :h1=>'酒店名录'}
-    @links = Seo.get_sitemap_links
+  def query_for_get
+    @page_type = 'query'
+    @params[:city_id] = search_city_by_keyword
+    render_page
+  end
+
+  def query_for_post
+    @params[:city_id] = search_city_by_keyword
+    @hotels = Hotel.search(@params)
+    render 'list.js.erb'
   end
 
   private
@@ -83,6 +91,11 @@ class HotelsController < ApplicationController
       @footer_links = @seo.get_footer_links
       render 'list.html.erb'
     end
+  end
+
+  def search_city_by_keyword
+    city = City.find_by(:name=>params[:q])
+    city.nil? ? 0 : city.id
   end
 
 end

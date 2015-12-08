@@ -1,5 +1,4 @@
 $(document).ready(function (){
-
   //load more hotels
   $(".pager > li > a ").click(function (e) {
     e.preventDefault();
@@ -17,6 +16,10 @@ $(document).ready(function (){
       }
     });
   });
-
+  $("#search").click(function (e) {
+    e.preventDefault();
+    var location = $("#location").val();
+    window.location.href="/search/?q="+location;
+  });
 });
 

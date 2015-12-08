@@ -14,18 +14,33 @@
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
-  <%if @page_type=='detail' %>
+  <% unless @page_type=='index' %>
     <body style="background:#f6f1e5">
     <% else %>
       <body>
       <% end %>
       <%= render 'layouts/header' %>
       <%= render 'layouts/breadcrumb' %>
+      <% if @page_type=='index' %>
+        <%= render 'layouts/search_form' %>
+      <% end %>
       <%= yield %>
       <%= render 'layouts/footer' %>
       <script type="text/javascript">
 $(document).ready(function(){
-  $(function () {
+  var start_day=new Date();
+  var end_day= new Date();
+  end_day.setDate(start_day.getDate() + 1);
+  $(function () { 
+    $("#checkin").datetimepicker({
+      format:'YYYY-MM-DD',
+      defaultDate:start_day
+    });
+
+    $("#checkout").datetimepicker({
+      format:'YYYY-MM-DD',
+      defaultDate:end_day
+    });
     $('[data-toggle="popover"]').popover({"trigger": "hover"});
   })
 });
