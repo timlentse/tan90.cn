@@ -1,0 +1,48 @@
+<div class="container search">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="form-section">
+        <form role="form">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="sr-only" for="location">Location</label>
+              <input type="text" class="form-control" id="location" placeholder="你想去哪里?">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="sr-only" for="checkin">Check in</label>
+              <div class="input-group">
+                <input type="text" class="form-control datetimepicker" id="checkin" placeholder="Check in">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="sr-only" for="checkout">Check out</label>
+              <div class="input-group">
+                <input type="text" class="form-control datetimepicker" id="checkout" placeholder="Check out">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <button id="search" type="submit" class="btn btn-primary search-btn">搜索</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+$("#search").click(function (e) {
+  e.preventDefault();
+  locationName = $("#location").val();
+  if(locationName=="") {
+    locationName="台北";
+  }
+  window.location.href="/search/?q="+locationName;
+});
+</script>
+
