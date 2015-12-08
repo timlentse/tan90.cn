@@ -1,20 +1,20 @@
 // Add more hotels to list-view
 $('#hotel-list').html('<%= escape_javascript(render @hotels) %>');
-<% if @hotels.size<20 %>
+<% if @hotels.size<21 %>
   $('.pager').html('<li class="previous"><a data-page="<%= @params[:page].to_i-1 %>"><span aria-hidden="true">&larr;</span>上一页</a></li>')
 <% elsif @params[:page]=='1'%>
   $('.pager').html('<li class="next"><a data-page="<%= @params[:page].to_i+1 %>">下一页<span aria-hidden="true">&rarr;</span></a></li>')
 <% else %>
+  <%= @params[:page] %>
   $('.pager').html('<li class="previous"><a data-page="<%= @params[:page].to_i-1 %>"><span aria-hidden="true">&larr;</span>上一页</a></li><li class="next"><a data-page="<%= @params[:page].to_i+1 %>">下一页<span aria-hidden="true">&rarr;</span></a></li>');
 <% end %>
 
 $(".pager > li > a ").click(function (e) {
   e.preventDefault();
   var pageId = $(this).attr('data-page');
-
   $.ajax({
     type: "POST",
-    url: window.location.pathname,
+    url: window.location.href,
     data: { page: pageId },
     dataType: "script",
     success: function (msg) {
