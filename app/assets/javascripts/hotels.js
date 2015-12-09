@@ -6,7 +6,7 @@ $(document).ready(function (){
 
     $.ajax({
       type: "POST",
-      url: window.location.href,
+      url: window.location.pathname,
       data: { page: pageId },
       dataType: "script",
       success: function (msg) {

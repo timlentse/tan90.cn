@@ -35,36 +35,36 @@ class Seo
     case @page_type
     when 'index'
       {
-        :title=>'台湾，日本，泰国，韩国民宿，客栈预订',
-        :keywords=>'民宿,客栈',
-        :description=>'为你推荐台湾，日本，泰国，韩国民宿客栈'
+        :title=>'台湾，日本，泰国，韩国民宿，客栈预订, 住宿指南',
+        :keywords=>'民宿,客栈,住宿',
+        :description=>'为你推荐涵盖台湾，日本，泰国，韩国等热门旅游城市的民宿，客栈，旅游住宿攻略'
       }
     when 'detail'
       {
-        :title=>"#{@hotel.name}_#{@hotel.name}预订",
-        :keywords=>"#{@hotel.name},#{@city_name},民宿",
-        :description=>"#{@city_name}民宿，为你推荐#{@hotel_name_join}。",
+        :title=>"#{@hotel.name}_怎么订#{@hotel.name}民宿-#{@city_name}民宿",
+        :keywords=>"#{@hotel.name},#{@city_name},民宿,住宿",
+        :description=>"#{@city_name}民宿，#{@city_name}自由行住宿，为你推荐#{@hotel_name_join}。",
         :h1=>@hotel.name
       }
     when 'city'
       {
-        :title=>"#{@city_name}民宿_#{@city_name}酒店预订",
-        :keywords=>"#{@city_name},民宿",
-        :description=>"#{@city_name}酒店，为你推荐#{@hotel_name_join}。",
+        :title=>"#{@city_name}民宿_怎么订#{@city_name}民宿-#{@city_name}民宿",
+        :keywords=>"#{@city_name},民宿,住宿",
+        :description=>"#{@city_name}民宿，#{@city_name}自由行住宿，为你推荐#{@hotel_name_join}。",
         :h1=>"#{@city_name}民宿"
       }
     when 'query'
       {
         :title=>"#{@city_name}民宿搜索结果",
         :keywords=>"#{@city_name},民宿",
-        :description=>"#{@city_name}酒店，为你推荐#{@hotel_name_join}。",
+        :description=>"#{@city_name}民宿，#{@city_name}自由行住宿，为你推荐#{@hotel_name_join}。",
         :h1=>"#{@city_name}民宿"
       }
     when 'country'
       {
-        :title=>"#{@country}民宿,#{@country}酒店预订",
-        :keywords=>"#{@country},民宿,价格",
-        :description=>"#{@country}民宿,为你推荐#{@hotel_name_join}。",
+        :title=>"#{@country}民宿,怎么订#{@country}民宿-#{@country}民宿",
+        :keywords=>"#{@country},民宿,价格,住宿",
+        :description=>"#{@country}民宿, #{@city_name}自由行住宿，为你推荐#{@hotel_name_join}。",
         :h1=>"#{@country}民宿"
       }
     end

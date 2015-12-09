@@ -3,7 +3,9 @@
     <div class="col-md-6" id="desc">
       <div class="thumbnail">
         <% @img_url="http://7xotew.com1.z0.glb.clouddn.com/#{@hotel.fishtrip_hotel_id}-large.jpg" %>
-        <img class="img-responsive" src="<%= @img_url %>" alt="<%= @hotel.name %>">
+        <a href="<%= @hotel.shared_uri %>">
+          <img class="img-responsive" src="<%= @img_url %>" alt="<%= @hotel.name %>">
+        </a>
       </div>
 
       <div class="isr" >

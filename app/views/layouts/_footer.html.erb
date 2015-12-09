@@ -11,7 +11,11 @@
         <div class="col-md-12 col-md-offset-2">
           <% @footer_links.each do |country, links| %>
             <ul>
-              <li><p class="head"><%= Seo::COUNTRY[country] %>民宿</p></li>
+              <% if @page_type=='index' %>
+                <li><p class="head"><%= Seo::COUNTRY[country] %>民宿</p></li>
+              <% else %>
+                <li><p class="head">更多<%= Seo::COUNTRY[country] %>民宿</p></li>
+              <% end %>
               <% links.each_slice(12) do |sli| %>
                 <% sli.each do |link| %>
                   <li class="inner"><p><a class="footer-link" href="<%= link['uri'] %>"><%= link['text'] %></a></p></li>
