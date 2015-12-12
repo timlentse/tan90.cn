@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:mobile="http://www.baidu.com/schemas/sitemap-mobile/1/"> 
+<% hotel_batch.each do |hotel| %>
+  <url> 
+    <loc>http://m.timlentse.com/<%= hotel.fishtrip_hotel_id %>/</loc> 
+    <mobile:mobile type="mobile"/>
+    <lastmod><%= @date %></lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url> 
+<% end %>
+</urlset>

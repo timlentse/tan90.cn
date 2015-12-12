@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex>
+<% @xml_path_list.each do |file| %>
+  <sitemap> 
+  <loc>
+  http://m.timlentse.com/sitemap/<%=file.gsub(/public\/sitemap\//, '') %>/
+  </loc>
+  </sitemap>
+<% end %>
+</sitemapindex>
