@@ -5,7 +5,6 @@ $('#hotel-list').html('<%= escape_javascript(render @hotels) %>');
 <% elsif @params[:page]=='1'%>
   $('.pager').html('<li class="next"><a data-page="<%= @params[:page].to_i+1 %>">下一页<span aria-hidden="true">&rarr;</span></a></li>')
 <% else %>
-  <%= @params[:page] %>
   $('.pager').html('<li class="previous"><a data-page="<%= @params[:page].to_i-1 %>"><span aria-hidden="true">&larr;</span>上一页</a></li><li class="next"><a data-page="<%= @params[:page].to_i+1 %>">下一页<span aria-hidden="true">&rarr;</span></a></li>');
 <% end %>
 

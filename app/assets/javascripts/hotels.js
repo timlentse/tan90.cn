@@ -6,7 +6,7 @@ $(document).ready(function (){
 
     $.ajax({
       type: "POST",
-      url: window.location.pathname,
+      url: window.location.href,
       data: { page: pageId },
       dataType: "script",
       success: function (msg) {
@@ -18,7 +18,7 @@ $(document).ready(function (){
   });
   $("#search").click(function (e) {
     e.preventDefault();
-    var location = $("#location").val();
+    var location = $("#location").val() || '台北';
     window.location.href="/search/?q="+location;
   });
 });
