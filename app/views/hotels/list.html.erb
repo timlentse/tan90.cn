@@ -1,8 +1,8 @@
-<div class="container">
-  <div class='row'>
-    <div class="col-md-12 cus-padding" id="hotel-list">
-      <%= render @hotels %>
-    </div>
+<article class="container">
+  <div class="row cus-padding" id="hotel-list">
+    <%= render @hotels %>
+  </div>
+  <div class="row">
     <nav>
       <ul class="pager">
         <% if @hotels.size==21 %>
@@ -11,6 +11,6 @@
       </ul>
     </nav>
   </div>
-</div>
+</article>
 <%= javascript_include_tag 'hotels' %>
 

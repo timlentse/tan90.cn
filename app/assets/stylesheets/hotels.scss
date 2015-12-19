@@ -20,6 +20,16 @@ ul {
 .search .form-control {
   height:40px;
 }
+.search {
+  margin-top: 25%;
+  margin-bottom:25%;
+  background:rgba(0,0,0,0.3);
+  border-radius: 5px;
+  padding-top: 10px;
+}
+.desc {
+  display:none;
+}
 .comment {
   background-color:#fff;
   padding:10px 10px 10px 10px;
@@ -28,6 +38,7 @@ ul {
   color:#999;
 }
 .comment-title {
+  font-size:1.2em;
   text-align:center;
 }
 .author{
@@ -40,6 +51,7 @@ ul {
   padding: 10px 10px 10px 10px;
 }
 .itr-head {
+  font-size:1.2em;
   padding-left:10px;
   padding-right:10px;
 }
@@ -52,12 +64,6 @@ ul {
 .instr-img {
   padding-left: 0.5%;
   padding-right: 0.5%;
-}
-.thumbnail a > img {
-  height:100px;
-}
-.logo {
-  padding-top:10px;
 }
 h2 {
   font: 25px Microsoft Yahei;
@@ -109,7 +115,7 @@ h2 {
   padding: 5px 9px 5px 9px;
 }
 .hotel-name {
-  font-size: 1.3em;
+  font-size: 1.2em;
   color: #0896ff;
   white-space: nowrap;
   overflow: hidden;
@@ -138,7 +144,7 @@ h2 {
   font-size: 1.3em;
 }
 .caption .location {
-  font-size:0.8em;
+  font-size:0.9em;
   color: #999;
   margin:0 0 2px;
   white-space: nowrap;
@@ -146,7 +152,7 @@ h2 {
   text-overflow: ellipsis;
 }
 .caption .address {
-  font-size:0.8em;
+  font-size:0.9em;
   color: #999;
   white-space: nowrap;
   margin:0 0 2px;
@@ -204,9 +210,6 @@ address {
 }
 .hover-toggle-button span {
   width: 100px !important;
-}
-.crumb {
-  margin-bottom: 10px;
 }
 .head {
   font-size:1.3em;
@@ -276,37 +279,28 @@ address {
 // Media Query
 @media (max-width: 768px) {
   .title {
-    font-size:0.85em;
+    font-size:1.2em;
     margin-top:10px;
+    text-align:center;
   }
   .footer {
     margin-top:5%;
   }
   .cus-padding {
-    padding-left: 1px;
-    padding-right: 1px;
-  }
-  .offset-md {
-    margin-left: 1px;
-    margin-right:1px;
+    padding:0;
   }
   .thumbnail {
     margin-bottom:1px;
-  }
-  .main-page-youth {
-    padding:2px 0 0 0;
-  }
-  .main-page-inn {
-    padding:2px 0 0 0;
-  }
-  .main-page-theme {
-    padding:2px 0 0 0;
   }
   .instr {
     padding:80px 20px 30px 32px;
   }
 }
 @media (min-width: 768px) and (max-width: 992px) {
+  .thumbnail > a img {
+    width:100%;
+    height:220px;
+  }
   .thumbnail {
     margin-bottom:1px;
   }
@@ -323,13 +317,9 @@ address {
   }
 }
 @media (min-width: 992px) {
-  .offset-md {
-    margin-left: 15%;
-    margin-right: 15%;
-  } 
-  .thumbnail a > img {
-    width: 100%;
-    height: 220px;
+  .thumbnail > a img {
+    width:100%;
+    height:220px;
   }
   .footer {
     padding-top:20px;
@@ -343,11 +333,4 @@ address {
     font-size:1.2em;
     margin-top:20px;
   }
-}
-.search{
-  margin-top: 25%;
-  margin-bottom:25%;
-  background:rgba(0,0,0,0.3);
-  border-radius: 5px;
-  padding-top: 10px;
 }

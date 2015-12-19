@@ -1,17 +1,16 @@
-<div class="col-xs-6 col-sm-6 col-md-4 cus-padding">
+<section class="col-xs-12 col-sm-6 col-md-4 cus-padding">
   <div class="thumbnail">
     <a href="/<%= hotel.fishtrip_hotel_id %>/" target="_blank">
       <% @img_url="http://7xotew.com1.z0.glb.clouddn.com/#{hotel.fishtrip_hotel_id}.jpg" %>
-      <img class="img-responsive" src="<%= @img_url %>" alt="<%= hotel.name %>">
+      <img src="<%= @img_url %>" alt="<%= hotel.name %>">
     </a>
     <div class="caption">
       <a href="/<%= hotel.fishtrip_hotel_id %>/" target="_blank">
-        <p class="hotel-name">
-        <span data-container="body" data-toggle="popover" data-placement="top" data-content="<%= hotel.desc %>"><%= hotel.name %></span>
-        </p>
+        <p class="hotel-name"><%= hotel.name %></p>
       </a>
-      <p class="location"><%= Seo::COUNTRY[hotel.country] %>-<%= hotel.city %></p>
-      <p class='address'><%= hotel.address %></p>
+      <p class="desc"><%= "#{hotel.name}简介:#{hotel.desc}" %></p>
+      <p class="location"><strong><%="位置："%></strong><%= Seo::COUNTRY[hotel.country] %>-<%= hotel.city %></p>
+      <p class='address'><strong><%= "地址：" %></strong><%= hotel.address %></p>
 
       <% if hotel.comment.empty? %>
         <p class='com-overview'>
@@ -24,15 +23,14 @@
       <% end %>
 
       <% if hotel.price==0 %>
-        <p class="booking"><a href="/<%= hotel.fishtrip_hotel_id %>/"  target="_blank" class="btn btn-primary btn-xs" role="button">查看详情</a> 
+        <p class="booking"><a href="/<%= hotel.fishtrip_hotel_id %>/" target="_blank" class="btn btn-primary btn-xs" role="button">查看详情</a> 
       <% else %>
         <p class="booking"> 
-        <a href="/<%= hotel.fishtrip_hotel_id %>/"  target="_blank" class="btn btn-primary btn-xs" role="button">预订</a> 
-        <span class="pull-right"><span class="dollor-sign">￥</span><strong class="price"><%= hotel.price %></strong>起</span>
+        <a href="/<%= hotel.fishtrip_hotel_id %>/" target="_blank" class="btn btn-primary" role="button">预订</a> 
+        <span class="pull-right"><span class="dollor-sign">￥</span><strong class="price"><%= hotel.price %></strong></span>
         </p>
       <% end %>
-
     </div>
   </div>
-</div>
+</section>
 

@@ -16,10 +16,12 @@ $(document).ready(function (){
       }
     });
   });
+
   $("#search").click(function (e) {
     e.preventDefault();
     var location = $("#location").val() || '台北';
     window.location.href="/search/?q="+location;
   });
+
 });
 

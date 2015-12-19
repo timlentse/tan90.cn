@@ -26,35 +26,8 @@
       <% end %>
       <%= yield %>
       <%= render 'layouts/footer' %>
-      <script type="text/javascript">
-$(document).ready(function(){
-  var start_day=new Date();
-  var end_day= new Date();
-  end_day.setDate(start_day.getDate() + 1);
-  $(function () { 
-    $("#checkin").datetimepicker({
-      format:'YYYY-MM-DD',
-      defaultDate:start_day
-    });
-
-    $("#checkout").datetimepicker({
-      format:'YYYY-MM-DD',
-      defaultDate:end_day
-    });
-    $('[data-toggle="popover"]').popover({"trigger": "hover"});
-  })
-});
-      </script>
-      <script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)
-},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-67464730-2', 'auto');
-ga('send', 'pageview');
-
-      </script>
+      <%= javascript_include_tag 'document_ready' %>
+      <%= render 'layouts/cnzz' %>
+      <%= render 'layouts/google_analytics' %>
       </body>
 </html>
