@@ -22,5 +22,9 @@ class Hotel < ActiveRecord::Base
     self.where(fishtrip_hotel_id: ids)
   end
 
-end
+  def self.select_recommend_hotels(city_id, hotel_id)
+    self.where(:city_id=>city_id).sample(12)
+  end
+
+  end
 

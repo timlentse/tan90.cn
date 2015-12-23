@@ -55,7 +55,7 @@ class HotelsController < ApplicationController
     @footer_links = @seo.get_footer_links
     @tdk = @seo.tdk
     @breadcrumb = @seo.get_breadcrumb
-    @recommend_hotels = Hotel.where(:city_id=>@hotel.city_id).limit(12)
+    @recommend_hotels = Hotel.select_recommend_hotels(@hotel.city_id, @hotel.id)
   end
 
   def query_for_get
