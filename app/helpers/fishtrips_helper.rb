@@ -1,0 +1,2 @@
+module FishtripsHelper
+end

@@ -1,5 +1,5 @@
 // Add more hotels to list-view
-$('#hotel-list').html('<%= escape_javascript(render @hotels) %>');
+$('#hotel-list').html('<%= escape_javascript(render 'hotel') %>');
 <% if @hotels.size<21 %>
   $('.pager').html('<li class="previous"><a data-page="<%= @params[:page].to_i-1 %>"><span aria-hidden="true">&larr;</span>上一页</a></li>')
 <% elsif @params[:page]=='1'%>

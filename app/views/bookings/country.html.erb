@@ -1,0 +1,14 @@
+<article class="container">
+  <div class="row cus-padding" id="hotel-list">
+    <% @cities.each do |city| %>
+      <div class="col-xs-12 col-sm-6 col-md-4 cus-padding">
+        <p> <%= city.name_cn %> 共<%= city.number_of_hotels %>家酒店</p>
+        <a href="/booking/<%= "#{city.country_code}/#{city.full_name}" %>/" >
+          <div class="thumbnail">
+            <img src="<%= city.city_img %>"/>
+          </div>
+        </a>
+      </div>
+    <% end %>
+  </div>
+</article>

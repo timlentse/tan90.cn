@@ -1,27 +1,20 @@
-require 'seo'
-require 'city'
-require 'comment'
+require 'fishtrip_seo'
+require 'fishtrip_city'
+require 'fishtrip_comment'
 
-class HotelsController < ApplicationController
+class FishtripsController < ApplicationController
   before_filter :set_params
-
-  def index
-    @page_type = 'index'
-    @seo = Seo.new(@page_type, [])
-    @tdk = @seo.tdk
-    @footer_links = @seo.get_footer_links
-  end
 
   def country
     @page_type = 'country'
     if @params[:page]
       redirect_to URI(request.original_url).path, status: 301
     else
-      @hotels = Hotel.search_hot(@params[:country])
+      @hotels = FishtripHotel.search_hot(@params[:country])
       if @hotels.empty?
         render_404
       else
-        @seo = Seo.new(@page_type, @hotels)
+        @seo = FishtripSeo.new(@page_type, @hotels)
         @tdk = @seo.tdk
         @breadcrumb = @seo.get_breadcrumb
         @footer_links = @seo.get_footer_links
@@ -30,7 +23,7 @@ class HotelsController < ApplicationController
     end
   end
 
-  def city_for_get
+  def city_list_by_get
     @page_type = 'city'
     if @params[:page]
       redirect_to URI(request.original_url).path, status: 301
@@ -40,33 +33,33 @@ class HotelsController < ApplicationController
     end
   end
 
-  def city_for_post
+  def city_list_by_post
     @params[:city_id] = find_city_id(params[:city_en])
-    @hotels = Hotel.search(@params)
+    @hotels = FishtripHotel.search(@params)
     render 'list.js.erb'
   end
 
   def detail
     @page_type = 'detail'
-    @hotel = Hotel.find_by(:fishtrip_hotel_id=>params[:id])
+    @hotel = FishtripHotel.find_by(:fishtrip_hotel_id=>params[:id])
     @tuijian = @hotel.tuijian.nil? ? [] : JSON.parse(@hotel.tuijian)
-    @comments = @hotel.comments
-    @seo = Seo.new(@page_type, @hotel)
+    @comments = @hotel.fishtrip_comments
+    @seo = FishtripSeo.new(@page_type, @hotel)
     @footer_links = @seo.get_footer_links
     @tdk = @seo.tdk
     @breadcrumb = @seo.get_breadcrumb
-    @recommend_hotels = Hotel.select_recommend_hotels(@hotel.city_id, @hotel.id)
+    @recommend_hotels = FishtripHotel.select_recommend_hotels(@hotel.city_id, @hotel.id)
   end
 
-  def query_for_get
+  def query_by_get
     @page_type = 'query'
     @params[:city_id] = search_city_by_keyword
     render_page
   end
 
-  def query_for_post
+  def query_by_post
     @params[:city_id] = search_city_by_keyword
-    @hotels = Hotel.search(@params)
+    @hotels = FishtripHotel.search(@params)
     render 'list.js.erb'
   end
 
@@ -77,16 +70,16 @@ class HotelsController < ApplicationController
   end
 
   def find_city_id(city_en)
-    city = City.find_by(:name_en=>city_en)
+    city = FishtripCity.find_by(:name_en=>city_en)
     city.nil? ? 0 : city.id
   end
 
   def render_page
-    @hotels = Hotel.search(@params)
+    @hotels = FishtripHotel.search(@params)
     if @hotels.empty?
       render_404
     else
-      @seo = Seo.new(@page_type, @hotels)
+      @seo = FishtripSeo.new(@page_type, @hotels)
       @tdk = @seo.tdk
       @breadcrumb = @seo.get_breadcrumb
       @footer_links = @seo.get_footer_links
@@ -95,7 +88,7 @@ class HotelsController < ApplicationController
   end
 
   def search_city_by_keyword
-    city = City.find_by(:name=>params[:q])
+    city = FishtripCity.find_by(:name=>params[:q])
     city.nil? ? 0 : city.id
   end
 

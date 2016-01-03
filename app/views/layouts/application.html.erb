@@ -21,9 +21,6 @@
       <% end %>
       <%= render 'layouts/header' %>
       <%= render 'layouts/breadcrumb' %>
-      <% if @page_type=='index' %>
-        <%= render 'layouts/search_form' %>
-      <% end %>
       <%= yield %>
       <%= render 'layouts/footer' %>
       <%= javascript_include_tag 'document_ready' %>

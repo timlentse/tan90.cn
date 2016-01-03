@@ -10,7 +10,7 @@ class Sitemap
     @file_name_prefix = "public/sitemap/#{@sitemap_type}_#{product}_#{page_type}"
     @template_file = "lib/tasks/#{@sitemap_type}_#{product}_#{page_type}.erb" 
     index=0
-    Hotel.find_in_batches(batch_size: 5000) do |hotel_batch|
+    FishtripHotel.find_in_batches(batch_size: 5000) do |hotel_batch|
       res = ERB.new(File.read(@template_file)).result(binding)
       xml_file_name = "#{@file_name_prefix}_#{index}_#{@year}.xml"
       xml_file = File.open(xml_file_name,'w+')
