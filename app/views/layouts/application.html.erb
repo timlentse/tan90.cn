@@ -19,12 +19,12 @@
     <% else %>
       <body>
       <% end %>
+      <%= render 'layouts/google_tag' %>
       <%= render 'layouts/header' %>
       <%= render 'layouts/breadcrumb' %>
       <%= yield %>
       <%= render 'layouts/footer' %>
       <%= javascript_include_tag 'document_ready' %>
       <%= render 'layouts/cnzz' %>
-      <%= render 'layouts/google_analytics' %>
       </body>
 </html>
