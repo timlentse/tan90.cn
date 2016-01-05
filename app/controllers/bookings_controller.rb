@@ -11,7 +11,7 @@ class BookingsController < ApplicationController
   def city_list_by_get
     @city = BookingCity.find_by(:full_name=>@params[:city_en])
     render_404 unless @city
-    @hotels = BookingAsiaHotel.search(@params)
+    @hotels = BookingHotel.search(@params)
     @seo = BookingSeo.new(@city,'city',@hotels)
     @tdk = @seo.get_tdk
     @breadcrumb = @seo.get_breadcrumb
