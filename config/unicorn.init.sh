@@ -13,7 +13,7 @@
 set -e
 
 TIMEOUT=${TIMEOUT-60}
-APP_ROOT=~/fishtrip/current
+APP_ROOT=~/tan90.cn/current
 PID=$APP_ROOT/tmp/pids/unicorn.pid
 CMD="cd $APP_ROOT && bundle exec unicorn -c $APP_ROOT/config/unicorn.rb -E production -D"
 
