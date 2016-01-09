@@ -1,27 +1,29 @@
 <% @hotels.each do |hotel| %>
-  <section class="col-xs-12 col-sm-6 col-md-4 cus-padding">
-    <div class="thumbnail">
-      <a href="<%= hotel.hotel_url %>?aid=897435" target="_blank">
-        <img src="<%= hotel.photo_url %>" alt="<%= hotel.name_cn %>">
+  <section class="hotel-item">
+    <div class="hotel-pic"> 
+      <a href="<%= hotel.hotel_url %>?aid=897435" rel="nofollow" target="_blank">
+        <img class="hotel-img" src="<%= hotel.photo_url %>" alt="<%= hotel.name_cn %>">
       </a>
-      <div class="caption">
-        <a href="<%= hotel.hotel_url %>?aid=897435" target="_blank">
-          <p class="hotel-name"><%= hotel.name_cn %></p>
-        </a>
-        <p class="desc"><%= "#{hotel.name_cn}简介:#{hotel.desc_cn}" %></p>
-        <% city_name = @city.name_cn.empty? ? hotel.city_hotel : @city.name_cn %>
-        <p class="location"><strong><%="位置："%></strong><%= city_name %></p>
-        <p class='address'><strong><%= "地址：" %></strong><%= hotel.address_cn%></p>
-        <% if hotel.minrate.nil? %>
-          <p class="booking"><a href="<%= hotel.hotel_url %>?aid=897435" target="_blank" class="btn btn-primary btn-xs" role="button">查看详情</a> 
-        <% else %>
-          <p class="booking"> 
-          <a class="btn btn-primary" href="<%= hotel.hotel_url %>?aid=897435" target="_blank">预订</a>
-          <span class="pull-right"><span class="dollor-sign">￥</span><strong class="price"><%= hotel.minrate %></strong></span>
-          </p>
-        <% end %>
-      </div>
+    </div>
+    <div class="hotel-body">
+      <a href="<%= hotel.hotel_url %>?aid=897435" rel='nofollow' target="_blank">
+        <p class="hotel-name"><%= hotel.name_cn %></p>
+      </a>
+      <% city_name = @city.name_cn.empty? ? hotel.city_hotel : @city.name_cn %>
+      <p class="location"><strong><%="位置："%></strong><%= city_name %></p>
+      <p class='address'><strong><%= "地址：" %></strong><%= hotel.address_cn%></p>
+      <p class="hotel-desc"><%= "#{hotel.name_cn}简介:#{hotel.desc_cn}" %></p>
+      <% if hotel.minrate.nil? %>
+        <p class="booking"><a href="<%= hotel.hotel_url %>?aid=897435" rel='nofollow' target="_blank" class="btn btn-primary btn-xs" role="button">查看详情</a> 
+      <% else %>
+        <p class="booking"> 
+        <a class="btn btn-success pull-right" href="<%= hotel.hotel_url %>?aid=897435" rel="nofollow" target="_blank">预订</a>
+        <span class="dollor-sign">￥</span><strong class="price"><%= hotel.minrate %></strong>
+        </p>
+      <% end %>
     </div>
   </section>
+  <div class="clearfix"></div>
+  <hr>
 <% end %>
 

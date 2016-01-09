@@ -11,5 +11,6 @@ Rails.application.routes.draw do
 
   # Router for booking
   get '/booking/:country/'=>'bookings#country', country: /[a-z]{2}/
-  get '/booking/:country/:city_en/'=>'bookings#city_list_by_get', country: /[a-z]{2}/, city_en: /[a-z\-\d]+/
+  get '/booking/:country/:city_unique/'=>'bookings#city_list_by_get', country: /[a-z]{2}/, city_unique: /[a-z\-\d]+/
+  post '/booking/:country/:city_unique/'=>'bookings#city_list_by_post', country: /[a-z]{2}/, city_unique: /[a-z\-\d]+/
 end
