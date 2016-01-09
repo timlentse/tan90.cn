@@ -1,13 +1,11 @@
 <article class="container">
-  <div class="row cus-padding" id="hotel-list">
+  <div class="cities cus-padding" id="hotel-list">
     <% @cities.each do |city| %>
-      <div class="col-xs-12 col-sm-6 col-md-4 cus-padding">
-        <p> <%= city.name_cn %> 共<%= city.number_of_hotels %>家酒店</p>
+      <div class="city">
         <a href="/booking/<%= "#{city.country_code}/#{city.full_name}" %>/" >
-          <div class="thumbnail">
-            <img src="<%= city.city_img %>"/>
-          </div>
+          <img class="city-img" src="<%= city.city_img %>"/>
         </a>
+        <span class="city-desc"> <%= city.name_cn %> 共<%= city.number_of_hotels %>家酒店</span>
       </div>
     <% end %>
   </div>

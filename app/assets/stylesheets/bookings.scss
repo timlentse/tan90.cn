@@ -1,12 +1,9 @@
-// Place all the styles related to the bookings controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 hr{
   margin-bottom:0px;
-  margin-top:10px;
+  margin-top:5px;
 }
 .hotel-item{
-  padding:10px 10px 10px 10px;
+  padding:10px 10px;
   background-color:#fff;
 }
 .hotel-img {
@@ -18,4 +15,39 @@ hr{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.cities {
+  margin:0 auto;
+}
+.city {   
+  position: relative;   
+  display: block;   
+  float:left;
+  height:200px;   
+  width: 220px;  
+  margin:10px 10px 10px 10px;
+}
+.city-img{
+  width:220px;
+  height:200px;
+}
+.city-desc{
+  background:#000;  
+  -moz-opacity:.50;   
+  filter:alpha(opacity=50);   
+  opacity:.50; color: #fff;   
+  position: absolute;   
+  bottom: 0px;   
+  left: 0px;   
+  width: 220px;   
+  padding: 10px 0;   
+}
+.hot-link {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.hot-desc {
+  font-size: 0.9em;
+  color: #777;
 }

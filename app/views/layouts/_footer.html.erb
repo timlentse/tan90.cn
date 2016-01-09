@@ -6,19 +6,18 @@
   <div class="container-fluid split"></div>
   <footer class="container-fluid footer">
     <div class="row">
-      <div class="col-md-12 col-md-offset-2">
-        <% @footer_links.each do |country, links| %>
+      <div class="col-md-12 col-md-offset-1">
+        <% if @hot_destination %>
           <ul>
-            <% if @page_type=='index' %>
-              <li><p class="head"><%= FishtripSeo::COUNTRY[country] %>民宿</p></li>
-            <% else %>
-              <li><p class="head">更多<%= FishtripSeo::COUNTRY[country] %>民宿</p></li>
-            <% end %>
-            <% links.each_slice(12) do |sli| %>
-              <% sli.each do |link| %>
-                <li class="inner"><p><a class="footer-link" href="<%= link['uri'] %>"><%= link['text'] %></a></p></li>
+            <% @hot_destination.each do |destination| %>
+              <li><p class="head"><%= destination[:title] %></p></li>
+              <% destination[:links].each_slice(11) do |sli| %>
+                <% sli.each do |link| %>
+                  <li class="inner"><p class="hot-link"><a href="<%= link[:link] %>"><%= link[:text] %>酒店</a></p>
+                    <p><span class="hot-desc"><%= link[:addition] %></span></p></li>
+                <% end %>
+                <div class="clearfix"></div>
               <% end %>
-              <div class="clearfix"></div>
             <% end %>
           </ul>
         <% end %>

@@ -104,6 +104,7 @@ h2 {
 }
 .inner{
   float:left;
+  width:100px;
   padding-right:10px;
 }
 .sitemap li {
@@ -314,12 +315,12 @@ address {
 }
 @media (min-width: 768px) and (max-width: 992px) {
   .hotel-img{
-    width:130px;
-    height:130px;
+    width:150px;
+    height:140px;
   }
   .hotel-body{
-    padding-left:140px;
-    height:130px;
+    padding-left:160px;
+    height:150px;
   }
   .thumbnail > a img {
     width:100%;
