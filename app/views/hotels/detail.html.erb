@@ -37,14 +37,14 @@
         <p><a class="btn btn-info" href="<%= "#{@hotel.shared_uri}#house_show_date_select" %>" rel="nofollow">查看更多房型</a><a class="btn btn-warning pull-right" href="<%= @hotel.shared_uri %>" rel="nofollow">预订房间</a></p>
         <hr>
         <% unless @tuijian.empty? %>
-          <p><strong>推荐理由:</strong></p>
+          <p><strong>推荐<%= @hotel.name %>理由:</strong></p>
           <% @tuijian.each do |tuijian|  %>
             <li> <%= tuijian %> </li>
             <hr>
           <% end %>
         <% end %>
         <% if @hotel.traffic %>
-          <p><strong>交通指引:</strong></p>
+          <p><strong>怎么去<%= @hotel.name %>:</strong></p>
           <li> <%= @hotel.traffic %> </li>
         <% end %>
       </ul>
