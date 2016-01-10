@@ -2,17 +2,17 @@
   <section class="col-md-6 cus-padding" id="desc">
     <div class="thumbnail">
       <% @img_url="http://7xotew.com1.z0.glb.clouddn.com/#{@hotel.fishtrip_hotel_id}-large.jpg" %>
-      <a href="<%= @hotel.shared_uri %>">
+      <a href="<%= @hotel.shared_uri %>" rel="nofollow">
         <img src="<%= @img_url %>" alt="<%= "#{@hotel.name}图片" %>">
       </a>
     </div>
     <div class="isr" >
-      <h2 class="itr-head"><a href="<%= @hotel.shared_uri %>"><%= @hotel.name %></a>
+      <h2 class="itr-head"><a href="<%= @hotel.shared_uri %>" rel="nofollow"><%= @hotel.name %></a>
         <span class="price pull-right">￥<%= @hotel.price %></span>
       </h2>
       <p style="padding-left:10px;"><%= @hotel.desc %></p>
       <div class="ratings">
-        <p class="pull-right"><a href="<%= @hotel.shared_uri %>"><%= @hotel.comment %></a></p>
+        <p class="pull-right"><a href="<%= @hotel.shared_uri %>" rel="nofollow"><%= @hotel.comment %></a></p>
         <p>
         <% if @hotel.score.nil? %>
           <span class="glyphicon glyphicon-star-empty"></span>
@@ -34,7 +34,7 @@
     </div>
     <div class="sider-bar">
       <ul>
-        <p><a class="btn btn-info" href="<%= "#{@hotel.shared_uri}#house_show_date_select" %>">查看更多房型</a><a class="btn btn-warning pull-right" href="<%= @hotel.shared_uri %>">预订房间</a></p>
+        <p><a class="btn btn-info" href="<%= "#{@hotel.shared_uri}#house_show_date_select" %>" rel="nofollow">查看更多房型</a><a class="btn btn-warning pull-right" href="<%= @hotel.shared_uri %>" rel="nofollow">预订房间</a></p>
         <hr>
         <% unless @tuijian.empty? %>
           <p><strong>推荐理由:</strong></p>
