@@ -2,8 +2,8 @@ class CommonsController < ApplicationController
 
   def index
     @tdk = Common.tdk
-    @hot_destination = Common.get_hot_destination
-    @footer_links = []
+    @booking_hot_destinations = Common.get_hot_destinations
+    @fishtrip_links = Common.get_fishtrip_links
   end
 
 end

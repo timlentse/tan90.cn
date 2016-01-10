@@ -1,4 +1,3 @@
-require 'booking_hot_destination'
 class Common
   def self.tdk
     {
@@ -9,12 +8,22 @@ class Common
     }
   end
 
-  def self.get_hot_destination
+  def self.get_hot_destinations
     mapper = ['热门区域','热门城市','热门地标']
     slinks=[]
     BookingHotDestination.where(:cate=>1).find_each do |ds|
       slinks[0].nil? ? slinks[0] = {:title=>'热门城市',:links=>[{:text=>ds.name_cn,:link=>"/booking/#{ds.cc}/#{ds.name_en}/",:addition=>ds.number_of_hotel}]} : slinks[0][:links].push({:text=>ds.name_cn,:link=>"/booking/#{ds.cc}/#{ds.name_en}/",:addition=>ds.number_of_hotel})
     end
     slinks
+  end
+
+  def self.get_fishtrip_links
+    links = {}
+    ['taiwan', 'japan', 'thailand', 'korea'].each do |country|
+      links[country] = FishtripCity.where(:country=>country).map do |city|
+        {'uri'=>"/fishtrip/#{city.country}/#{city.name_en}/", 'text'=>"#{city.name}民宿"}
+      end
+    end
+    links
   end
 end

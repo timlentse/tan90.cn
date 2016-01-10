@@ -1,7 +1,3 @@
-require 'fishtrip_seo'
-require 'fishtrip_city'
-require 'fishtrip_comment'
-
 class FishtripsController < ApplicationController
   before_filter :set_params
 

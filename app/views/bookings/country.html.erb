@@ -1,5 +1,4 @@
-<article class="container">
-  <div class="cities cus-padding" id="hotel-list">
+<article class="container cities cus-padding" id="hotel-list">
     <% @cities.each do |city| %>
       <div class="city">
         <a href="/booking/<%= "#{city.country_code}/#{city.full_name}" %>/" >

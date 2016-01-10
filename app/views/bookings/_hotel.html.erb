@@ -18,7 +18,7 @@
       <% else %>
         <p class="booking"> 
         <a class="btn btn-success pull-right" href="<%= hotel.hotel_url %>?aid=897435" rel="nofollow" target="_blank">预订</a>
-        <span class="dollor-sign">￥</span><strong class="price"><%= hotel.minrate %></strong>
+        <strong class="price"><%= hotel.minrate %></strong><span class="cy-code"><%= hotel.currencycode %></span>
         </p>
       <% end %>
     </div>

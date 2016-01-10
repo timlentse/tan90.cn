@@ -21,8 +21,8 @@ ul {
   height:40px;
 }
 .search {
-  margin-top: 25%;
-  margin-bottom:25%;
+  margin-top:10%;
+  margin-bottom:10%;
   background:rgba(0,0,0,0.3);
   border-radius: 5px;
   padding-top: 10px;
@@ -34,6 +34,16 @@ ul {
   border-radius: 5px;
   padding-top: 10px;
   text-align:center;
+}
+#recommend-hotels img {
+  width:100%;
+  height:100px; 
+}
+.rc-title{
+  color:#0286a0;
+  background-color:#e2f3f8;
+  margin:0;
+  padding:10px 10px;
 }
 .desc {
   display:none;
@@ -48,10 +58,6 @@ ul {
 .comment-title {
   font-size:1.2em;
   text-align:center;
-}
-#recommend-hotels img {
-  width:100%;
-  height:100px; 
 }
 .author{
   color:#47b2e2;

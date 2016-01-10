@@ -1,11 +1,9 @@
 <div class="clearfix"></div> 
-<div style="margin-top:20px">
-  <div class="col-md-1" style="background-color:#fff">
-    <h2 style="width:20px;">推荐民宿 </h2>
-  </div>
-  <div class="col-md-11">
+<div id='recommend-hotels' style="margin-top:20px">
+  <div class="col-md-12">
+    <h2 class="rc-title">推荐民宿</h2>
     <% @recommend_hotels[0..5].each do |hotel| %>
-      <section class="col-xs-6 col-sm-4 col-md-2 cus-padding" id="recommend-hotels">
+      <section class="col-xs-6 col-sm-4 col-md-2 cus-padding">
         <div class="thumbnail">
           <a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/" target="_blank">
             <% @img_url="http://7xotew.com1.z0.glb.clouddn.com/#{hotel.fishtrip_hotel_id}.jpg" %>
@@ -35,14 +33,11 @@
       </section>
     <% end %>
   </div>
-</div>
-<div>
-  <div class="col-md-1" style="background-color:#fff">
-    <h2 style="width:20px;">本周热卖 </h2>
-  </div>
-  <div class="col-md-11">
+  <div class="clearfix"></div>
+  <div class="col-md-12">
+    <h2 class="rc-title">本周热卖</h2>
     <% @recommend_hotels[6..11].each do |hotel| %>
-      <section class="col-xs-6 col-sm-4 col-md-2 cus-padding" id="recommend-hotels">
+      <section class="col-xs-6 col-sm-4 col-md-2 cus-padding">
         <div class="thumbnail">
           <a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/" target="_blank">
             <% @img_url="http://7xotew.com1.z0.glb.clouddn.com/#{hotel.fishtrip_hotel_id}.jpg" %>

@@ -23,7 +23,7 @@ class BookingSeo
       {
         :title=>"#{cc_cn}酒店预订_#{cc_cn}酒店推荐-#{cc_cn}酒店",
         :keywords=>"#{cc_cn}酒店,#{cc_cn}酒店预订",
-        :description=>"#{cc_cn}酒店预订，为你推荐#{desc}等热门城市酒店预订服务。",
+        :description=>"#{cc_cn}酒店预订，为你推荐#{desc}等热门#{cc_cn}城市酒店预订服务。",
         :h1=>"#{cc_cn}酒店"
       }
     when 'city'

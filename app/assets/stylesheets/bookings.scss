@@ -18,6 +18,8 @@ hr{
 }
 .cities {
   margin:0 auto;
+  text-align:center;
+  display:block;
 }
 .city {   
   position: relative;   
@@ -27,15 +29,15 @@ hr{
   width: 220px;  
   margin:10px 10px 10px 10px;
 }
-.city-img{
+.city-img {
   width:220px;
   height:200px;
 }
-.city-desc{
-  background:#000;  
-  -moz-opacity:.50;   
-  filter:alpha(opacity=50);   
-  opacity:.50; color: #fff;   
+.city-desc {
+  text-align:center;
+  font-size:1.3em;
+  background-color:rgba(0, 0, 0, 0.5);  
+  color: #fff;   
   position: absolute;   
   bottom: 0px;   
   left: 0px;   
@@ -50,4 +52,9 @@ hr{
 .hot-desc {
   font-size: 0.9em;
   color: #777;
+}
+.cy-code{
+  margin-left:2px;
+  font-size:0.9em;
+  color:#003580;
 }
