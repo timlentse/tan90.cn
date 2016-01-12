@@ -1,8 +1,8 @@
-<% @hotels.each do |hotel| %>
+<% @hotels.each_with_index do |hotel, ix| %>
   <section class="hotel-item">
     <div class="hotel-pic"> 
       <a href="<%= hotel.hotel_url %>?aid=897435" rel="nofollow" target="_blank">
-        <img class="hotel-img" src="<%= hotel.photo_url %>" alt="<%= hotel.name_cn %>">
+        <img class="hotel-img" src="<%= hotel.photo_url %>" alt="<%= @city.name_cn %>酒店图片<%= ix %>">
       </a>
     </div>
     <div class="hotel-body">

@@ -1,11 +1,11 @@
 <article class="container cities cus-padding" id="hotel-list">
-    <% @cities.each do |city| %>
-      <div class="city">
-        <a href="/booking/<%= "#{city.country_code}/#{city.full_name}" %>/" >
-          <img class="city-img" src="<%= city.city_img %>"/>
-        </a>
-        <span class="city-desc"> <%= city.name_cn %> 共<%= city.number_of_hotels %>家酒店</span>
-      </div>
-    <% end %>
+  <% @cities.each do |city| %>
+    <div class="city">
+      <a href="/booking/<%= "#{city.country_code}/#{city.full_name}" %>/" >
+        <img class="city-img" src="<%= city.city_img %>" alt="<%= city.name_cn %>酒店图片"/>
+      </a>
+      <span class="city-desc"> <%= city.name_cn %> 共<%= city.number_of_hotels %>家酒店</span>
+    </div>
+  <% end %>
   </div>
 </article>
