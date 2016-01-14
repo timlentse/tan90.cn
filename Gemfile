@@ -27,6 +27,7 @@ gem 'unicorn'
 
 # Use whenever to define crontab 
 gem 'whenever', '~> 0.9.4'
+gem "voight_kampff"
 
 # Use Capistrano for deployment
 gem 'capistrano-rails'

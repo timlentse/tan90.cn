@@ -1,0 +1,8 @@
+<% if @comments and !@comments.empty? %>
+  <div class="comments">
+    <h3 class="head"> <%= @city.name %>民宿点评:</h3>
+    <% @comments.each_with_index do |comment, ix| %>
+      <p class="hotel-comment" <%= "style=display:none" if ix>5 %>><%= comment[0] %>点评:<%= comment[1] %></p>
+    <% end %>
+  </div>
+<% end %>

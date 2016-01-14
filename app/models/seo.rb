@@ -7,10 +7,10 @@ class Seo
     unless @page_type=='index'
       if @page_type=='detail'
         @hotel = hotels
-        @hotel_name_join = @hotel.name
+        @@pre_desc = @hotel.name
       else
         @hotel = hotels[0]
-        @hotel_name_join = hotels.map(&:name).join('，')
+        @@pre_desc = hotels.map(&:name).join('，')
       end
       @country = COUNTRY[@hotel.country]
       @country_en = @hotel.country
@@ -43,28 +43,28 @@ class Seo
       {
         :title=>"#{@hotel.name}_怎么订#{@hotel.name}民宿-#{@city_name}民宿",
         :keywords=>"#{@hotel.name},#{@city_name},民宿,住宿",
-        :description=>"#{@city_name}民宿，#{@city_name}自由行住宿，为你推荐#{@hotel_name_join}。",
+        :description=>"#{@city_name}民宿，#{@city_name}自由行住宿，为你推荐#{@@pre_desc}。",
         :h1=>@hotel.name
       }
     when 'city'
       {
         :title=>"#{@city_name}民宿_怎么订#{@city_name}民宿-#{@city_name}民宿",
         :keywords=>"#{@city_name},民宿,住宿",
-        :description=>"#{@city_name}民宿，#{@city_name}自由行住宿，为你推荐#{@hotel_name_join}。",
+        :description=>"#{@city_name}民宿，#{@city_name}自由行住宿，为你推荐#{@@pre_desc}。",
         :h1=>"#{@city_name}民宿"
       }
     when 'query'
       {
         :title=>"#{@city_name}民宿搜索结果",
         :keywords=>"#{@city_name},民宿",
-        :description=>"#{@city_name}民宿，#{@city_name}自由行住宿，为你推荐#{@hotel_name_join}。",
+        :description=>"#{@city_name}民宿，#{@city_name}自由行住宿，为你推荐#{@@pre_desc}。",
         :h1=>"#{@city_name}民宿"
       }
     when 'country'
       {
         :title=>"#{@country}民宿,怎么订#{@country}民宿-#{@country}民宿",
         :keywords=>"#{@country},民宿,价格,住宿",
-        :description=>"#{@country}民宿, #{@city_name}自由行住宿，为你推荐#{@hotel_name_join}。",
+        :description=>"#{@country}民宿, #{@city_name}自由行住宿，为你推荐#{@@pre_desc}。",
         :h1=>"#{@country}民宿"
       }
     end

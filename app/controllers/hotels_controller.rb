@@ -3,7 +3,7 @@ require 'city'
 require 'comment'
 
 class HotelsController < ApplicationController
-  before_filter :set_params
+  before_filter :set_params, :set_spider_track
 
   def index
     @page_type = 'index'
@@ -14,30 +14,22 @@ class HotelsController < ApplicationController
 
   def country
     @page_type = 'country'
-    if @params[:page]
-      redirect_to URI(request.original_url).path, status: 301
+    @hotels = Hotel.search_hot(@params[:country])
+    if @hotels.empty?
+      render_404
     else
-      @hotels = Hotel.search_hot(@params[:country])
-      if @hotels.empty?
-        render_404
-      else
-        @seo = Seo.new(@page_type, @hotels)
-        @tdk = @seo.tdk
-        @breadcrumb = @seo.get_breadcrumb
-        @footer_links = @seo.get_footer_links
-        render 'list.html.erb'
-      end
+      @seo = Seo.new(@page_type, @hotels)
+      @tdk = @seo.tdk
+      @breadcrumb = @seo.get_breadcrumb
+      @footer_links = @seo.get_footer_links
+      render 'list.html.erb'
     end
   end
 
   def city_for_get
     @page_type = 'city'
-    if @params[:page]
-      redirect_to URI(request.original_url).path, status: 301
-    else
-      @params[:city_id] = find_city_id(params[:city_en])
-      render_page
-    end
+    @params[:city_id] = find_city_id(params[:city_en])
+    render_list_page
   end
 
   def city_for_post
@@ -47,21 +39,19 @@ class HotelsController < ApplicationController
   end
 
   def detail
-    @page_type = 'detail'
     @hotel = Hotel.find_by(:fishtrip_hotel_id=>params[:id])
-    @tuijian = @hotel.tuijian.nil? ? [] : JSON.parse(@hotel.tuijian)
-    @comments = @hotel.comments
-    @seo = Seo.new(@page_type, @hotel)
-    @footer_links = @seo.get_footer_links
-    @tdk = @seo.tdk
-    @breadcrumb = @seo.get_breadcrumb
-    @recommend_hotels = Hotel.select_recommend_hotels(@hotel.city_id, @hotel.id)
+    render_404 unless @hotel
+    if @spider_track
+      render_detail_page
+    else
+      redirect_to @hotel.shared_uri, :status=>301
+    end
   end
 
   def query_for_get
     @page_type = 'query'
     @params[:city_id] = search_city_by_keyword
-    render_page
+    render_list_page
   end
 
   def query_for_post
@@ -76,12 +66,16 @@ class HotelsController < ApplicationController
     @params = params.permit(:country, :page)
   end
 
-  def find_city_id(city_en)
-    city = City.find_by(:name_en=>city_en)
-    city.nil? ? 0 : city.id
+  def set_spider_track
+    @spider_track = request.bot?
   end
 
-  def render_page
+  def find_city_id(city_en)
+    @city = City.find_by(:name_en=>city_en)
+    @city.nil? ? 0 : @city.id
+  end
+
+  def render_list_page
     @hotels = Hotel.search(@params)
     if @hotels.empty?
       render_404
@@ -89,14 +83,26 @@ class HotelsController < ApplicationController
       @seo = Seo.new(@page_type, @hotels)
       @tdk = @seo.tdk
       @breadcrumb = @seo.get_breadcrumb
+      @comments = Comment.find_hotels_comments(@hotels)
       @footer_links = @seo.get_footer_links
       render 'list.html.erb'
     end
   end
 
   def search_city_by_keyword
-    city = City.find_by(:name=>params[:q])
-    city.nil? ? 0 : city.id
+    @city = City.find_by(:name=>params[:q])
+    @city.nil? ? 0 : @city.id
+  end
+
+  def render_detail_page
+    @page_type = 'detail'
+    @tuijian = @hotel.tuijian.nil? ? [] : JSON.parse(@hotel.tuijian)
+    @comments = @hotel.comments
+    @seo = Seo.new(@page_type, @hotel)
+    @footer_links = @seo.get_footer_links
+    @tdk = @seo.tdk
+    @breadcrumb = @seo.get_breadcrumb
+    @recommend_hotels = Hotel.select_recommend_hotels(@hotel.city_id, @hotel.id)
   end
 
 end

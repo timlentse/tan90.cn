@@ -5,6 +5,8 @@ body {
 }
 ul {
   list-style:none;
+  display:block;
+  padding-left:0px;
 }
 .isr {
   padding-top:10px;
@@ -36,6 +38,10 @@ ul {
 }
 .content {
   color:#999;
+}
+.hotel-comment{
+  color:#999;
+  font-size:0.9em;
 }
 .comment-title {
   font-size:1.2em;
@@ -128,6 +134,7 @@ h2 {
 }
 .hotel-name {
   font-size: 1.2em;
+  font-weight:0.9em;
   color: #0896ff;
   white-space: nowrap;
   overflow: hidden;
