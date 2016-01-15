@@ -1,5 +1,5 @@
-class Hotel < ActiveRecord::Base
-  has_many :comments, :primary_key=>'fishtrip_hotel_id',:foreign_key=>"fishtrip_hotel_id"
+class FishtripHotel < ActiveRecord::Base
+  has_many :fishtrip_comments, :primary_key=>'fishtrip_hotel_id',:foreign_key=>"fishtrip_hotel_id"
   HOT = {
     'taiwan'=> {:ids=>["9566344830", "9837406394", "9392469101", "9168466069", "9258344719", "9449314665", "9541514029", "8807730148", "9570405924", "8819789346", "8742736353", "9739806411"]},
     "japan"=>{:ids=>["9601835114", "9254173377", "9929823957", "10060857817", "9937744842", "10681287023", "9567009714", "10463630361", "9235329397", "10649934587", "10278534447"]},
@@ -26,5 +26,5 @@ class Hotel < ActiveRecord::Base
     self.where(:city_id=>city_id).sample(12)
   end
 
-  end
+end
 

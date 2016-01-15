@@ -1,10 +1,10 @@
 <footer class="footer">
   <div class="container seo-area">
-    <%= render 'comments/comment' %>
+    <%= render 'fishtrip_comments/comment' %>
     <% if @footer_links and !@footer_links.empty? %>
       <% @footer_links.each do |country, links| %>
         <div class="recom-links clearfix">
-          <h3 class="head"><%= Seo::COUNTRY[country] %>特色民宿</h3>
+          <h3 class="head"><%= FishtripSeo::COUNTRY[country] %>特色民宿</h3>
           <ul>
             <% links.each_slice(12) do |sli| %>
               <% sli.each do |link| %>

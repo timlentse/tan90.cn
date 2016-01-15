@@ -4,14 +4,14 @@
     <div class="thumbnail">
       <a href="/<%= hotel.fishtrip_hotel_id %>/" target="_blank">
         <% @img_url="http://7xotew.com1.z0.glb.clouddn.com/#{hotel.fishtrip_hotel_id}.jpg" %>
-        <img src="<%= @img_url %>" alt="<%= "@city.name民宿-图片_#{ix}" %>">
+        <img src="<%= @img_url %>" alt="<%= @page_type=='city' ? "#{@city.name}民宿-图片_#{ix}" : "#{FishtripSeo::COUNTRY[hotel.country]}民宿-图片_#{ix}" %>">
       </a>
       <div class="caption">
         <a href="/<%= hotel.fishtrip_hotel_id %>/" target="_blank">
           <p class="hotel-name"><strong><%= hotel.name %></strong></p>
         </a>
         <p class="desc"><%= "#{hotel.name}简介:#{hotel.desc}" %></p>
-        <p class="location"><strong><%="位置："%></strong><%= Seo::COUNTRY[hotel.country] %>-<%= hotel.city %></p>
+        <p class="location"><strong><%="位置："%></strong><%= FishtripSeo::COUNTRY[hotel.country] %>-<%= hotel.city %></p>
         <p class='address'><strong><%= "地址：" %></strong><%= hotel.address %></p>
 
         <% if hotel.comment.empty? %>
@@ -21,6 +21,9 @@
         <% else %>
           <p class='com-overview'>
           <a href="/<%= hotel.fishtrip_hotel_id %>/#comment"><%= hotel.comment %></a> 
+          <% if hotel.score %>
+            <span class="pull-right score">评论:<%= hotel.score %>分</span>
+          <% end %>
           </p>
         <% end %>
 

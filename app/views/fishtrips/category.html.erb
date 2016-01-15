@@ -9,7 +9,7 @@
       <a href="/<%= hotel.fishtrip_hotel_id %>/" target="_blank">
         <p class="hotel-name"><%= hotel.name %></p>
       </a>
-      <p class="city-center"><%= Seo::COUNTRY[hotel.country] %>-<%= hotel.city %></p>
+      <p class="city-center"><%= FishtripSeo::COUNTRY[hotel.country] %>-<%= hotel.city %></p>
       <p class='address'><%= hotel.address %></p>
       <% if hotel.comment.empty? %>
         <p class='com-overview'><a href="/<%= hotel.fishtrip_hotel_id %>/#comment">查看点评</p>
