@@ -2,7 +2,7 @@
   <section class="hotel-item">
     <div class="hotel-pic"> 
       <a href="<%= hotel.hotel_url %>?aid=897435" rel="nofollow" target="_blank">
-        <img class="hotel-img" src="<%= hotel.photo_url %>" alt="<%= @city.name_cn %>酒店图片<%= ix %>">
+        <img class="hotel-img" src="<%= hotel.photo_url %>" alt="<%= @city.name_cn %>酒店-图片_<%= ix %>">
       </a>
     </div>
     <div class="hotel-body">
@@ -11,8 +11,8 @@
       </a>
       <% city_name = @city.name_cn.empty? ? hotel.city_hotel : @city.name_cn %>
       <p class="location"><strong><%="位置："%></strong><%= city_name %></p>
-      <p class='address'><strong><%= "地址：" %></strong><%= hotel.address_cn%></p>
-      <p class="hotel-desc hidden-xs"><%= "#{hotel.name_cn}简介:#{hotel.desc_cn}" %></p>
+      <p class='address'><strong><%= "地址：" %></strong><%= hotel.address_cn.empty? ? hotel.address : hotel.address_cn %></p>
+      <p class="hotel-desc hidden-xs"><%= "#{hotel.name_cn}简介：#{hotel.desc_cn.empty? ? hotel.desc_zh : hotel.desc_cn }" %></p>
       <% if hotel.minrate.nil? %>
         <p class="booking"><a href="<%= hotel.hotel_url %>?aid=897435" rel='nofollow' target="_blank" class="btn btn-primary btn-xs" role="button">查看详情</a> 
       <% else %>
