@@ -194,7 +194,7 @@ h2 {
   color:#fd5a46;
 }
 .thumbnail {
-  padding: 0;
+  padding: 10px 10px 10px 10px;
   border:0px;
 }
 .thumbnail .caption-full {
@@ -229,6 +229,7 @@ address {
 }
 .head {
   font-size:1.3em;
+  margin-top:10px;
 }
 .footer-link {
   font-size: 0.9em;
@@ -238,6 +239,7 @@ address {
   font-size: 0.8em;
   text-align: center;
   color: #999;
+  margin-top:10px;
 }
 .breadcrumb {
   margin-bottom:0px;

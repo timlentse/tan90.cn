@@ -1,36 +1,40 @@
-<footer class="container-fluid footer">
-  <% if @fishtrip_links %>
-    <% @fishtrip_links.each do |country, links| %>
-      <section class="col-md-12 col-md-offset-1">
-        <ul>
-          <li><p class="head"><%= FishtripSeo::COUNTRY[country] %>特色民宿</p></li>
-          <% links.each_slice(11) do |sli| %>
-            <% sli.each do |link| %>
-              <li class="inner"><p><a class="footer-link" href="<%= link['uri'] %>"><%= link['text'] %></a></p></li>
+<footer class="common">
+  <div class="container">
+    <% if @fishtrip_links %>
+      <% @fishtrip_links.each do |country, links| %>
+        <div class="clearfix">
+          <p class="head"><%= FishtripSeo::COUNTRY[country] %>特色民宿</p>
+          <ul>
+            <% links.each_slice(11) do |sli| %>
+              <% sli.each do |link| %>
+                <li class="inner"><a class="footer-link" href="<%= link['uri'] %>"><%= link['text'] %></a></li>
+              <% end %>
             <% end %>
-            <div class="clearfix"></div>
-          <% end %>
-        </ul>
-      </section>
+          </ul>
+        </div>
+        <hr>
+      <% end %>
     <% end %>
-  <% end %>
-  <% if @booking_hot_destinations %>
-    <section class="col-md-12 col-md-offset-1">
-      <ul>
+    <% if @booking_hot_destinations %>
+      <div class="clearfix">
         <% @booking_hot_destinations.each do |destination| %>
-          <li><p class="head"><%= destination[:title] %></p></li>
-          <% destination[:links].each_slice(11) do |sli| %>
-            <% sli.each do |link| %>
-              <li class="inner"><p class="hot-link"><a href="<%= link[:link] %>"><%= link[:text] %>酒店</a></p>
-                <p><span class="hot-desc"><%= link[:addition] %></span></p></li>
-            <% end %>
-            <div class="clearfix"></div>
-          <% end %>
+          <div class="hot-cities">
+            <p class="head"><%= destination[:title] %></p>
+            <ul>
+              <% destination[:links].each_slice(11) do |sli| %>
+                <% sli.each do |link| %>
+                  <li class="inner">
+                    <p class="hot-link"> <a href="<%= link[:link] %>"><%= link[:text] %>酒店</a></p>
+                    <p class="hot-desc"><%= link[:addition] %></p>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+          <hr>
         <% end %>
-      </ul>
-    </section>
-  <% end %>
-  <div class='col-md-12'>
+      </div>
+    <% end %>
     <p class="copy">Copyright © tan90.cn 2014-<%= Time.now.strftime("%Y") %> All Rights Reserved </p>
   </div>
 </footer>
