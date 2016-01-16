@@ -93,7 +93,7 @@ class FishtripsController < ApplicationController
   def render_detail_page
     @page_type = 'detail'
     @tuijian = @hotel.tuijian.nil? ? [] : JSON.parse(@hotel.tuijian)
-    @comments = @hotel.comments
+    @detail_comments = @hotel.fishtrip_comments
     @seo = FishtripSeo.new(@page_type, @hotel)
     @footer_links = @seo.get_footer_links
     @tdk = @seo.tdk

@@ -55,7 +55,7 @@
       <h3 class="comment-title"><%= @hotel.name %>点评</h3>
       <hr>
     </div>
-    <% @comments.each do |comment| %>
+    <% @detail_comments.each do |comment| %>
       <div class="isr ratings">
         <% if comment.score.nil? %>
           <span class="glyphicon glyphicon-star-empty"></span>
@@ -78,7 +78,7 @@
     <% end %>
   </section>
   </div>
-  <div class="row">
+  <div class="row clearfix">
     <%= render 'recommend_hotel' %>
   </div>
 </article>
