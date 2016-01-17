@@ -2,15 +2,15 @@
   <div class="row cus-padding" id="hotel-list">
     <%= render 'hotel' %>
   </div>
-  <div class="row">
-    <nav>
-      <ul class="pager">
-        <% if @hotels.size==21 %>
+  <% if @hotels.size==21 %>
+    <div id="pagination">
+      <nav>
+        <ul class="pager">
           <li class="next"><a data-page='2'>下一页<span aria-hidden="true">&rarr;</span></a></li>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
+        </ul>
+      </nav>
+    </div>
+  <% end %>
 </article>
 <%= render 'footer' %>
 <%= javascript_include_tag 'hotels' %>

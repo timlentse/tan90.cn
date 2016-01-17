@@ -3,35 +3,27 @@ class FishtripsController < ApplicationController
 
   def country
     @page_type = 'country'
-    if @params[:page]
-      redirect_to URI(request.original_url).path, status: 301
+    @hotels = FishtripHotel.search_hot(@target_args[:country])
+    if @hotels.empty?
+      render_404
     else
-      @hotels = FishtripHotel.search_hot(@params[:country])
-      if @hotels.empty?
-        render_404
-      else
-        @seo = FishtripSeo.new(@page_type, @hotels)
-        @tdk = @seo.tdk
-        @breadcrumb = @seo.get_breadcrumb
-        @footer_links = @seo.get_footer_links
-        render 'list.html.erb'
-      end
+      @seo = FishtripSeo.new(@page_type, @hotels)
+      @tdk = @seo.tdk
+      @breadcrumb = @seo.get_breadcrumb
+      @footer_links = @seo.get_footer_links
+      render 'list.html.erb'
     end
   end
 
   def city_list_by_get
     @page_type = 'city'
-    if @params[:page]
-      redirect_to URI(request.original_url).path, status: 301
-    else
-      @params[:city_id] = find_city_id(params[:city_en])
-      render_page
-    end
+    @target_args[:city_id] = find_city_id(params[:city_en])
+    render_list_page
   end
 
   def city_list_by_post
-    @params[:city_id] = find_city_id(params[:city_en])
-    @hotels = FishtripHotel.search(@params)
+    @target_args[:city_id] = find_city_id(params[:city_en])
+    @hotels = FishtripHotel.search(@target_args)
     render 'list.js.erb'
   end
 
@@ -49,29 +41,29 @@ class FishtripsController < ApplicationController
 
   def query_by_get
     @page_type = 'query'
-    @params[:city_id] = search_city_by_keyword
+    @target_args[:city_id] = search_city_by_keyword
     render_page
   end
 
   def query_by_post
-    @params[:city_id] = search_city_by_keyword
-    @hotels = FishtripHotel.search(@params)
+    @target_args[:city_id] = search_city_by_keyword
+    @hotels = FishtripHotel.search(@target_args)
     render 'list.js.erb'
   end
 
   private
 
   def set_params
-    @params = params.permit(:country, :page)
+    @target_args = params.permit(:country, :page)
   end
 
   def find_city_id(city_en)
-    city = FishtripCity.find_by(:name_en=>city_en)
-    city.nil? ? 0 : city.id
+    @city = FishtripCity.find_by(:name_en=>city_en)
+    @city.nil? ? 0 : @city.id
   end
 
-  def render_page
-    @hotels = FishtripHotel.search(@params)
+  def render_list_page
+    @hotels = FishtripHotel.search(@target_args)
     if @hotels.empty?
       render_404
     else
@@ -84,8 +76,8 @@ class FishtripsController < ApplicationController
   end
 
   def search_city_by_keyword
-    city = FishtripCity.find_by(:name=>params[:q])
-    city.nil? ? 0 : city.id
+    @city = FishtripCity.find_by(:name=>params[:q])
+    @city.nil? ? 0 : @city.id
   end
 
 end

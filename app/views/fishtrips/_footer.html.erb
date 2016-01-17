@@ -1,12 +1,12 @@
-<footer class="container-fluid footer">
+<footer class="footer">
   <div class="container seo-area">
     <% @footer_links.each do |country, links| %>
       <div class="clearfix">
         <h3 class="head"><%= FishtripSeo::COUNTRY[country] %>特色住宿</h3>
-        <ul style="padding-left:0px">
+        <ul>
           <% links.each_slice(10) do |sli| %>
             <% sli.each do |link| %>
-              <li class="inner"><a class="footer-link" href="<%= link['uri'] %>"><%= link['text'] %></a></li>
+              <li><a class="footer-link" href="<%= link['uri'] %>"><%= link['text'] %></a></li>
             <% end %>
           <% end %>
         </ul>

@@ -34,7 +34,7 @@
     </div>
     <div class="sider-bar">
       <ul>
-        <p><a class="btn btn-info" href="<%= "#{@hotel.shared_uri}#house_show_date_select" %>" rel='nofollow'>查看更多房型</a><a class="btn btn-warning pull-right" href="<%= @hotel.shared_uri %>" rel="nofollow">预订房间</a></p>
+        <p><a class="btn btn-info" href="<%= "#{@hotel.shared_uri}" %>" rel='nofollow'>查看更多房型</a><a class="btn btn-warning pull-right" href="<%= @hotel.shared_uri %>" rel="nofollow">预订房间</a></p>
         <hr>
         <% unless @tuijian.empty? %>
           <p><strong><%= @hotel.name %>推荐理由:</strong></p>
@@ -78,8 +78,6 @@
     <% end %>
   </section>
   </div>
-  <div class="row">
-    <%= render 'recommend_hotel' %>
-  </div>
+  <%= render 'recommend_hotel' %>
 </article>
 <%= render 'footer' %>

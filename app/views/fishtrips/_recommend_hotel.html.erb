@@ -1,9 +1,9 @@
-<div class="clearfix"></div> 
-<div id='recommend-hotels' style="margin-top:20px">
-  <div class="col-md-12">
+<div class="clearfix"></div>
+<section id='recommend-hotels'>
+  <div class="clearfix">
     <h2 class="rc-title">推荐民宿</h2>
     <% @recommend_hotels[0..5].each do |hotel| %>
-      <section class="col-xs-6 col-sm-4 col-md-2 cus-padding">
+      <div class="col-xs-6 col-sm-4 col-md-2 rc-hotel">
         <div class="thumbnail">
           <a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/" target="_blank">
             <% @img_url="http://7xotew.com1.z0.glb.clouddn.com/#{hotel.fishtrip_hotel_id}.jpg" %>
@@ -18,26 +18,25 @@
               <% if hotel.price>0 %>
                 <span class="dollor-sign">￥</span><strong class="price"><%= hotel.price %></strong>
               <% end %>
-              <a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/#comment">查看点评</a>
+              <a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/">查看点评</a>
               </p>
             <% else %>
               <p class='com-overview'>
               <% if hotel.price>0 %>
                 <span class="dollor-sign">￥</span><strong class="price"><%= hotel.price %></strong>
               <% end %>
-              <a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/#comment"><%= hotel.comment %></a> 
+              <a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/"><%= hotel.comment %></a> 
               </p>
             <% end %>
           </div>
         </div>
-      </section>
+      </div>
     <% end %>
   </div>
-  <div class="clearfix"></div>
-  <div class="col-md-12">
+  <div class="clearfix">
     <h2 class="rc-title">本周热卖</h2>
     <% @recommend_hotels[6..11].each do |hotel| %>
-      <section class="col-xs-6 col-sm-4 col-md-2 cus-padding">
+      <div class="col-xs-6 col-sm-4 col-md-2 rc-hotel">
         <div class="thumbnail">
           <a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/" target="_blank">
             <% @img_url="http://7xotew.com1.z0.glb.clouddn.com/#{hotel.fishtrip_hotel_id}.jpg" %>
@@ -52,19 +51,19 @@
               <% if hotel.price>0 %>
                 <span class="dollor-sign">￥</span><strong class="price"><%= hotel.price %></strong>
               <% end %>
-              <a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/#comment">查看点评</a>
+              <a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/">查看点评</a>
               </p>
             <% else %>
               <p class='com-overview'>
               <% if hotel.price>0 %>
                 <span class="dollor-sign">￥</span><strong class="price"><%= hotel.price %></strong>
               <% end %>
-              <a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/#comment"><%= hotel.comment %></a> 
+              <a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/"><%= hotel.comment %></a> 
               </p>
             <% end %>
           </div>
         </div>
-      </section>
+      </div>
     <% end %>
   </div>
-</div>
+</section>

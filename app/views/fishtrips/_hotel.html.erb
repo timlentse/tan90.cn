@@ -1,9 +1,9 @@
-<% @hotels.each do |hotel| %>
-  <section class="col-xs-12 col-sm-6 col-md-4 cus-padding">
+<% @hotels.each_with_index do |hotel, ix| %>
+  <div class="col-xs-12 col-sm-6 col-md-4 cus-padding">
     <div class="thumbnail">
       <a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/" target="_blank">
         <% @img_url="http://7xotew.com1.z0.glb.clouddn.com/#{hotel.fishtrip_hotel_id}.jpg" %>
-        <img src="<%= @img_url %>" alt="<%= hotel.name %>">
+        <img src="<%= @img_url %>" alt="<%= "#{@tdk[:h1]}民宿图片_#{ix}" %>">
       </a>
       <div class="caption">
         <a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/" target="_blank">
@@ -13,15 +13,14 @@
         <p class="location"><strong><%="位置："%></strong><%= FishtripSeo::COUNTRY[hotel.country] %>-<%= hotel.city %></p>
         <p class='address'><strong><%= "地址：" %></strong><%= hotel.address %></p>
 
+        <p class='com-overview'>
         <% if hotel.comment.empty? %>
-          <p class='com-overview'>
-          <a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/#comment">查看点评</a>
-          </p>
+          <a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/">查看点评</a>
         <% else %>
-          <p class='com-overview'>
-          <a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/#comment"><%= hotel.comment %></a> 
-          </p>
+          <a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/"><%= hotel.comment %></a> 
         <% end %>
+        <span class='pull-right score'>用户评分：<%= hotel.score  %></span>
+        </p>
 
         <% if hotel.price==0 %>
           <p class="booking"><a href="/<%= hotel.fishtrip_hotel_id %>/" target="_blank" class="btn btn-primary btn-xs" role="button">查看详情</a> 
@@ -33,6 +32,6 @@
         <% end %>
       </div>
     </div>
-  </section>
+  </div>
 <% end %>
 

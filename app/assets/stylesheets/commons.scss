@@ -1,3 +1,67 @@
+body{
+  padding-top: 50px; 
+  font-family:"Lato Regular", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: #f6f1e5;
+}
+.home {
+  background:url(asset-path('banner.jpg')) no-repeat center;
+}
+ul{
+  list-style:none;
+  padding-left:0px;
+}
+.breadcrumb {
+  margin-bottom:0px;
+  font-size:0.9em;
+}
+.btn-breadcrumb .btn:not(:last-child):after {
+  content: " ";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 17px solid transparent;
+  border-bottom: 17px solid transparent;
+  border-left: 10px solid white;
+  position: absolute;
+  top: 50%;
+  margin-top: -17px;
+  left: 100%;
+  z-index: 3;
+}
+.btn-breadcrumb .btn:not(:last-child):before {
+  content: " ";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 17px solid transparent;
+  border-bottom: 17px solid transparent;
+  border-left: 10px solid rgb(173, 173, 173);
+  position: absolute;
+  top: 50%;
+  margin-top: -17px;
+  margin-left: 1px;
+  left: 100%;
+  z-index: 3;
+}
+.btn-breadcrumb .btn {
+  padding:6px 12px 6px 24px;
+  margin-bottom: 3%;
+}
+.btn-breadcrumb .btn:first-child {
+  padding:6px 6px 6px 10px;
+}
+.btn-breadcrumb .btn:last-child {
+  padding:6px 18px 6px 24px;
+}
+.btn-breadcrumb .btn.btn-success:not(:last-child):after {
+  border-left: 10px solid #5cb85c;
+}
+.btn-breadcrumb .btn.btn-success:not(:last-child):before {
+  border-left: 10px solid #4cae4c;
+}
+.btn-breadcrumb span.btn.btn-success {
+  background-color: #47a447;
+}
 .common{
   background-color:#fff;
   padding-top:100px;
@@ -5,4 +69,21 @@
 hr{
   margin-bottom:10px;
   margin-top:10px;
+}
+.seo-area li{
+  float:left;
+  width:100px;
+  padding-right:10px;
+}
+.hot-link {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.copy {
+  font-size: 0.8em;
+  text-align: center;
+  color: #999;
+  margin-top:10px;
+  padding:10px 10px 10px 10px;
 }

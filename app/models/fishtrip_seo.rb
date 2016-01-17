@@ -21,11 +21,11 @@ class FishtripSeo
     when 'country'
       [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿"}]
     when 'query'
-      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/fishtrip/#{@hotel.country}/"},{:text=>"#{@city_name}民宿搜索页"}]
+      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/fishtrip/#{@country_en}/"},{:text=>"#{@city_name}民宿搜索页"}]
     when 'city'
-      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/fishtrip/#{@hotel.country}/"},{:text=>"#{@city_name}民宿"}]
+      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/fishtrip/#{@country_en}/"},{:text=>"#{@city_name}民宿"}]
     when 'detail'
-      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/fishtrip/#{@hotel.country}/"},{:text=>"#{@city_name}民宿", :url=>"/fishtrip/#{@hotel.country}/#{@hotel.city_en}/"}, {:text=>@hotel.name}]
+      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/fishtrip/#{@country_en}/"},{:text=>"#{@country}#{@city_name}民宿", :url=>"/fishtrip/#{@country_en}/#{@hotel.city_en}/"}, {:text=>@hotel.name}]
     end
   end
 
@@ -33,17 +33,17 @@ class FishtripSeo
     case @page_type
     when 'detail'
       {
-        :title=>"#{@hotel.name}_怎么订#{@hotel.name}民宿-#{@city_name}民宿",
-        :keywords=>"#{@hotel.name},#{@city_name},民宿,住宿",
-        :description=>"#{@city_name}民宿，#{@city_name}自由行住宿，为你推荐#{@pre_desc}。",
+        :title=>"#{@hotel.name}_#{@city_name}民宿-#{@country}民宿",
+        :keywords=>"#{@hotel.name},#{@city_name}民宿,#{@country}民宿,住宿",
+        :description=>"预订#{@city_name}民宿，#{@city_name}自由行住宿，为你推荐#{@pre_desc}。",
         :h1=>@hotel.name
       }
     when 'city'
       {
         :title=>"#{@city_name}民宿_怎么订#{@city_name}民宿-#{@city_name}民宿",
-        :keywords=>"#{@city_name},民宿,住宿",
-        :description=>"#{@city_name}民宿，#{@city_name}自由行住宿，为你推荐#{@pre_desc}。",
-        :h1=>"#{@city_name}民宿"
+        :keywords=>"#{@city_name}民宿,#{@city_name}民宿预订,住宿",
+        :description=>"预订#{@city_name}民宿，#{@city_name}自由行住宿，为你推荐#{@pre_desc}。",
+        :h1=>"#{@country}#{@city_name}民宿"
       }
     when 'query'
       {
@@ -56,7 +56,7 @@ class FishtripSeo
       {
         :title=>"#{@country}民宿,怎么订#{@country}民宿-#{@country}民宿",
         :keywords=>"#{@country},民宿,价格,住宿",
-        :description=>"#{@country}民宿, #{@city_name}自由行住宿，为你推荐#{@pre_desc}。",
+        :description=>"预订#{@country}民宿, #{@city_name}自由行住宿，为你推荐#{@pre_desc}。",
         :h1=>"#{@country}民宿"
       }
     end

@@ -1,6 +1,3 @@
-ul{
-  padding-left:0px;
-}
 hr{
   margin-bottom:0px;
   margin-top:5px;
@@ -8,6 +5,8 @@ hr{
 .hotel-item{
   padding:10px 10px;
   background-color:#fff;
+  margin-bottom:5px;
+  border:1px solid #bec8d2;
 }
 .hotel-img {
   float:left;
@@ -54,11 +53,6 @@ hr{
   width: 220px;   
   padding: 10px 0;   
 }
-.hot-link {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 .hot-desc {
   font-size: 0.9em;
   color: #777;
@@ -68,7 +62,16 @@ hr{
   font-size:0.9em;
   color:#003580;
 }
-.home {
-
-  background:url(asset-path('banner.jpg')) no-repeat center;
+.landmark{
+  font-size:0.9em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.description{
+  background-color:#fff6df;
+  padding:5px 5px 5px 5px;
+  font-size:0.9em;
+  margin-bottom:5px;
+  color:#003580;
 }

@@ -1,5 +1,5 @@
 <footer class="common">
-  <div class="container">
+  <div class="container seo-area">
     <% if @fishtrip_links %>
       <% @fishtrip_links.each do |country, links| %>
         <div class="clearfix">
@@ -7,7 +7,7 @@
           <ul>
             <% links.each_slice(11) do |sli| %>
               <% sli.each do |link| %>
-                <li class="inner"><a class="footer-link" href="<%= link['uri'] %>"><%= link['text'] %></a></li>
+                <li><a class="footer-link" href="<%= link['uri'] %>"><%= link['text'] %></a></li>
               <% end %>
             <% end %>
           </ul>
@@ -23,7 +23,7 @@
             <ul>
               <% destination[:links].each_slice(11) do |sli| %>
                 <% sli.each do |link| %>
-                  <li class="inner">
+                  <li>
                     <p class="hot-link"> <a href="<%= link[:link] %>"><%= link[:text] %>酒店</a></p>
                     <p class="hot-desc"><%= link[:addition] %></p>
                   </li>
