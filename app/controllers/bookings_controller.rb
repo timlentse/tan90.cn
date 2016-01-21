@@ -5,6 +5,7 @@ class BookingsController < ApplicationController
 
   def country
     @cities = BookingCity.where("country_code=? and city_ranking>0", params[:country])
+    render_404 if @cities.empty?
     @seo = BookingSeo.new(@cities,'country')
     @tdk = @seo.get_tdk
     @breadcrumb = @seo.get_breadcrumb
@@ -15,6 +16,8 @@ class BookingsController < ApplicationController
     @hotels = BookingHotel.search(@filter_args)
     @seo = BookingSeo.new(@city,'city')
     set_seo_element
+    @landmarks = @seo.get_landmarks_with_city
+    @airports = find_airports_by_city
     render 'list.html.erb'
   end
 
@@ -30,6 +33,17 @@ class BookingsController < ApplicationController
     @seo = BookingSeo.new(@landmark,'landmark')
     set_seo_element
     render 'list.html.erb'
+  end
+
+  def airport
+    @airport = BookingAirport.find_by(:iata=>params[:iata].upcase)
+    render_404 unless @airport
+    @hotels = JSON.parse(@airport.hotels)
+    @seo = BookingSeo.new(@airport,'airport')
+    @tdk = @seo.get_tdk
+    @breadcrumb = @seo.get_breadcrumb
+    @location = @city||@landmark||@airport
+    @footer_links = []
   end
 
   private
@@ -48,12 +62,15 @@ class BookingsController < ApplicationController
     render_404 unless @landmark and @landmark.country_code=='cn'
   end
 
+  def find_airports_by_city
+    BookingAirport.airports(@city.full_name)
+  end
+
   def set_seo_element
     @tdk = @seo.get_tdk
     @breadcrumb = @seo.get_breadcrumb
     @comments = BookingReview.find_comments(@hotels)
-    @landmarks = @seo.get_landmarks_with_city
-    @location = @city||@landmark
+    @location = @city||@landmark||@airport
     @footer_links = []
   end
 

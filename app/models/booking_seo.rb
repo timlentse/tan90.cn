@@ -12,6 +12,8 @@ class BookingSeo
       [{:text=>'首页', :url=>'/'}, {:text=>"#{@location.country_name}酒店", :url=>"/booking/#{@location.country_code}/"},{:text=>"#{@location.name_cn}酒店"}]
     when 'landmark'
       [{:text=>'首页', :url=>'/'}, {:text=>"中国酒店", :url=>"/booking/#{@location.country_code}/"},{:text=>"#{@location.name_cn}附近酒店"}]
+    when 'airport'
+      [{:text=>'首页', :url=>'/'}, {:text=>"中国酒店", :url=>"/booking/#{@location.country_code}/"},{:text=>"#{@location.name_cn}附近酒店"}]
     when 'detail'
       []
     end
@@ -44,6 +46,14 @@ class BookingSeo
         :keywords=>"#{landmark}附近酒店,#{landmark}周边酒店,#{landmark}酒店",
         :description=>"预订#{landmark}附近酒店，即可享受超值优惠。为你提供#{landmark}附近酒店预订服务，价格查询，酒店点评信息。",
         :h1=>"#{landmark}附近酒店"
+      }
+    when 'airport'
+      airport = @location.name_cn
+      {
+        :title=>"#{airport}附近酒店_#{airport}酒店预订",
+        :keywords=>"#{airport}附近酒店,#{airport}周边酒店,#{airport}酒店",
+        :description=>"预订#{airport}附近酒店，即可享受超值优惠。为你提供#{airport}附近酒店预订服务，价格查询，酒店点评信息。",
+        :h1=>"#{airport}附近酒店"
       }
     when 'detail'
       {}

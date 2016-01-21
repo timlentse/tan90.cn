@@ -1,0 +1,11 @@
+<div class="container airport">
+  <p><%= @location.name_cn %>机场附近酒店</p>
+  <ul>
+    <%@hotels.each do |hotel|  %>
+      <li>
+        <a href="<%= hotel[0] %>?aid=897435"><%= hotel[1] %></a>
+        <span>距离：<%= hotel[2] %></span>
+      </li>
+    <% end %>
+  </ul>
+</div>

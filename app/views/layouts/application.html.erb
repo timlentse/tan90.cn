@@ -15,11 +15,12 @@
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
   <body>
-    <%= render 'layouts/google_tag' %>
     <%= render 'layouts/header' %>
     <%= render 'layouts/breadcrumb' %>
     <%= yield %>
     <%= javascript_include_tag 'document_ready' %>
+    <%= render 'layouts/google_analytics' %>
     <%= render 'layouts/cnzz' %>
+    <%= render 'layouts/ad' %>
   </body>
 </html>
