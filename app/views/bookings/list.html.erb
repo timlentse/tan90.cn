@@ -1,7 +1,12 @@
 <div class="container description">查询到<%= "#{@location.name_cn}共有#{@location.number_of_hotels}" %>家酒店</div>
 <article class="container">
-  <div class="row" id="hotel-list">
-    <%= render 'hotel' %>
+  <div class="row">
+    <div class="col-md-10" id="hotel-list">
+      <%= render 'hotel' %>
+    </div>
+    <div class="col-md-2">
+      <%= render 'layouts/sogou_ad' %>
+    </div>
   </div>
   <% if @hotels.size==21 %>
     <div id="pagination">
