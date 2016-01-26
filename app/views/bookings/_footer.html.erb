@@ -20,5 +20,10 @@
         </ul>
       </div>
     <% end %>
+    <% if @filter_args[:cc1] and @filter_args[:cc1]=='us' %>
+      <div class="clearfix">
+        <p class='pull-right'><a href="/booking/us/<%= @city.full_name %>/review.html">Hotel reviews in <%= @city.name %></a></p>
+      </div>
+    <% end %>
   </div>
 </footer>

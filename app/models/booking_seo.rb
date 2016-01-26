@@ -14,6 +14,8 @@ class BookingSeo
       [{:text=>'首页', :url=>'/'}, {:text=>"中国酒店", :url=>"/booking/#{@location.country_code}/"},{:text=>"#{@location.name_cn}附近酒店"}]
     when 'airport'
       [{:text=>'首页', :url=>'/'}, {:text=>"中国酒店", :url=>"/booking/#{@location.country_code}/"},{:text=>"#{@location.name_cn}附近酒店"}]
+    when 'review'
+      [{:text=>'Home', :url=>'/'},{:text=>@country.country_or_region,:url=>"/booking/#{@country.cc}/"},{:text=>@location.name,:url=>"/booking/#{@location.country_code}/#{@location.full_name}/"},{:text=>"#{@location.name} hotel reviews"}]
     when 'detail'
       []
     end
@@ -38,7 +40,6 @@ class BookingSeo
         :description=>"预订#{city_cn}酒店，为你提供#{city_cn}#{@location.number_of_hotels}多家酒店的预订服务，价格查询，酒店点评，住宿推荐。",
         :h1=>"#{city_cn}酒店"
       }
-
     when 'landmark'
       landmark = @location.name_cn
       {
@@ -55,6 +56,16 @@ class BookingSeo
         :description=>"预订#{airport}附近酒店，即可享受超值优惠。为你提供#{airport}附近酒店预订服务，价格查询，酒店点评信息。",
         :h1=>"#{airport}附近酒店"
       }
+    when 'review'
+      city_en = @location.name
+      @country = Country.find_by(:cc=>@location.country_code)
+      {
+        :title=>"Hotel reviews in #{city_en}",
+        :keywords=>"hotel reviews, hotels in #{city_en}, #{city_en} hotel reviews",
+        :description=>"Browse hotel reviews for the best B&Bs and inns in #{city_en}, #{@country.country_or_region}. Find more than 51 million reviews and great prices on tan90.cn",
+        :h1=>"Hotel reviews in #{city_en}"
+      }
+
     when 'detail'
       {}
     end
