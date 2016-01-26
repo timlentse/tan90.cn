@@ -16,6 +16,7 @@ class BookingsController < ApplicationController
     @hotels = BookingHotel.search(@filter_args)
     @seo = BookingSeo.new(@city,'city')
     set_seo_element
+    @is_show_review_links = true
     @comments = BookingReview.find_comments(@hotels)
     @landmarks = @seo.get_landmarks_with_city
     @airports = find_airports_by_city
