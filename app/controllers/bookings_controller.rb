@@ -71,7 +71,7 @@ class BookingsController < ApplicationController
   end
 
   def find_airports_in_city
-    BookingAirport.airports(@city.full_name)
+    BookingAirport.airports(@city.full_name,@language)
   end
 
   def set_seo_elements(page_type)

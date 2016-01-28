@@ -15,7 +15,7 @@
         <p class='head'>Airports in <%= @city.name %></p>
         <ul>
           <% @airports.each do |airport| %>
-            <li><p class="landmark"><a href="<%=airport[:url] %>"><%= airport[:text] %>附近酒店</a></p></li>
+            <li><p class="landmark"><a href="<%=airport[:url] %>"><%= airport[:text] %></a></p></li>
           <% end %>
         </ul>
       </div>
