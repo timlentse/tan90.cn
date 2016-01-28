@@ -2,7 +2,7 @@
   <div class='container seo-area'>
     <% if @landmarks and !@landmarks.empty? %>
       <div id="landmarks" class="clearfix">
-        <p class='head'><%= @city.name_cn %>热门地标</p>
+        <p class='head'>Hot landmarks in <%= @city.name %></p>
         <ul>
           <% @landmarks.each do |landmark| %>
             <li><p class="landmark"><a href="<%=landmark[:url] %>"><%= landmark[:text] %></a></p></li>
@@ -12,7 +12,7 @@
     <% end %>
     <% if @airports and !@airports.empty? %>
       <div id="airports" class="clearfix">
-        <p class='head'><%= @city.name_cn %>机场附近酒店</p>
+        <p class='head'>Airports in <%= @city.name %></p>
         <ul>
           <% @airports.each do |airport| %>
             <li><p class="landmark"><a href="<%=airport[:url] %>"><%= airport[:text] %>附近酒店</a></p></li>
@@ -20,9 +20,9 @@
         </ul>
       </div>
     <% end %>
-    <% if @filter_args[:cc1] and @filter_args[:cc1]=='us' and @is_show_review_links %>
+    <% if @city %>
       <div class="clearfix">
-        <p class='pull-right'><a href="/booking/us/<%= @city.full_name %>/review.html">Hotel reviews in <%= @city.name %></a></p>
+        <p class='pull-right'><a href="/booking/<%= @city.country_code %>/<%= @city.full_name %>/review.html">Hotel reviews in <%= @city.name %></a></p>
       </div>
     <% end %>
   </div>

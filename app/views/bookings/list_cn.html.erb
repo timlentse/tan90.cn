@@ -1,0 +1,24 @@
+<% number = @location.number_of_hotels==0 ? @hotels.size : @location.number_of_hotels %>
+<div class="container description">查询到<%= "#{@location.name_cn}共有#{number}" %>家酒店</div>
+<article class="container">
+  <div class="row">
+    <div class="col-md-10" id="hotel-list">
+      <%= render 'hotel_cn' %>
+    </div>
+    <div class="col-md-2">
+      <%= render 'layouts/sogou_ad' %>
+    </div>
+  </div>
+  <% if @hotels.size==21 %>
+    <div id="pagination">
+      <nav>
+        <ul class="pager">
+          <li class="next"><a data-page='2'>下一页<span aria-hidden="true">&rarr;</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  <% end %>
+</article>
+<%= render 'footer_cn' %>
+<%= javascript_include_tag 'hotels' %>
+

@@ -17,5 +17,5 @@ Rails.application.routes.draw do
   get '/booking/airport/:iata/'=>'bookings#airport', iata: /[a-z]{3}/
 
   # Router for booking review
-  get '/booking/us/:city_unique/review.html'=>'bookings#city_review_en', city_unique: /[a-z\-\d]+/
+  get '/booking/:country/:city_unique/review.html'=>'bookings#city_review', country: /[a-z]{2}/, city_unique: /[a-z\-\d]+/
 end

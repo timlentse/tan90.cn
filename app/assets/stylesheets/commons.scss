@@ -87,3 +87,16 @@ hr{
   margin-top:10px;
   padding:10px 10px 10px 10px;
 }
+#hotel-list{
+  padding-left:0px;
+  padding-right:0px;  
+}
+.title {
+  font-size:1.2em;
+  margin-top:18px;
+  text-align:center;
+  color:#777;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

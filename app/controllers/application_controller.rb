@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   before_action :is_device_mobile?
 
+  private
+
   def render_404
     raise ActionController::RoutingError.new('Not Found')
   end

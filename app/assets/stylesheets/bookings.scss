@@ -8,7 +8,7 @@ hr{
   margin-bottom:5px;
   border:1px solid #bec8d2;
 }
-.hotel-img {
+.hotel-img{
   float:left;
 }
 .hotel-desc{
@@ -25,12 +25,12 @@ hr{
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.cities {
+.cities{
   margin:0 auto;
   text-align:center;
   display:block;
 }
-.city {   
+.city{   
   position: relative;   
   display: block;   
   float:left;
@@ -38,11 +38,11 @@ hr{
   width: 220px;  
   margin:10px 10px 10px 10px;
 }
-.city-img {
+.city-img{
   width:220px;
   height:200px;
 }
-.city-desc {
+.city-desc{
   text-align:center;
   font-size:1.3em;
   background-color:rgba(0, 0, 0, 0.5);  
@@ -53,7 +53,7 @@ hr{
   width: 220px;   
   padding: 10px 0;   
 }
-.hot-desc {
+.hot-desc{
   font-size: 0.9em;
   color: #777;
 }

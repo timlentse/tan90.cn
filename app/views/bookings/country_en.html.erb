@@ -1,0 +1,11 @@
+<article class="container cities" id="hotel-list">
+  <% @cities.each do |city| %>
+    <div class="city">
+      <a href="/booking/<%= "#{city.country_code}/#{city.full_name}" %>/" >
+        <img class="city-img" src="<%= city.city_img %>" alt="Image of <%= city.name %>"/>
+      </a>
+      <span class="city-desc"><%= city.number_of_hotels %> properties in <%= city.name %></span>
+    </div>
+  <% end %>
+  </div>
+</article>
