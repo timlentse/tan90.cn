@@ -1,13 +1,8 @@
 <% number = @location.number_of_hotels==0 ? @hotels.size : @location.number_of_hotels %>
 <div class="container description"><%= "#{number}" %> hotels totally in <%= @location.name %></div>
 <article class="container">
-  <div class="row">
-    <div class="col-md-10" id="hotel-list">
-      <%= render 'hotel_en' %>
-    </div>
-    <div class="col-md-2">
-      <%= render 'layouts/sogou_ad' %>
-    </div>
+  <div class="row" id="hotel-list">
+    <%= render 'hotel_en' %>
   </div>
   <% if @hotels.size==21 %>
     <div id="pagination">
