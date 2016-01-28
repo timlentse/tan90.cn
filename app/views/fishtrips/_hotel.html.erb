@@ -3,7 +3,7 @@
     <div class="thumbnail">
       <a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/" target="_blank">
         <% @img_url="http://7xotew.com1.z0.glb.clouddn.com/#{hotel.fishtrip_hotel_id}.jpg" %>
-        <img src="<%= @img_url %>" alt="<%= "#{@tdk[:h1]}民宿图片_#{ix}" %>">
+        <img src="<%= @img_url %>" alt="<%= "#{FishtripSeo::COUNTRY[hotel.country]}#{hotel.city}民宿图片_#{ix}" %>">
       </a>
       <div class="caption">
         <a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/" target="_blank">
