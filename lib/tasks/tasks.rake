@@ -5,6 +5,8 @@ task :update_sitemap=>:environment do
   sitemap_obj_fishtrip.create_sitemap('fishtrip', 'danti')
   sitemap_obj_booking = Sitemap::Booking.new('pc')
   sitemap_obj_booking.create_sitemap('booking', 'city')
+  sitemap_obj_booking.create_sitemap('booking', 'review')
+  sitemap_obj_booking.create_landmark
   Sitemap.create_sitemap_index('pc')
 end
 
