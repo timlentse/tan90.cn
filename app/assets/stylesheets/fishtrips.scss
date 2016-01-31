@@ -213,6 +213,9 @@ h2 {
 .footer-link {
   color: #999;
 }
+.landmark-desc{
+  background-color:#fff;
+}
 // Media Query
 @media (max-width: 768px) {
   .hotel-img{
@@ -266,6 +269,9 @@ h2 {
   }
 }
 @media (min-width: 992px) {
+  .landmark-desc{
+    margin-left:30px;
+  }
   .hotel-img{
     width:200px;
     height:200px;

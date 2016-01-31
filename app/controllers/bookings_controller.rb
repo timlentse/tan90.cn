@@ -35,7 +35,7 @@ class BookingsController < ApplicationController
     @hotels = BookingHotel.find_hotels_by_ids(hotel_ids)
     set_seo_elements('landmark')
     @comments = BookingReview.find_comments(@hotels, @language)
-    render "list_#{@language}"
+    render "landmark_#{@language}"
   end
 
   def airport
