@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/fishtrip//search/'=>'fishtrips#query_by_get'
   post '/fishtrip/search/'=>'fishtrips#query_by_post'
   get '/fishtrip/:id/'=>'fishtrips#detail', id: /\d+/
+  get '/fishtrip/articles/:article_id/'=>'fishtrips#articles', article_id: /\d{4}/
   get '/fishtrip/:country/'=>'fishtrips#country', country: /[a-zA-Z_]+/
   get '/fishtrip/:country/:city_en/'=>'fishtrips#city_list_by_get'
   post '/fishtrip/:country/:city_en/'=>'fishtrips#city_list_by_post'

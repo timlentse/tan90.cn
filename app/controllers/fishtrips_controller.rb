@@ -37,6 +37,17 @@ class FishtripsController < ApplicationController
     @tdk = @seo.tdk
     @breadcrumb = @seo.get_breadcrumb
     @recommend_hotels = FishtripHotel.select_recommend_hotels(@hotel.city_id, @hotel.id)
+    @seo_articles = FishtripArticle.find_seo_article({:city_en=>@hotel.city_en,:country=>@hotel.country})
+  end
+
+  def articles
+    @page_type = 'article'
+    @article = FishtripArticle.find_by(:article_id=>params[:article_id])
+    render_404 unless @article
+    @seo = FishtripSeo.new(@page_type, @article)
+    @tdk = @seo.tdk
+    @breadcrumb = @seo.get_breadcrumb
+    @footer_links = @seo.get_footer_links
   end
 
   def query_by_get
