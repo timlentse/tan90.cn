@@ -39,6 +39,7 @@ class FishtripsController < ApplicationController
     render_404 unless @hotel
     if @spider_track
       render_detail_page
+      @seo_articles = FishtripArticle.find_seo_article({:city_en=>@hotel.city_en,:country=>@hotel.country})
     else
       redirect_to @hotel.shared_uri, :status=>301
     end
@@ -54,6 +55,16 @@ class FishtripsController < ApplicationController
     @params[:city_id] = search_city_by_keyword
     @hotels = FishtripHotel.search(@params)
     render 'list.js.erb'
+  end
+
+  def articles
+    @page_type = 'article'
+    @article = FishtripArticle.find_by(:article_id=>params[:id])
+    render_404 unless @article
+    @seo = FishtripSeo.new(@page_type, @article)
+    @tdk = @seo.tdk
+    @breadcrumb = @seo.get_breadcrumb
+    @footer_links = @seo.get_footer_links
   end
 
   private

@@ -68,9 +68,7 @@ ul {
 }
 .sider-bar {
   background-color:#fff;
-}
-.sider-bar ul{
-  padding: 10px 10px 10px 10px;
+  padding: 10px 10px;
 }
 .itr-head {
   font-size:1.2em;
@@ -248,6 +246,11 @@ address {
 }
 .breadcrumb {
   margin-bottom:0px;
+}
+.seo-article{
+  padding-top:10px;
+  background-color:#fff;
+
 }
 .btn-breadcrumb .btn:not(:last-child):after {
   content: " ";

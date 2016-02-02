@@ -1,5 +1,5 @@
 <article class="container cus-padding">
-  <section class="col-md-6 cus-padding" id="desc">
+  <div class="col-md-6 cus-padding" id="desc">
     <div class="thumbnail">
       <% @img_url="http://7xotew.com1.z0.glb.clouddn.com/#{@hotel.fishtrip_hotel_id}-large.jpg" %>
       <a href="<%= @hotel.shared_uri %>" rel="nofollow">
@@ -33,24 +33,26 @@
       </div>
     </div>
     <div class="sider-bar">
+      <p>
+      <a class="btn btn-info" href="<%= "#{@hotel.shared_uri}" %>" rel='nofollow'>查看更多房型</a><a class="btn btn-warning pull-right" href="<%= @hotel.shared_uri %>" rel="nofollow">预订房间</a>
+      </p>
+      <hr>
       <ul>
-        <p><a class="btn btn-info" href="<%= "#{@hotel.shared_uri}#house_show_date_select" %>" rel="nofollow">查看更多房型</a><a class="btn btn-warning pull-right" href="<%= @hotel.shared_uri %>" rel="nofollow">预订房间</a></p>
-        <hr>
         <% unless @tuijian.empty? %>
-          <p><strong>推荐<%= @hotel.name %>理由:</strong></p>
+          <li><strong><%= @hotel.name %>推荐理由</strong></li>
           <% @tuijian.each do |tuijian|  %>
             <li> <%= tuijian %> </li>
-            <hr>
           <% end %>
         <% end %>
         <% if @hotel.traffic %>
-          <p><strong>怎么去<%= @hotel.name %>:</strong></p>
+          <li><strong>怎么去<%= @hotel.name %></strong></li>
           <li> <%= @hotel.traffic %> </li>
         <% end %>
       </ul>
     </div>
-  </section>
-  <section class="col-md-6 cus-padding" >
+    <%= render 'seo_articles' %>
+  </div>
+  <div class="col-md-6 cus-padding" >
     <div class="comment">
       <h3 class="comment-title"><%= @hotel.name %>点评</h3>
       <hr>
@@ -76,9 +78,7 @@
         <p class="content"><%= comment.content %> </p>
       </div>
     <% end %>
-  </section>
   </div>
-  <div class="row clearfix">
-    <%= render 'recommend_hotel' %>
   </div>
+  <%= render 'recommend_hotel' %>
 </article>
