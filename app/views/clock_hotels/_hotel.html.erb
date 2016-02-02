@@ -1,0 +1,28 @@
+<% @hotels.each_with_index do |hotel, ix| %>
+  <div class="hotel-item clearfix">
+    <div class="hotel-pic"> 
+      <a href="/clockhotel/<%= hotel.elong_id %>/" rel="nofollow" target="_blank">
+        <img class="hotel-img" src="<%= hotel.img_url %>" alt="<%= @city[:cn] %>钟点房图片_<%= ix %>">
+      </a>
+    </div>
+    <div class="hotel-body">
+      <a href="/clockhotel/<%= hotel.elong_id %>/" rel='nofollow' target="_blank">
+        <p class="hotel-name"><%= hotel.name %></p>
+      </a>
+      <% if @rooms[hotel.elong_id] %>
+        <div class="rooms">
+          <% @rooms[hotel.elong_id].each do |room| %>
+            <p><%= room["room_name"] %>(<%= room["room_infos"] %>)<span class="price pull-right">￥<%= room["price"] %></span></p>
+          <% end %>
+        </div>
+      <% end %>
+      <% if hotel.price.nil? %>
+        <p class="booking"><a href="/clockhotel/<%= hotel.elong_id %>/" rel='nofollow' target="_blank" class="btn btn-primary btn-xs" role="button">查看详情</a> 
+      <% else %>
+        <p class="booking"> 
+        <a class="btn btn-success pull-right" href="/clockhotel/<%= hotel.elong_id %>/" rel="nofollow" target="_blank">预订</a>
+        </p>
+      <% end %>
+    </div>
+  </div>
+<% end %>

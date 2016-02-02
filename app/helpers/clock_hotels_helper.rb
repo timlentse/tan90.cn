@@ -1,0 +1,2 @@
+module ClockHotelsHelper
+end

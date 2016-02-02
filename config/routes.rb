@@ -19,4 +19,8 @@ Rails.application.routes.draw do
 
   # Router for booking review
   get '/booking/:country/:city_unique/review.html'=>'bookings#city_review', country: /[a-z]{2}/, city_unique: /[a-z\-\d]+/
+
+  # Router for clock hotels
+  get '/clockhotel/:city_name_en/'=>'clock_hotels#list', city_name_en: /[A-Za-z_]+/
+  get '/clockhotel/:id/'=>'clock_hotels#detail',:id=>/\d+/
 end

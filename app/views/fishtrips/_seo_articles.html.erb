@@ -1,6 +1,6 @@
 <% if @seo_articles and !@seo_articles.empty? %>
   <div class="sider-bar">
-    <h3 style="padding-top:10px"><%= FishtripSeo::COUNTRY[@hotel.country] %>旅游攻略</h3>
+    <h3><%= FishtripSeo::COUNTRY[@hotel.country] %>旅游攻略</h3>
     <% @seo_articles.each do |category,seo_articles| %>
       <ul>
         <p><strong><%= category %></strong></p>
