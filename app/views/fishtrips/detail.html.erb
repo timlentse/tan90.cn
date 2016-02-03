@@ -1,4 +1,5 @@
 <article class="container cus-padding">
+
   <div class="col-md-6 cus-padding" id="desc">
     <div class="thumbnail">
       <% @img_url="http://7xotew.com1.z0.glb.clouddn.com/#{@hotel.fishtrip_hotel_id}-large.jpg" %>
@@ -32,6 +33,7 @@
         </p>
       </div>
     </div>
+
     <div class="sider-bar">
       <p>
       <a class="btn btn-info" href="<%= "#{@hotel.shared_uri}" %>" rel='nofollow'>查看更多房型</a><a class="btn btn-warning pull-right" href="<%= @hotel.shared_uri %>" rel="nofollow">预订房间</a>
@@ -52,33 +54,34 @@
     </div>
     <%= render 'seo_articles' %>
   </div>
+
   <div class="col-md-6 cus-padding" >
     <div class="comment">
       <h3 class="comment-title"><%= @hotel.name %>点评</h3>
       <hr>
-    </div>
-    <% @detail_comments.each do |comment| %>
-      <div class="isr ratings">
-        <% if comment.score.nil? %>
-          <span class="glyphicon glyphicon-star-empty"></span>
-          <span class="glyphicon glyphicon-star-empty"></span>
-          <span class="glyphicon glyphicon-star-empty"></span>
-          <span class="glyphicon glyphicon-star-empty"></span>
-          <span class="glyphicon glyphicon-star-empty"></span>
-        <% else %>
-          <% comment.score.to_i.times{ %>
-            <span class="glyphicon glyphicon-star"></span>
-          <% } %>
-          <% if (comment.score-comment.score.to_i)>0 %>
+      <% @detail_comments.each do |comment| %>
+        <div class="isr ratings">
+          <% if comment.score.nil? %>
             <span class="glyphicon glyphicon-star-empty"></span>
+            <span class="glyphicon glyphicon-star-empty"></span>
+            <span class="glyphicon glyphicon-star-empty"></span>
+            <span class="glyphicon glyphicon-star-empty"></span>
+            <span class="glyphicon glyphicon-star-empty"></span>
+          <% else %>
+            <% comment.score.to_i.times{ %>
+              <span class="glyphicon glyphicon-star"></span>
+            <% } %>
+            <% if (comment.score-comment.score.to_i)>0 %>
+              <span class="glyphicon glyphicon-star-empty"></span>
+            <% end %>
           <% end %>
-        <% end %>
-        <%= comment.score %>分 <span class="author"><%= comment.author %></span>
-        <span class="pull-right"><%= comment.comment_time %></span>
-        <p class="content"><%= comment.content %> </p>
-      </div>
-    <% end %>
+          <%= comment.score %>分 <span class="author"><%= comment.author %></span>
+          <span class="pull-right"><%= comment.comment_time %></span>
+          <p class="content"><%= comment.content %> </p>
+        </div>
+      <% end %>
+    </div>
   </div>
-  </div>
+
   <%= render 'recommend_hotel' %>
 </article>
