@@ -25,13 +25,13 @@ class FishtripSeo
     when 'country'
       [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿"}]
     when 'query'
-      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/fishtrip/#{@country_en}/"},{:text=>"#{@city_name}民宿搜索页"}]
+      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/#{@country_en}/"},{:text=>"#{@city_name}民宿搜索页"}]
     when 'city'
-      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/fishtrip/#{@country_en}/"},{:text=>"#{@city_name}民宿"}]
+      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/#{@country_en}/"},{:text=>"#{@city_name}民宿"}]
     when 'detail'
-      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/fishtrip/#{@country_en}/"},{:text=>"#{@country}#{@city_name}民宿", :url=>"/fishtrip/#{@country_en}/#{@obj.city_en}/"}, {:text=>@obj.name}]
+      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/#{@country_en}/"},{:text=>"#{@country}#{@city_name}民宿", :url=>"/fishtrip/#{@country_en}/#{@obj.city_en}/"}, {:text=>@obj.name}]
     when 'article'
-      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/fishtrip/#{@country_en}/"},{:text=>"#{@country}#{@city_name}民宿", :url=>"/fishtrip/#{@country_en}/#{@obj.city_en}/"}, {:text=>@obj.title}]
+      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/#{@country_en}/"},{:text=>"#{@country}#{@city_name}民宿", :url=>"/fishtrip/#{@country_en}/#{@obj.city_en}/"}, {:text=>@obj.title}]
     end
   end
 
