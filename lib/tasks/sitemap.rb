@@ -1,5 +1,6 @@
 require_relative 'fishtrip'
 require_relative 'booking'
+require_relative 'clockhotel.rb'
 module Sitemap
   $xml_path_list = []
 

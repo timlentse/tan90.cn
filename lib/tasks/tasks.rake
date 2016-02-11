@@ -7,6 +7,8 @@ task :update_sitemap=>:environment do
   sitemap_obj_booking.create_sitemap('booking', 'city')
   sitemap_obj_booking.create_sitemap('booking', 'review')
   sitemap_obj_booking.create_landmark
+  sitemap_obj_clockhotel = Sitemap::Clock.new('pc')
+  sitemap_obj_clockhotel.create_sitemap('clockhotel', 'city')
   Sitemap.create_sitemap_index('pc')
 end
 
@@ -16,3 +18,4 @@ task :update_sitemap_mobile=>:environment do
   sitemap_obj.create_sitemap('fishtrip', 'danti')
   sitemap_obj.create_sitemap_index
 end
+
