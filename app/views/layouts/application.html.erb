@@ -12,6 +12,7 @@
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
+    <%= render 'layouts/baidu_tongji' %>
   </head>
   <body>
     <%= render 'layouts/header' %>
@@ -20,7 +21,6 @@
     <%= javascript_include_tag 'document_ready' %>
     <%= render 'layouts/google_analytics' %>
     <%= render 'layouts/cnzz' %>
-    <%= render 'layouts/baidu_tongji' %>
     <%= render 'layouts/sogou_ad' %>
     <%= render 'layouts/ad' %>
     <p class="copy">Copyright © tan90.cn 2014-<%= Time.now.strftime("%Y") %> All Rights Reserved </p>
