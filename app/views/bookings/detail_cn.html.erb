@@ -1,0 +1,69 @@
+<article class="container cus-padding">
+  <div class="col-md-6 cus-padding" id="desc">
+    <div class="thumbnail">
+      <a href="<%= @hotel.hotel_url %>" rel="nofollow">
+        <img src="<%= @hotel.photo_url %>" alt="<%= "#{@hotel.name_cn}图片" %>">
+      </a>
+    </div>
+    <div class="isr" >
+      <h2 class="itr-head"><a href="<%= @hotel.hotel_url %>" rel="nofollow"><%= @hotel.name_cn %></a>
+        <span class="price pull-right">￥<%= @hotel.minrate %></span>
+      </h2>
+      <p style="padding-left:10px;"><%= @hotel.desc_cn %></p>
+      <div class="ratings">
+        <p class="pull-right"><a href="<%= @hotel.hotel_url %>" rel="nofollow"><%= @hotel.review_score %></a></p>
+        <p>
+        <% if @hotel.review_score.nil? %>
+          <span class="glyphicon glyphicon-star-empty"></span>
+          <span class="glyphicon glyphicon-star-empty"></span>
+          <span class="glyphicon glyphicon-star-empty"></span>
+          <span class="glyphicon glyphicon-star-empty"></span>
+          <span class="glyphicon glyphicon-star-empty"></span>
+        <% else %>
+          <% @hotel.review_score.to_i.times{ %>
+            <span class="glyphicon glyphicon-star"></span>
+          <% } %>
+          <% if (@hotel.review_score-@hotel.review_score.to_i)>0 %>
+            <span class="glyphicon glyphicon-star-empty"></span>
+          <% end %>
+        <% end %>
+        <%= @hotel.review_score %> 分
+        </p>
+      </div>
+    </div>
+    <div class="sider-bar">
+      <p>
+      <a class="btn btn-info" href="<%= "#{@hotel.hotel_url}" %>" rel='nofollow'>查看更多房型</a><a class="btn btn-warning pull-right" href="<%= @hotel.hotel_url %>" rel="nofollow">预订房间</a>
+      </p>
+    </div>
+  </div>
+  <div class="col-md-6 cus-padding" >
+    <div class="comment">
+      <h3 class="comment-title"><%= @hotel.name_cn %>点评</h3>
+      <hr>
+    </div>
+    <% @comments.each do |comment| %>
+      <div class="isr ratings">
+        <% if comment.score.nil? %>
+          <span class="glyphicon glyphicon-star-empty"></span>
+          <span class="glyphicon glyphicon-star-empty"></span>
+          <span class="glyphicon glyphicon-star-empty"></span>
+          <span class="glyphicon glyphicon-star-empty"></span>
+          <span class="glyphicon glyphicon-star-empty"></span>
+        <% else %>
+          <% comment.score.to_i.times{ %>
+            <span class="glyphicon glyphicon-star"></span>
+          <% } %>
+          <% if (comment.score-comment.score.to_i)>0 %>
+            <span class="glyphicon glyphicon-star-empty"></span>
+          <% end %>
+        <% end %>
+        <%= comment.score %>分 <span class="author"><%= comment.author %></span>
+        <span class="pull-right"><%= comment.comment_time %></span>
+        <p class="content"><%= comment.good %> </p>
+      </div>
+    <% end %>
+  </div>
+  </div>
+</article>
+<%= render 'footer_cn' %>

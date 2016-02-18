@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   post '/booking/:country/:city_unique/'=>'bookings#city_list_by_post', country: /[a-z]{2}/, city_unique: /[a-z\-\d]+/
   get '/booking/landmark/:id/'=>'bookings#landmark', id: /\d+/
   get '/booking/airport/:iata/'=>'bookings#airport', iata: /[a-z]{3}/
+  get '/booking/:id'=>'bookings#detail',id:/\d+/
 
   # Router for booking review
   get '/booking/:country/:city_unique/review.html'=>'bookings#city_review', country: /[a-z]{2}/, city_unique: /[a-z\-\d]+/

@@ -21,4 +21,9 @@ class BookingReview < ActiveRecord::Base
     comments
   end
 
+  def self.find_comments_with_hotel(hotel, language)
+    lang = language=='cn' ? 0 : 1
+    comment = hotel.booking_reviews.where("(good!='' or bad!='') and lang=?",lang).select(:good,:bad,:author,:comment_time,:score)
+  end
+
 end

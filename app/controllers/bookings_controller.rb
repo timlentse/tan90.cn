@@ -53,6 +53,15 @@ class BookingsController < ApplicationController
     render "review_#{@language}"
   end
 
+  def detail
+    @hotel = BookingHotel.find_by(:id=>params[:id])
+    render_404 unless @hotel
+    find_city_by_full_name(@hotel.city_unique)
+    set_seo_elements('detail')
+    @comments = BookingReview.find_comments_with_hotel(@hotel, @language)
+    render "detail_#{@language}"
+  end
+
   private
 
   def set_params
@@ -60,8 +69,8 @@ class BookingsController < ApplicationController
     @filter_args[:cc1] = params[:country]
   end
 
-  def find_city_by_full_name
-    @city = BookingCity.find_by(:full_name=>params[:city_unique])
+  def find_city_by_full_name(full_name=params[:city_unique])
+    @city = BookingCity.find_by(:full_name=>full_name)
     render_404 unless @city
   end
 
@@ -78,7 +87,7 @@ class BookingsController < ApplicationController
     @page_type = page_type
     @location = @city||@landmark||@airport
     @language = get_language
-    @seo = BookingSeo.new(@location, @page_type, @language)
+    @seo = BookingSeo.new(@location, @page_type, @language, @hotel)
     @tdk = @seo.get_tdk
     @breadcrumb = @seo.get_breadcrumb
   end
@@ -86,6 +95,8 @@ class BookingsController < ApplicationController
   def get_language
     if params[:country]
       Constant::LANG_CN_CC.include?(params[:country]) ? "cn" : "en"
+    elsif @page_type=='detail'
+      Constant::LANG_CN_CC.include?(@hotel.cc1) ? "cn" : "en"
     else
       Constant::LANG_CN_CC.include?(@location.country_code) ? "cn" : "en"
     end
