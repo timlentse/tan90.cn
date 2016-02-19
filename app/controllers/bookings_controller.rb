@@ -76,7 +76,7 @@ class BookingsController < ApplicationController
 
   def find_landmark_by_id
     @landmark = BookingLandmark.find(params[:id])
-    render_404 unless @landmark and @landmark.country_code=='cn'
+    render_404 unless @landmark
   end
 
   def find_airports_in_city

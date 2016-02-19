@@ -94,8 +94,6 @@ hr{
 .title{
   font-size:1.2em;
   margin-top:18px;
-  text-align:center;
-  color:#777;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -416,6 +414,9 @@ hr{
   }
   .instr{
     padding:80px 20px 30px 32px;
+  }
+  .title{
+    text-align:center;
   }
 }
 @media (min-width: 768px) and (max-width: 992px){
