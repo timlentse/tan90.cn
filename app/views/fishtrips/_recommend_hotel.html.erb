@@ -7,13 +7,14 @@
         <div class="col-xs-6 col-sm-4 col-md-2 cus-padding">
           <div class="thumbnail">
             <a href="/<%= hotel.fishtrip_hotel_id %>/" target="_blank">
-              <% @img_url="http://7xotew.com1.z0.glb.clouddn.com/#{hotel.fishtrip_hotel_id}.jpg" %>
-              <img src="<%= @img_url %>" alt="民宿图片-<%= hotel.name %>">
+              <img src="http://7xotew.com1.z0.glb.clouddn.com/<%= hotel.fishtrip_hotel_id %>.jpg" alt="民宿图片_<%= hotel.name %>">
             </a>
             <div class="caption">
+              <p class="hotel-name">
               <a href="/<%= hotel.fishtrip_hotel_id %>/" target="_blank">
-                <p class="hotel-name"><%= hotel.name %></p>
+                <%= hotel.name %>
               </a>
+              </p>
               <% if hotel.comment.empty? %>
                 <p class='com-overview'>
                 <% if hotel.price>0 %>
@@ -42,13 +43,14 @@
         <div class="col-xs-6 col-sm-4 col-md-2 cus-padding">
           <div class="thumbnail">
             <a href="/<%= hotel.fishtrip_hotel_id %>/" target="_blank">
-              <% @img_url="http://7xotew.com1.z0.glb.clouddn.com/#{hotel.fishtrip_hotel_id}.jpg" %>
-              <img src="<%= @img_url %>" alt="民宿图片-<%= hotel.name %>">
+              <img src="http://7xotew.com1.z0.glb.clouddn.com/<%= hotel.fishtrip_hotel_id %>.jpg" alt="民宿图片_<%= hotel.name %>">
             </a>
             <div class="caption">
+              <p class="hotel-name">
               <a href="/<%= hotel.fishtrip_hotel_id %>/" target="_blank">
-                <p class="hotel-name"><%= hotel.name %></p>
+                <%= hotel.name %>
               </a>
+              </p>
               <% if hotel.comment.empty? %>
                 <p class='com-overview'>
                 <% if hotel.price>0 %>

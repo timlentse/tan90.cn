@@ -1,32 +1,31 @@
-<% ix=1 %>
-<% @hotels.each do |hotel| %>
+<% @hotels.each_with_index do |hotel,ix| %>
   <div class="col-xs-12 col-sm-6 col-md-4 cus-padding">
     <div class="thumbnail">
       <a href="/<%= hotel.fishtrip_hotel_id %>/" target="_blank">
-        <% @img_url="http://7xotew.com1.z0.glb.clouddn.com/#{hotel.fishtrip_hotel_id}.jpg" %>
-        <img src="<%= @img_url %>" alt="<%= @page_type=='city' ? "#{@city.name}民宿-图片_#{ix}" : "#{FishtripSeo::COUNTRY[hotel.country]}民宿-图片_#{ix}" %>">
+        <img src="http://7xotew.com1.z0.glb.clouddn.com/<%= hotel.fishtrip_hotel_id %>.jpg" alt="<%= @page_type=='city' ? "#{@city.name}民宿图片_#{ix+1}" : "#{FishtripSeo::COUNTRY[hotel.country]}民宿图片_#{ix+1}" %>">
       </a>
       <div class="caption">
-        <a href="/<%= hotel.fishtrip_hotel_id %>/" target="_blank">
-          <p class="hotel-name"><strong><%= hotel.name %></strong></p>
-        </a>
+        <p class="hotel-name">
+        <strong>
+          <a href="/<%= hotel.fishtrip_hotel_id %>/" target="_blank"><%= hotel.name %></a>
+          <strong>
+        </p>
         <p class="desc"><%= "#{hotel.name}简介:#{hotel.desc}" %></p>
         <p class="location"><strong><%="位置："%></strong><%= FishtripSeo::COUNTRY[hotel.country] %>-<%= hotel.city %></p>
         <p class='address'><strong><%= "地址：" %></strong><%= hotel.address %></p>
 
         <% if hotel.comment.empty? %>
           <p class='com-overview'>
-          <a href="/<%= hotel.fishtrip_hotel_id %>/#comment">查看点评</a>
+          <a href="/<%= hotel.fishtrip_hotel_id %>/">查看点评</a>
           </p>
         <% else %>
           <p class='com-overview'>
-          <a href="/<%= hotel.fishtrip_hotel_id %>/#comment"><%= hotel.comment %></a> 
+          <a href="/<%= hotel.fishtrip_hotel_id %>/"><%= hotel.comment %></a> 
           <% if hotel.score %>
             <span class="pull-right score">评论:<%= hotel.score %>分</span>
           <% end %>
           </p>
         <% end %>
-
         <% if hotel.price==0 %>
           <p class="booking"><a href="/<%= hotel.fishtrip_hotel_id %>/" target="_blank" class="btn btn-primary btn-xs" role="button">查看详情</a> 
         <% else %>
@@ -38,6 +37,5 @@
       </div>
     </div>
   </div>
-  <% ix+=1 %>
 <% end %>
 
