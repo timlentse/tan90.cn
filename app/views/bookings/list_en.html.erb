@@ -1,6 +1,6 @@
 <% number = @location.number_of_hotels==0 ? @hotels.size : @location.number_of_hotels %>
-<div class="container description"><%= "#{number}" %> hotels totally in <%= @location.name %></div>
 <article class="container">
+  <div class="row description"><%= "#{number}" %> hotels totally in <%= @location.name %></div>
   <div class="row" id="hotel-list">
     <%= render 'hotel_en' %>
   </div>

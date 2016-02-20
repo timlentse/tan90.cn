@@ -1,9 +1,8 @@
 <article class="container cus-padding">
-  <div class="col-md-6 cus-padding" id="desc">
+  <div id="hotel-desc" class="col-md-6 cus-padding">
     <div class="thumbnail">
-      <% @img_url="http://7xotew.com1.z0.glb.clouddn.com/#{@hotel.fishtrip_hotel_id}-large.jpg" %>
       <a href="<%= @hotel.shared_uri %>" rel="nofollow">
-        <img src="<%= @img_url %>" alt="<%= "#{@hotel.name}图片" %>">
+        <img src="<%= "http://7xotew.com1.z0.glb.clouddn.com/#{@hotel.fishtrip_hotel_id}-large.jpg" %>" alt="<%= "#{@hotel.name}图片" %>">
       </a>
     </div>
     <div class="isr" >
@@ -34,7 +33,8 @@
     </div>
     <div class="sider-bar">
       <p>
-      <a class="btn btn-info" href="<%= "#{@hotel.shared_uri}" %>" rel='nofollow'>查看更多房型</a><a class="btn btn-warning pull-right" href="<%= @hotel.shared_uri %>" rel="nofollow">预订房间</a>
+      <a class="btn btn-info" href="<%= "#{@hotel.shared_uri}" %>" rel='nofollow'>查看更多房型</a>
+      <a class="btn btn-warning pull-right" href="<%= @hotel.shared_uri %>" rel="nofollow">预订房间</a>
       </p>
       <hr>
       <ul>
@@ -55,8 +55,8 @@
   <div class="col-md-6 cus-padding" >
     <div class="comment">
       <h3 class="comment-title"><%= @hotel.name %>点评</h3>
-      <hr>
     </div>
+    <hr>
     <% @comments.each do |comment| %>
       <div class="isr ratings">
         <% if comment.score.nil? %>

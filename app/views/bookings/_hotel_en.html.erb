@@ -3,13 +3,15 @@
   <div class="hotel-item clearfix">
     <div class="hotel-pic"> 
       <a href="/booking/<%= hotel.id %>/" target="_blank">
-        <img class="hotel-img" src="<%= hotel.photo_url %>" alt="Images of <%= location_name %> hotels - <%= ix %>">
+        <img class="hotel-img" src="<%= hotel.photo_url %>" alt="Images of <%= location_name %> hotels - <%= ix+1 %>">
       </a>
     </div>
     <div class="hotel-body">
+      <p class="hotel-name">
       <a href="/booking/<%= hotel.id %>/" target="_blank">
-        <p class="hotel-name"><%= hotel.name %></p>
+        <%= hotel.name %>
       </a>
+      </p>
       <p class="location"><strong><%="location:"%></strong><%= location_name %></p>
       <p class='address'><strong><%= "address:" %></strong><%= hotel.address %></p>
       <p class="hotel-desc hidden-xs">Introduction of <%= "#{hotel.name}: #{hotel.desc_en}" %></p>

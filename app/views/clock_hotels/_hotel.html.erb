@@ -2,13 +2,15 @@
   <div class="hotel-item clearfix">
     <div class="hotel-pic"> 
       <a href="/clockhotel/<%= hotel.elong_id %>/" rel="nofollow" target="_blank">
-        <img class="hotel-img" src="<%= hotel.img_url %>" alt="<%= @city[:cn] %>钟点房图片_<%= ix %>">
+        <img class="hotel-img" src="<%= hotel.img_url %>" alt="<%= @city[:cn] %>钟点房图片_<%= ix+1 %>">
       </a>
     </div>
     <div class="hotel-body">
+      <p class="hotel-name">
       <a href="/clockhotel/<%= hotel.elong_id %>/" rel='nofollow' target="_blank">
-        <p class="hotel-name"><%= hotel.name %></p>
+        <%= hotel.name %>
       </a>
+      </p>
       <% if @rooms[hotel.elong_id] %>
         <div class="rooms">
           <% @rooms[hotel.elong_id].each do |room| %>
