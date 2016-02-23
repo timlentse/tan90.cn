@@ -41,7 +41,7 @@ class FishtripsController < ApplicationController
       render_detail_page
       @seo_articles = FishtripArticle.find_seo_article({:city_en=>@hotel.city_en,:country=>@hotel.country})
     else
-      redirect_to @hotel.shared_uri, :status=>301
+      redirect_to @hotel.shared_uri, :status=>302
     end
   end
 
