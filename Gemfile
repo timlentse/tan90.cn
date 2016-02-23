@@ -32,6 +32,8 @@ gem 'whenever', '~> 0.9.4'
 gem 'capistrano-rails'
 gem 'httparty'
 
+gem "voight_kampff"
+
 # Use redis for cache
 gem 'redis'
 
