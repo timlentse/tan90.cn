@@ -93,6 +93,7 @@ class BookingsController < ApplicationController
   end
 
   def get_language
+=begin
     if params[:country]
       Constant::LANG_CN_CC.include?(params[:country]) ? "cn" : "en"
     elsif @page_type=='detail'
@@ -100,5 +101,7 @@ class BookingsController < ApplicationController
     else
       Constant::LANG_CN_CC.include?(@location.country_code) ? "cn" : "en"
     end
+=end
+    return 'cn'
   end
 end
