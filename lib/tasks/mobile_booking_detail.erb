@@ -2,10 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <% hotel_batch.each do |hotel|%>
   <url> 
-  <loc>http://www.tan90.cn/booking/landmark/<%= hotel %>/</loc> 
-  <lastmod><%= @date %></lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>1.0</priority>
+    <loc>http://m.tan90.cn/booking/<%= hotel %>/</loc> 
+    <lastmod><%= @date %></lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url> 
 <% end %>
 </urlset>
