@@ -1,6 +1,6 @@
 <% if @breadcrumb and !@breadcrumb.empty? %>
-  <nav class='container-fluid'>
-    <div class='row'>
+  <nav class='container'>
+    <div class='row' id="breadcrumb">
       <% if @is_mobile %>
         <ol class="breadcrumb">
           <% @breadcrumb.each do |crumb| %>
@@ -12,12 +12,12 @@
           <% end %>
         </ol>
       <% else %>
-        <div class="btn-group btn-breadcrumb col-offset">
+        <div>
           <% @breadcrumb.each do |crumb| %>
             <% if crumb[:url] %>
-              <a href="<%= crumb[:url] %>" class="btn btn-success"><%= crumb[:text] %></a>
+              <a href="<%= crumb[:url] %>" class="label label-comment"><%= crumb[:text] %></a>
             <% else %>
-              <span class="btn btn-success"> <%= crumb[:text] %> </span>
+              <span class="label label-last"> <%= crumb[:text] %> </span>
             <% end %>
           <% end %>
         </div>
