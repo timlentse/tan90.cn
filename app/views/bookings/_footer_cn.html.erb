@@ -20,6 +20,7 @@
         </ul>
       </div>
     <% end %>
+    <%= render 'layouts/friendlinks' %>
     <% if @city %>
       <div class="clearfix">
         <p class='pull-right'><a href="/booking/<%= @city.country_code %>/<%= @city.full_name %>/review.html"><%= @city.name_cn %>酒店评论</a></p>
