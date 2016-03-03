@@ -9,10 +9,12 @@
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta name="appplicable-device" content="pc,mobile">
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-    <%= csrf_meta_tags %>
-    <%= favicon_link_tag 'favicon.ico' %>
+    <link rel="stylesheet" href="http://7xotew.com1.z0.glb.clouddn.com/shared/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://7xotew.com1.z0.glb.clouddn.com/shared/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="http://7xotew.com1.z0.glb.clouddn.com/timlentse/css/common.css">
+    <script src="http://7xotew.com1.z0.glb.clouddn.com/shared/js/jquery.min.js"></script>
+    <script src="http://7xotew.com1.z0.glb.clouddn.com/shared/js/bootstrap.min.js"></script>
+    <script src="http://7xotew.com1.z0.glb.clouddn.com/shared/js/bootstrap-datetimepicker.min.js"></script>
   </head>
   <% unless @page_type=='index' %>
     <body style="background:#f6f1e5">
@@ -22,8 +24,8 @@
       <%= render 'layouts/header' %>
       <%= render 'layouts/breadcrumb' %>
       <%= yield %>
+      <script src="http://7xotew.com1.z0.glb.clouddn.com/timlentse/js/common.js"></script>
       <%= render 'layouts/footer' %>
-      <%= javascript_include_tag 'document_ready' %>
       <%= render 'layouts/cnzz' %>
       <%= render 'layouts/google_analytics' %>
       <%= render 'layouts/google_ad' %>
