@@ -24,3 +24,25 @@
     <p class="copy">Copyright ©timlentse.com 2015-<%= Time.now.strftime("%Y") %> All Rights Reserved</p>
   </div>
 </footer>
+<script>
+
+//load more hotels
+$(".pager > li > a ").click(function(e) {
+  e.preventDefault();
+  var pageId = $(this).attr('data-page');
+
+  $.ajax({
+    type: "POST",
+    url: window.location.href,
+    data: {
+      page: pageId
+
+    },
+    dataType: "script",
+    success: function(msg) {},
+    error: function(msg) {
+      console.log(msg.responseText);
+    }
+  });
+});
+</script>

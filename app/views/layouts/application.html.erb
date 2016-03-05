@@ -9,12 +9,8 @@
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta name="appplicable-device" content="pc,mobile">
-    <link rel="stylesheet" href="http://7xotew.com1.z0.glb.clouddn.com/shared/css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://7xotew.com1.z0.glb.clouddn.com/shared/css/bootstrap-datetimepicker.min.css">
-    <link rel="stylesheet" href="http://7xotew.com1.z0.glb.clouddn.com/timlentse%2Fcss%2Fcommon.css">
-    <script src="http://7xotew.com1.z0.glb.clouddn.com/shared/js/jquery.min.js"></script>
-    <script src="http://7xotew.com1.z0.glb.clouddn.com/shared/js/bootstrap.min.js"></script>
-    <script src="http://7xotew.com1.z0.glb.clouddn.com/shared/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="http://7xotew.com1.z0.glb.clouddn.com/shared%2Fcss%2Fcommon.css">
+    <script src="http://7xotew.com1.z0.glb.clouddn.com/shared/js/common.js"></script>
   </head>
   <% unless @page_type=='index' %>
     <body style="background:#f6f1e5">
@@ -24,7 +20,6 @@
       <%= render 'layouts/header' %>
       <%= render 'layouts/breadcrumb' %>
       <%= yield %>
-      <script src="http://7xotew.com1.z0.glb.clouddn.com/timlentse/js/common.js"></script>
       <%= render 'layouts/footer' %>
       <%= render 'layouts/cnzz' %>
       <%= render 'layouts/google_analytics' %>
