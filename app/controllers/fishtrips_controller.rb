@@ -2,6 +2,7 @@ class FishtripsController < ApplicationController
   before_filter :set_params, :set_spider_track
 
   def index
+    redirect_to 'http://www.fishtrip.cn/?referral_id=587681955', :status=>302 unless @spider_track
     @page_type = 'index'
     @seo = FishtripSeo.new(@page_type, [])
     @tdk = @seo.tdk
@@ -9,6 +10,7 @@ class FishtripsController < ApplicationController
   end
 
   def country
+    redirect_to "http://www.fishtrip.cn/#{@params[:country]}/?referral_id=587681955", :status=>302 unless @spider_track
     @page_type = 'country'
     @hotels = FishtripHotel.search_hot(@params[:country])
     if @hotels.empty?
@@ -23,6 +25,7 @@ class FishtripsController < ApplicationController
   end
 
   def city_for_get
+    redirect_to "http://www.fishtrip.cn/#{@params[:country]}/#{@params[:city_en]}/?referral_id=587681955", :status=>302 unless @spider_track
     @page_type = 'city'
     @params[:city_id] = find_city_id(params[:city_en])
     render_list_page

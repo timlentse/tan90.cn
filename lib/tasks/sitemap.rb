@@ -5,9 +5,9 @@ class Sitemap
     @xml_path_list = []
   end
 
-  def create_sitemap(product, page_type)
-    @file_name_prefix = "public/sitemap/#{@sitemap_type}_#{product}_#{page_type}"
-    @template_file = "lib/tasks/#{@sitemap_type}_#{product}_#{page_type}.erb" 
+  def create_sitemap
+    @file_name_prefix = "public/sitemap/#{@sitemap_type}_fishtrip_danti"
+    @template_file = "lib/tasks/#{@sitemap_type}_fishtrip_danti.erb" 
     index=0
     FishtripHotel.find_in_batches(batch_size: 5000) do |hotel_batch|
       res = ERB.new(File.read(@template_file)).result(binding)
@@ -17,7 +17,20 @@ class Sitemap
       @xml_path_list << xml_file_name
       index += 1
     end
-    puts "Sitemap #{product} #{page_type} generated successfully "
+    puts "Sitemap danti generated successfully "
+
+    @file_name_prefix = "public/sitemap/#{@sitemap_type}_fishtrip_article"
+    @template_file = "lib/tasks/#{@sitemap_type}_fishtrip_article.erb" 
+    index=0
+    FishtripArticle.find_in_batches(batch_size: 5000) do |hotel_batch|
+      res = ERB.new(File.read(@template_file)).result(binding)
+      xml_file_name = "#{@file_name_prefix}_#{index}.xml"
+      xml_file = File.open(xml_file_name,'w+')
+      xml_file.write(res)
+      @xml_path_list << xml_file_name
+      index += 1
+    end
+    puts "Sitemap article generated successfully "
   end
 
   def create_sitemap_index

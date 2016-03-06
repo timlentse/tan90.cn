@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<urlset>
+<% hotel_batch.each do |hotel| %>
+  <url> 
+    <loc>http://www.timlentse.com/articles/<%= hotel.article_id %>/</loc> 
+    <mobile:mobile type="mobile"/>
+    <lastmod><%= @date %></lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url> 
+<% end %>
+</urlset>
