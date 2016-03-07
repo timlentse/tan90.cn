@@ -10,25 +10,31 @@ class FishtripsController < ApplicationController
   end
 
   def country
-    redirect_to "http://www.fishtrip.cn/#{@params[:country]}/?referral_id=587681955", :status=>302 unless @spider_track
-    @page_type = 'country'
-    @hotels = FishtripHotel.search_hot(@params[:country])
-    if @hotels.empty?
-      render_404
+    if @spider_track
+      @page_type = 'country'
+      @hotels = FishtripHotel.search_hot(@params[:country])
+      if @hotels.empty?
+        render_404
+      else
+        @seo = FishtripSeo.new(@page_type, @hotels)
+        @tdk = @seo.tdk
+        @breadcrumb = @seo.get_breadcrumb
+        @footer_links = @seo.get_footer_links
+        render 'list.html.erb'
+      end
     else
-      @seo = FishtripSeo.new(@page_type, @hotels)
-      @tdk = @seo.tdk
-      @breadcrumb = @seo.get_breadcrumb
-      @footer_links = @seo.get_footer_links
-      render 'list.html.erb'
+      redirect_to "http://www.fishtrip.cn/#{@params[:country]}/?referral_id=587681955", :status=>302
     end
   end
 
   def city_for_get
-    redirect_to "http://www.fishtrip.cn/#{@params[:country]}/#{@params[:city_en]}/?referral_id=587681955", :status=>302 unless @spider_track
-    @page_type = 'city'
-    @params[:city_id] = find_city_id(params[:city_en])
-    render_list_page
+    if @spider_track
+      @page_type = 'city'
+      @params[:city_id] = find_city_id(params[:city_en])
+      render_list_page
+    else
+      redirect_to "http://www.fishtrip.cn/#{@params[:country]}/#{params[:city_en]}/?referral_id=587681955", :status=>302
+    end
   end
 
   def city_for_post
