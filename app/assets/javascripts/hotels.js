@@ -23,23 +23,5 @@ $(document).ready(function (){
     window.location.href="/fishtrip/search/?q="+location;
   });
 
-  //load more hotels
-  $(".pager > li > a ").click(function (e) {
-    e.preventDefault();
-    var pageId = $(this).attr('data-page');
-
-    $.ajax({
-      type: "POST",
-      url: window.location.href,
-      data: { page: pageId },
-      dataType: "script",
-      success: function (msg) {
-      },
-      error: function(msg) { 
-        console.log(msg.responseText);
-      }
-    });
-  });
-
 });
 
