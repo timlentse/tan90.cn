@@ -6,6 +6,21 @@ module Sitemap
       @date = Time.now.strftime("%Y-%m-%d")
     end
 
+    def create_country
+      @file_name_prefix = "public/sitemap/#{@sitemap_type}_booking_country"
+      @template_file = "lib/tasks/#{@sitemap_type}_booking_country.erb" 
+      index=0
+      Country.where("name_cn!=''").uniq.pluck(:cc).each_slice(5000) do |hotel_batch|
+        res = ERB.new(File.read(@template_file)).result(binding)
+        xml_file_name = "#{@file_name_prefix}_#{index}.xml"
+        xml_file = File.open(xml_file_name,'w+')
+        xml_file.write(res)
+        $xml_path_list << xml_file_name
+        index += 1
+      end
+      puts "Sitemap booking country generated successfully "
+    end
+
     def create_city
       @file_name_prefix = "public/sitemap/#{@sitemap_type}_booking_city"
       @template_file = "lib/tasks/#{@sitemap_type}_booking_city.erb" 
