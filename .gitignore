@@ -21,6 +21,5 @@
 /config/deploy.rb
 /config/deploy/*
 /public/sitemap
-/public/assets
 /lib/tasks/config.rb
 /config/secrets.yml

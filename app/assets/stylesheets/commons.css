@@ -1,16 +1,17 @@
 body{
   font-family:sans-serif;
-  background:#f6f1e5;
+  background:#f7f7f7;
 }
-.home{
-  background:url(http://www.tan90.cn/assets/banner.jpg) no-repeat center;
+.navbar-link a{
+  color:#fff;
 }
 ul{
   list-style:none;
   padding-left:0px;
 }
 .navbar{
-  background-color:#fff;
+  background-color:#00d1c1;
+  opacity:0.9;
 }
 header .navbar{
   margin-bottom:0px;
@@ -40,7 +41,6 @@ header .navbar{
 }
 .common{
   background-color:#fff;
-  padding-top:100px;
 }
 .toggled{
   display:none;
@@ -76,6 +76,7 @@ hr{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color:#fff;
 }
 .isr{
   padding-top:10px;
@@ -302,7 +303,6 @@ hr{
   padding:10px 10px;
   background-color:#fff;
   margin-bottom:5px;
-  border:1px solid #bec8d2;
 }
 .hotel-img{
   float:left;

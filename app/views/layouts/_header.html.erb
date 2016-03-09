@@ -14,7 +14,7 @@
         <% unless @page_type=='index' %>
           <form class="navbar-form navbar-right" role="search">
             <div class="input-group">
-              <input type="text" id="location" class="form-control" placeholder="搜索" name="q">
+              <input type="text" id="location" class="form-control" placeholder="搜索..." name="q">
               <div class="input-group-btn">
                 <button id="search" class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
               </div>
@@ -22,10 +22,10 @@
           </form>
         <% end %>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/fishtrip/taiwan/">台湾民宿</a></li>
-          <li><a href="/fishtrip/japan/">日本民宿</a></li>
-          <li><a href="/fishtrip/thailand/">泰国民宿</a></li>
-          <li><a href="/fishtrip/korea/">韩国民宿</a></li>
+          <li class='navbar-link'><a href="/fishtrip/taiwan/">台湾民宿</a></li>
+          <li class='navbar-link'><a href="/fishtrip/japan/">日本民宿</a></li>
+          <li class='navbar-link'><a href="/fishtrip/thailand/">泰国民宿</a></li>
+          <li class='navbar-link'><a href="/fishtrip/korea/">韩国民宿</a></li>
         </ul>
       </div>
     </div>

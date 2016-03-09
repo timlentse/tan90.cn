@@ -1,20 +1,5 @@
 <footer class="common">
   <div class="container seo-area">
-    <% if @fishtrip_links %>
-      <% @fishtrip_links.each do |country, links| %>
-        <div class="clearfix">
-          <p class="head"><%= FishtripSeo::COUNTRY[country] %>特色民宿</p>
-          <ul>
-            <% links.each_slice(11) do |sli| %>
-              <% sli.each do |link| %>
-                <li><a class="footer-link" href="<%= link['uri'] %>"><%= link['text'] %></a></li>
-              <% end %>
-            <% end %>
-          </ul>
-        </div>
-        <hr>
-      <% end %>
-    <% end %>
     <% if @booking_hot_destinations %>
       <div class="clearfix">
         <% @booking_hot_destinations.each do |destination| %>

@@ -45,9 +45,10 @@
 $("#search").click(function (e) {
   e.preventDefault();
   locationName = $("#location").val();
-  if(locationName=="") {
-    locationName="台北";
-  }
+  alert('ss');
+    if(locationName=="") {
+      locationName="台北";
+    }
   window.location.href="/search/?q="+locationName;
 });
 </script>
