@@ -1,0 +1,10 @@
+<% if @comments and !@comments.empty? %>
+  <div class="comments">
+    <h3 class="head"> <%= @city.name_cn %>酒店点评</h3>
+    <% ix=1 %>
+    <% @comments.each do |k,comment| %>
+      <p class="hotel-comment" <%= "style=display:none" if ix>5 %>><%= k %>点评:<%= comment.good %></p>
+      <% ix+=1 %>
+    <% end %>
+  </div>
+<% end %>

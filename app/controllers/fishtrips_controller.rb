@@ -86,6 +86,7 @@ class FishtripsController < ApplicationController
       @seo = FishtripSeo.new(@page_type, @hotels)
       @tdk = @seo.tdk
       @breadcrumb = @seo.get_breadcrumb
+      @comments = FishtripComment.find_hotels_comments(@hotels)
       @footer_links = @seo.get_footer_links
       render 'list.html.erb'
     end

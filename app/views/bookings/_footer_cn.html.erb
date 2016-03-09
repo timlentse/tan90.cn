@@ -1,5 +1,6 @@
 <footer class="footer">
   <div class='container seo-area'>
+    <%= render 'comment' %>
     <% if @landmarks and !@landmarks.empty? %>
       <div id="landmarks" class="clearfix">
         <p class='head'><%= @city.name_cn %>热门地标</p>

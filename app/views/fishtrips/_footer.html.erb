@@ -1,5 +1,6 @@
 <footer class="footer">
   <div class="container seo-area">
+    <%= render 'comment' %>
     <% @footer_links.each do |country, links| %>
       <div class="clearfix">
         <h3 class="head"><%= FishtripSeo::COUNTRY[country] %>特色住宿</h3>
