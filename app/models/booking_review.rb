@@ -6,7 +6,7 @@ class BookingReview < ActiveRecord::Base
     lang = language=='cn' ? 0 : 1
     comments={}
     hotels.each do |hotel|
-      comment = hotel.booking_reviews.select(:good).where("good!='' and lang=?", lang).take
+      comment = hotel.booking_reviews.select(:good,:author).where("good!='' and lang=?", lang).take
       comments[hotel.name_cn]=comment if comment
     end
     comments

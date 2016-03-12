@@ -13,7 +13,7 @@
       <% if hotel_comments %>
         <ul>
           <% hotel_comments.each do |comment| %>
-            <li><p class="hotel-comment"><%= comment[0].empty? ? comment[1] : comment[0] %></p></li>
+            <li><p class="hotel-comment">来自<%= comment[2] %>：<%= comment[0].empty? ? comment[1] : comment[0] %></p></li>
           <% end %>
         </ul>
       <% end %>
