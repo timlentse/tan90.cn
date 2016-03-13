@@ -19,7 +19,7 @@ class BookingSeo
       when 'review'
         [{:text=>'首页', :url=>'/'},{:text=>"#{@country.name_cn}酒店",:url=>"/booking/#{@country.cc}/"},{:text=>"#{@location.name_cn}酒店",:url=>"/booking/#{@location.country_code}/#{@location.full_name}/"},{:text=>"#{@location.name_cn}酒店评论"}]
       when 'detail'
-        [{:text=>'首页', :url=>'/'}, {:text=>"#{@location.country_name}酒店", :url=>"/booking/#{@location.country_code}/"},{:text=>"#{@location.name_cn}酒店",:url=>"/booking/#{@location.country_code}/#{@location.full_name}/"},{:text=>"#{@hotel.name_cn}"}]
+        [{:text=>'首页', :url=>'/'}, {:text=>"#{@location.country_name}酒店", :url=>"/booking/#{@location.country_code}/"},{:text=>"#{@location.name_cn}酒店",:url=>"/booking/#{@location.country_code}/#{@location.full_name}/"},{:text=>"#{@hotel.name_cn.empty? ? @hotel.name : @hotel.name_cn}"}]
       end
     else
       case @page_type 
@@ -92,7 +92,7 @@ class BookingSeo
           :title=>"#{@hotel.name_cn}_#{city_cn}酒店",
           :keywords=>"#{@hotel.name_cn},#{city_cn}酒店,#{city_cn}住宿",
           :description=>"预订#{@hotel.name_cn}，为你提供#{city_cn}#{@location.number_of_hotels}多家酒店的预订服务，价格查询，酒店点评，住宿推荐。",
-          :h1=>"#{@hotel.name_cn}"
+          :h1=>"#{@hotel.name_cn.empty? ? @hotel.name : @hotel.name_cn}"
         }
       end
     else

@@ -8,7 +8,7 @@
     </div>
     <div class="hotel-body">
       <p>
-      <a class="hotel-name" href="/booking/<%= hotel.id %>/" target="_blank"><%= hotel.name_cn %></a>
+      <a class="hotel-name" href="/booking/<%= hotel.id %>/" target="_blank"><%= hotel.name_cn.empty? ? hotel.name : hotel.name_cn %></a>
       <% if hotel.star>0 %>
         <% hotel.star.times{ %>
           <span class="glyphicon glyphicon-star star"></span>

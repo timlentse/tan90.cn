@@ -6,7 +6,7 @@
       </a>
     </div>
     <div class="isr" >
-      <h2 class="itr-head"><a href="<%= @hotel.hotel_url %>?aid=897435" rel="nofollow"><%= @hotel.name_cn %></a>
+      <h2 class="itr-head"><a href="<%= @hotel.hotel_url %>?aid=897435" rel="nofollow"><%= @hotel.name_cn.empty? ? @hotel.name : @hotel.name_cn %></a>
         <span class="price pull-right">￥<%= @hotel.minrate %></span>
       </h2>
       <p style="padding-left:10px;"><%= @hotel.desc_cn %></p>
@@ -40,7 +40,7 @@
   </div>
   <div class="col-md-6 cus-padding" >
     <div class="comment">
-      <h3 class="comment-title"><%= @hotel.name_cn %>点评</h3>
+      <h3 class="comment-title"><%= @hotel.name_cn.empty? ? @hotel.name : @hotel.name_cn %>点评</h3>
     </div>
     <hr>
     <% @comments.each do |comment| %>
