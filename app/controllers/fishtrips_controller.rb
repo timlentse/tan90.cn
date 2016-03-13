@@ -2,6 +2,7 @@ class FishtripsController < ApplicationController
   before_filter :set_params, :set_spider_track
 
   def index
+    log
     redirect_to 'http://www.fishtrip.cn/?referral_id=587681955', :status=>302 unless @spider_track
     @page_type = 'index'
     @seo = FishtripSeo.new(@page_type, [])
@@ -23,6 +24,7 @@ class FishtripsController < ApplicationController
         render 'list.html.erb'
       end
     else
+      log
       redirect_to "http://www.fishtrip.cn/#{@params[:country]}/?referral_id=587681955", :status=>302
     end
   end
@@ -33,6 +35,7 @@ class FishtripsController < ApplicationController
       @params[:city_id] = find_city_id(params[:city_en])
       render_list_page
     else
+      log
       redirect_to "http://www.fishtrip.cn/#{@params[:country]}/#{params[:city_en]}/?referral_id=587681955", :status=>302
     end
   end
@@ -50,6 +53,7 @@ class FishtripsController < ApplicationController
       render_detail_page
       @seo_articles = FishtripArticle.find_seo_article({:city_en=>@hotel.city_en,:country=>@hotel.country})
     else
+      log
       redirect_to @hotel.shared_uri, :status=>302
     end
   end
@@ -119,6 +123,11 @@ class FishtripsController < ApplicationController
     @tdk = @seo.tdk
     @breadcrumb = @seo.get_breadcrumb
     @recommend_hotels = FishtripHotel.select_recommend_hotels(@hotel.city_id, @hotel.id)
+  end
+
+  def log
+    logger = Logger.new('log/user.log')
+    logger.info("GET #{request.remote_ip}   #{request.headers['REQUEST_URI']}   #{request.headers['HTTP_USER_AGENT']}")
   end
 
 end
