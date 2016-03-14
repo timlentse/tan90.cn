@@ -7,7 +7,7 @@
             <% if crumb[:url] %>
               <li><a href="<%= crumb[:url] %>"><%= crumb[:text] %></a></li>
             <% else %>
-              <li class="active"><span><%= crumb[:text] %></span></li>
+              <li class="active"><h1 class='breadcrumb-last'><%= crumb[:text] %></h1></li>
             <% end %>
           <% end %>
         </ol>
@@ -17,7 +17,7 @@
             <% if crumb[:url] %>
               <a href="<%= crumb[:url] %>" class="label label-comment"><%= crumb[:text] %></a>
             <% else %>
-              <span class="label label-last"> <%= crumb[:text] %> </span>
+              <h1 class="label label-last"> <%= crumb[:text] %> </h1>
             <% end %>
           <% end %>
         </div>
