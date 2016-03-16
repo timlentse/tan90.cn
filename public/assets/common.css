@@ -9345,7 +9345,8 @@ header .navbar {
 /* line 41, /Users/timlentse/dev/tan90.cn/app/assets/stylesheets/commons.scss */
 .common {
   background-color: #fff;
-  padding-top: 100px;
+  padding-top: 20px;
+  margin-top:10px;
 }
 
 /* line 45, /Users/timlentse/dev/tan90.cn/app/assets/stylesheets/commons.scss */
@@ -9600,6 +9601,9 @@ h2 {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.hotel-name a {
+  color:#0896ff;
+}
 
 /* line 214, /Users/timlentse/dev/tan90.cn/app/assets/stylesheets/commons.scss */
 .phone {
@@ -9773,13 +9777,15 @@ hr {
   width: 220px;
   margin: 10px 10px 10px 10px;
 }
-
+.city-minsu{
+  margin-bottom:0px;
+  color:#999;
+}
 /* line 337, /Users/timlentse/dev/tan90.cn/app/assets/stylesheets/commons.scss */
 .city-img {
   width: 220px;
   height: 200px;
 }
-
 /* line 341, /Users/timlentse/dev/tan90.cn/app/assets/stylesheets/commons.scss */
 .city-desc {
   text-align: center;
@@ -9822,7 +9828,20 @@ hr {
   margin-bottom: 5px;
   color: #003580;
 }
+.icon-bar{
+  background-color:#fff;
+}
 
+/* line 457, /Users/timlentse/dev/tan90.cn/app/assets/stylesheets/commons.scss */
+.seo-article {
+  padding-top: 10px;
+  background-color: #fff;
+}
+
+/* line 461, /Users/timlentse/dev/tan90.cn/app/assets/stylesheets/commons.scss */
+.star {
+  color: #ffec50;
+}
 @media (max-width: 768px) {
   .breadcrumb-last{
     margin: 0 0 ;
@@ -9952,14 +9971,4 @@ hr {
   .navbar-header {
     width: 300px;
   }
-}
-/* line 457, /Users/timlentse/dev/tan90.cn/app/assets/stylesheets/commons.scss */
-.seo-article {
-  padding-top: 10px;
-  background-color: #fff;
-}
-
-/* line 461, /Users/timlentse/dev/tan90.cn/app/assets/stylesheets/commons.scss */
-.star {
-  color: #ffec50;
 }

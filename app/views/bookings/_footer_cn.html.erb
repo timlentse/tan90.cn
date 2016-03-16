@@ -3,7 +3,7 @@
     <%= render 'comment' unless @page_type=='detail' %>
     <% if @landmarks and !@landmarks.empty? %>
       <div id="landmarks" class="clearfix">
-        <p class='head'><%= @city.name_cn %>热门地标</p>
+        <h3 class='head'><%= @city.name_cn %>热门地标</h3>
         <ul>
           <% @landmarks.each do |landmark| %>
             <li><p class="landmark"><a href="<%=landmark[:url] %>"><%= landmark[:text] %></a></p></li>
@@ -13,7 +13,7 @@
     <% end %>
     <% if @airports and !@airports.empty? %>
       <div id="airports" class="clearfix">
-        <p class='head'><%= @city.name_cn %>机场附近酒店</p>
+        <h3 class='head'><%= @city.name_cn %>机场附近酒店</h3>
         <ul>
           <% @airports.each do |airport| %>
             <li><p class="landmark"><a href="<%=airport[:url] %>"><%= airport[:text] %>附近酒店</a></p></li>

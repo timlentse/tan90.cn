@@ -1,28 +1,26 @@
 <% if @breadcrumb and !@breadcrumb.empty? %>
-  <nav class='container'>
-    <div class='row' id="breadcrumb">
-      <% if @is_mobile %>
-        <ol class="breadcrumb">
-          <% @breadcrumb.each do |crumb| %>
-            <% if crumb[:url] %>
-              <li><a href="<%= crumb[:url] %>"><%= crumb[:text] %></a></li>
-            <% else %>
-              <li class="active"><h1 class='breadcrumb-last'><%= crumb[:text] %></h1></li>
-            <% end %>
+  <nav class='container' id="breadcrumb">
+    <% if @is_mobile %>
+      <ol class="breadcrumb">
+        <% @breadcrumb.each do |crumb| %>
+          <% if crumb[:url] %>
+            <li><a href="<%= crumb[:url] %>"><%= crumb[:text] %></a></li>
+          <% else %>
+            <li class="active"><h1 class='breadcrumb-last'><%= crumb[:text] %></h1></li>
           <% end %>
-        </ol>
-      <% else %>
-        <div>
-          <% @breadcrumb.each do |crumb| %>
-            <% if crumb[:url] %>
-              <a href="<%= crumb[:url] %>" class="label label-comment"><%= crumb[:text] %></a>
-            <% else %>
-              <h1 class="label label-last"> <%= crumb[:text] %> </h1>
-            <% end %>
+        <% end %>
+      </ol>
+    <% else %>
+      <ul>
+        <% @breadcrumb.each do |crumb| %>
+          <% if crumb[:url] %>
+            <li style="display:inline"><a href="<%= crumb[:url] %>" class="label label-comment"><%= crumb[:text] %></a></li>
+          <% else %>
+            <li style="display:inline"><h1 class="label label-last"><%= crumb[:text] %></h1></li>
           <% end %>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </ul>
+    <% end %>
   </nav>
 <% end %>
 

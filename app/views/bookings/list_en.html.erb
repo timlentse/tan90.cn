@@ -5,13 +5,11 @@
     <%= render 'hotel_en' %>
   </div>
   <% if @hotels.size==21 %>
-    <div id="pagination">
-      <nav>
-        <ul class="pager">
-          <li class="next"><a data-page='2'>Next<span aria-hidden="true">&rarr;</span></a></li>
-        </ul>
-      </nav>
-    </div>
+    <nav id="pagination">
+      <ul class="pager">
+        <li class="next"><a data-page='2'>Next<span aria-hidden="true">&rarr;</span></a></li>
+      </ul>
+    </nav>
   <% end %>
 </article>
 <%= render "footer_en" %>

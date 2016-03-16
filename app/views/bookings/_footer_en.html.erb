@@ -2,7 +2,7 @@
   <div class='container seo-area'>
     <% if @landmarks and !@landmarks.empty? %>
       <div id="landmarks" class="clearfix">
-        <p class='head'>Hot landmarks in <%= @city.name %></p>
+        <h3 class='head'>Hot landmarks in <%= @city.name %></h3>
         <ul>
           <% @landmarks.each do |landmark| %>
             <li><p class="landmark"><a href="<%=landmark[:url] %>"><%= landmark[:text] %></a></p></li>
@@ -12,7 +12,7 @@
     <% end %>
     <% if @airports and !@airports.empty? %>
       <div id="airports" class="clearfix">
-        <p class='head'>Airports in <%= @city.name %></p>
+        <h3 class='head'>Airports in <%= @city.name %></h3>
         <ul>
           <% @airports.each do |airport| %>
             <li><p class="landmark"><a href="<%=airport[:url] %>"><%= airport[:text] %></a></p></li>

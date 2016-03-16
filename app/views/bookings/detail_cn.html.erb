@@ -20,12 +20,10 @@
           <span class="glyphicon glyphicon-star-empty"></span>
           <span class="glyphicon glyphicon-star-empty"></span>
         <% else %>
-          <% @hotel.review_score.to_i.times{ %>
+          <%= review_score=(@hotel.review_score/2).to_i+1 %>
+          <% review_score.times{ %>
             <span class="glyphicon glyphicon-star"></span>
           <% } %>
-          <% if (@hotel.review_score-@hotel.review_score.to_i)>0 %>
-            <span class="glyphicon glyphicon-star-empty"></span>
-          <% end %>
         <% end %>
         <%= @hotel.review_score %> 分
         </p>
@@ -52,12 +50,10 @@
           <span class="glyphicon glyphicon-star-empty"></span>
           <span class="glyphicon glyphicon-star-empty"></span>
         <% else %>
-          <% comment.score.to_i.times{ %>
+          <% comment_score = (comment.score.to_i/2).to_i %>
+          <% comment_score.times{ %>
             <span class="glyphicon glyphicon-star"></span>
           <% } %>
-          <% if (comment.score-comment.score.to_i)>0 %>
-            <span class="glyphicon glyphicon-star-empty"></span>
-          <% end %>
         <% end %>
         <%= comment.score %>分 <span class="author"><%= comment.author %></span>
         <span class="pull-right"><%= comment.comment_time %></span>
