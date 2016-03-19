@@ -4,10 +4,12 @@
   <div class='row col-md-9' id="hotel-list">
     <%= render 'landmark_cn' %>
   </div>
-  <div class='col-md-3 landmark-desc'>
-    <h3><%= @location.name_cn %>简介</h3>
-    <p><%= @location.content %></p>
-  </div>
+  <% unless @location.content.empty? %>
+    <div class='col-md-3 landmark-desc'>
+      <h3><%= @location.name_cn %>简介</h3>
+      <p><%= @location.content %></p>
+    </div>
+  <% end %>
   <% if @hotels.size==21 %>
     <nav id="pagination">
       <ul class="pager">

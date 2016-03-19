@@ -21,7 +21,7 @@
         <p class="booking pull-right"><a href="<%= hotel.hotel_url %>?aid=897435" target="_blank"  rel='nofollow' class="btn btn-warning" role="button">查看详情</a> 
       <% else %>
         <p class="booking">
-        <strong class="price">￥<%= hotel.minrate %></strong>/晚
+        <strong class="price"><%= hotel.minrate %></strong><%= hotel.currencycode %>/晚
         <a href="<%= hotel.hotel_url %>?aid=897435" target="_blank" class="btn btn-warning pull-right" rel='nofollow' role="button">预订</a> 
         </p>
       <% end %>

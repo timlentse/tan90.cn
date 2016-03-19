@@ -9489,6 +9489,8 @@ hr {
 .comment-title {
   font-size: 1.3em;
   text-align: center;
+  margin-bottom:0px;
+  margin-top:0px;
 }
 
 /* line 139, /Users/timlentse/dev/tan90.cn/app/assets/stylesheets/commons.scss */
@@ -9665,6 +9667,9 @@ h2 {
 .booking {
   margin: 0 0 4px 0;
 }
+.booking a{
+  width:80px;
+}
 
 /* line 259, /Users/timlentse/dev/tan90.cn/app/assets/stylesheets/commons.scss */
 .ratings a {
@@ -9813,7 +9818,7 @@ hr {
 }
 
 /* line 361, /Users/timlentse/dev/tan90.cn/app/assets/stylesheets/commons.scss */
-.landmark {
+.seo-area li p {
   font-size: 0.9em;
   white-space: nowrap;
   overflow: hidden;
@@ -9842,6 +9847,25 @@ hr {
 .star {
   color: #ffec50;
 }
+.nearby-hotels{
+  padding:10px 10px;
+  display:block;
+  line-height:1.4;
+  margin-bottom:10px;
+  background-color:#fff;
+  border-radius:4px;
+}
+.nearby-hotel{
+  padding:0px 0px;
+}
+.nearby-hotel p {
+  padding-left:10px;
+}
+.nearby-hotels h3{
+  padding-left:10px;
+  color:#888;
+  margin-top:0px;
+}
 @media (max-width: 768px) {
   .breadcrumb-last{
     margin: 0 0 ;
@@ -9856,6 +9880,11 @@ hr {
   .hotel-img {
     width: 120px;
     height: 120px;
+  }
+  .nearby-hotels img{
+    width:100%;
+    height:120px;
+    padding:10px 10px;
   }
 
   /* line 380, /Users/timlentse/dev/tan90.cn/app/assets/stylesheets/commons.scss */
@@ -9908,6 +9937,10 @@ hr {
     width: 100%;
     height: 220px;
   }
+  .nearby-hotels img{
+    width:100%;
+    height:220px;
+  }
 
   /* line 414, /Users/timlentse/dev/tan90.cn/app/assets/stylesheets/commons.scss */
   .footer {
@@ -9942,13 +9975,20 @@ hr {
   .landmark-desc {
     margin-left: 30px;
   }
+  .landmark-desc p{
+    color:#888;
+  }
 
   /* line 437, /Users/timlentse/dev/tan90.cn/app/assets/stylesheets/commons.scss */
   .hotel-img {
     width: 200px;
     height: 200px;
   }
-
+  .nearby-hotels img{
+    width:100%;
+    height:180px;
+    padding:10px 10px;
+  }
   /* line 441, /Users/timlentse/dev/tan90.cn/app/assets/stylesheets/commons.scss */
   .hotel-body {
     padding-left: 210px;

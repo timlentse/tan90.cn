@@ -16,4 +16,9 @@ class BookingHotel < ActiveRecord::Base
     self.where(:id=>hotel_ids)
   end
 
+  def get_nearby_hotels
+    hotel_ids=JSON.parse(self.nearby_hotels)
+    self.class.select(:id,:name_cn,:address_cn,:minrate,:photo_url,:currencycode).where(id:hotel_ids).take(6)
+  end
+
 end

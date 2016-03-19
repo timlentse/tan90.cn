@@ -156,7 +156,13 @@ class BookingSeo
     end
   end
 
-  def get_footer_links
+  def get_keywords
+    key="keywords_#{@page_type}_#{@location.id}"
+    @redis = Redis.new
+    keywords = @redis.get(key)
+    if keywords and keywords!='[]'
+      return JSON.parse(keywords)
+    end
   end
 
   def get_landmarks_with_city

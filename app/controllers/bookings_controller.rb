@@ -60,6 +60,7 @@ class BookingsController < ApplicationController
     find_city_by_full_name(@hotel.city_unique)
     set_seo_elements('detail')
     @comments = BookingReview.find_comments_with_hotel(@hotel, @language)
+    @nearby_hotels = @hotel.get_nearby_hotels
     render "detail_#{@language}"
   end
 
@@ -91,6 +92,7 @@ class BookingsController < ApplicationController
     @seo = BookingSeo.new(@location, @page_type, @language, @hotel)
     @tdk = @seo.get_tdk
     @breadcrumb = @seo.get_breadcrumb
+    @keywords = @seo.get_keywords
   end
 
   def get_language

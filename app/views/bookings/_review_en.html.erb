@@ -21,7 +21,7 @@
         <p class="booking pull-right"><a href="<%= hotel.hotel_url %>?aid=897435" target="_blank"  rel='nofollow' class="btn btn-warning" role="button">View detail</a> 
       <% else %>
         <p class="booking">
-        <strong class="price">$<%= hotel.minrate %></strong> per night
+        <strong class="price"><%= hotel.minrate %></strong><%= hotel.currencycode %>/ per night
         <a href="<%= hotel.hotel_url %>?aid=897435" target="_blank" class="btn btn-warning pull-right" rel='nofollow' role="button">Select your room</a> 
         </p>
       <% end %>

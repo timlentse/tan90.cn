@@ -11,7 +11,7 @@
       </h2>
       <p style="padding-left:10px;"><%= @hotel.desc_en %></p>
       <div class="ratings">
-        <p class="pull-right"><a href="<%= @hotel.hotel_url %>?aid=897435" rel="nofollow"><%= @hotel.review_score %></a></p>
+        <p class="pull-right"><%= @hotel.review_score %>分</p>
         <p>
         <% if @hotel.review_score.nil? %>
           <span class="glyphicon glyphicon-star-empty"></span>
@@ -20,12 +20,11 @@
           <span class="glyphicon glyphicon-star-empty"></span>
           <span class="glyphicon glyphicon-star-empty"></span>
         <% else %>
-          <%= review_score=(@hotel.review_score/2).to_i+1 %>
+          <% review_score=(@hotel.review_score/2).to_i+1 %>
           <% review_score.times{ %>
             <span class="glyphicon glyphicon-star"></span>
           <% } %>
         <% end %>
-        <%= @hotel.review_score %>
         </p>
       </div>
     </div>
