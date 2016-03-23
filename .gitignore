@@ -24,3 +24,4 @@
 /lib/tasks/config.rb
 /config/secrets.yml
 /.gitconfig
+/Gemfile.lock
