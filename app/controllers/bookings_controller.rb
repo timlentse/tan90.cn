@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
-  before_filter :set_params
-  before_filter :find_city_by_full_name, only:['city_list_by_get','city_list_by_post', 'city_review']
-  before_filter :find_landmark_by_id, only: ['landmark'] 
+  before_action :set_params
+  before_action :find_city_by_full_name, only:['city_list_by_get','city_list_by_post', 'city_review']
+  before_action :find_landmark_by_id, only: ['landmark'] 
 
   def country
     @cities = BookingCity.where("country_code=? and city_ranking>0", params[:country])
@@ -57,6 +57,7 @@ class BookingsController < ApplicationController
   def detail
     @hotel = BookingHotel.find_by(:id=>params[:id])
     render_404 unless @hotel
+    redirect_to "#{@hotel.hotel_url}?aid=897435", :status=>302 and return unless @spider_tracked
     find_city_by_full_name(@hotel.city_unique)
     set_seo_elements('detail')
     @comments = BookingReview.find_comments_with_hotel(@hotel, @language)

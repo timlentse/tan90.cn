@@ -8,9 +8,14 @@
     </div>
     <div class="hotel-body">
       <p class="hotel-name">
-      <a href="/booking/<%= hotel.id %>/" target="_blank">
-        <%= hotel.name %>
-      </a>
+      <a href="/booking/<%= hotel.id %>/" target="_blank"><%= hotel.name %></a>
+      </p>
+      <p> 
+      <% if hotel.star>0 %>
+        <% hotel.star.times{ %>
+          <span class="glyphicon glyphicon-star star"></span>
+        <% } %>
+      <% end %>
       </p>
       <p class="location"><strong><%="location:"%></strong><%= location_name %></p>
       <p class='address'><strong><%= "address:" %></strong><%= hotel.address %></p>

@@ -1,14 +1,16 @@
 <% location_name = @location.name_cn %>
 <% @hotels.each_with_index do |hotel, ix| %>
-  <div class="hotel-item clearfix">
+  <div class="hotel-item clearfix" data-hotelid="<%= hotel.id %>">
     <div class="hotel-pic"> 
       <a href="/booking/<%= hotel.id %>/" target="_blank">
         <img class="hotel-img" src="<%= hotel.photo_url %>" alt="<%= location_name %>酒店图片_<%= ix+1 %>">
       </a>
     </div>
     <div class="hotel-body">
-      <p>
-      <a class="hotel-name" href="/booking/<%= hotel.id %>/" target="_blank"><%= hotel.name_cn.empty? ? hotel.name : hotel.name_cn %></a>
+      <p class="hotel-name">
+      <a href="/booking/<%= hotel.id %>/" target="_blank"><%= hotel.name_cn.empty? ? hotel.name : hotel.name_cn %></a>
+      </p>
+      <p> 
       <% if hotel.star>0 %>
         <% hotel.star.times{ %>
           <span class="glyphicon glyphicon-star star"></span>

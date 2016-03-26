@@ -1,5 +1,5 @@
 class FishtripsController < ApplicationController
-  before_filter :set_params, :set_spider_track
+  before_action :set_params
 
   def country
     @page_type = 'country'
@@ -30,19 +30,16 @@ class FishtripsController < ApplicationController
   def detail
     @page_type = 'detail'
     @hotel = FishtripHotel.find_by(:fishtrip_hotel_id=>params[:id])
-    render_404 unless
-    if @spider_track
-      @tuijian = @hotel.tuijian.nil? ? [] : JSON.parse(@hotel.tuijian)
-      @comments = @hotel.fishtrip_comments
-      @seo = FishtripSeo.new(@page_type, @hotel)
-      @footer_links = @seo.get_footer_links
-      @tdk = @seo.tdk
-      @breadcrumb = @seo.get_breadcrumb
-      @recommend_hotels = FishtripHotel.select_recommend_hotels(@hotel.city_id, @hotel.id)
-      @seo_articles = FishtripArticle.find_seo_article({:city_en=>@hotel.city_en,:country=>@hotel.country})
-    else 
-      redirect_to @hotel.shared_uri, :status=>302
-    end
+    render_404 unless @hotel
+    redirect_to @hotel.shared_uri, :status=>302 and return unless @spider_tracked
+    @tuijian = @hotel.tuijian.nil? ? [] : JSON.parse(@hotel.tuijian)
+    @comments = @hotel.fishtrip_comments
+    @seo = FishtripSeo.new(@page_type, @hotel)
+    @footer_links = @seo.get_footer_links
+    @tdk = @seo.tdk
+    @breadcrumb = @seo.get_breadcrumb
+    @recommend_hotels = FishtripHotel.select_recommend_hotels(@hotel.city_id, @hotel.id)
+    @seo_articles = FishtripArticle.find_seo_article({:city_en=>@hotel.city_en,:country=>@hotel.country})
   end
 
   def articles
@@ -95,10 +92,6 @@ class FishtripsController < ApplicationController
   def search_city_by_keyword
     @city = FishtripCity.find_by(:name=>params[:q])
     @city.nil? ? 0 : @city.id
-  end
-
-  def set_spider_track
-    @spider_track = request.bot?
   end
 
 end
