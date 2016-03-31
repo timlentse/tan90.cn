@@ -2,12 +2,15 @@ class FishtripsController < ApplicationController
   before_filter :set_params, :set_spider_track
 
   def index
-    log
-    redirect_to 'http://www.fishtrip.cn/?referral_id=587681955', :status=>302 unless @spider_track
-    @page_type = 'index'
-    @seo = FishtripSeo.new(@page_type, [])
-    @tdk = @seo.tdk
-    @footer_links = @seo.get_footer_links
+    if @spider_track
+      log
+      redirect_to 'http://www.fishtrip.cn/?referral_id=587681955', :status=>302
+    else
+      @page_type = 'index'
+      @seo = FishtripSeo.new(@page_type, [])
+      @tdk = @seo.tdk
+      @footer_links = @seo.get_footer_links
+    end
   end
 
   def country
