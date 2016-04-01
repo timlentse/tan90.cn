@@ -1,10 +1,12 @@
 <article class="container cities" id="hotel-list">
   <% @cities.each do |city| %>
-    <div class="city">
-      <a href="/booking/<%= "#{city.country_code}/#{city.full_name}" %>/" >
-        <img class="city-img" src="<%= city.city_img %>" alt="<%= city.name_cn %>酒店图片"/>
-      </a>
-      <span class="city-desc"> <%= city.name_cn %> 共<%= city.number_of_hotels %>家酒店</span>
+    <div class="col-xs-12 col-sm-4 col-md-3 cus-padding">
+      <div class="thumbnail">
+        <a href="/booking/<%= "#{city.country_code}/#{city.full_name}" %>/" >
+          <img src="<%= city.city_img %>" alt="<%= city.name_cn %>酒店图片"/>
+        </a>
+        <span class="city-desc"> <%= city.name_cn %> 共<%= city.number_of_hotels %>家酒店</span>
+      </div>
     </div>
   <% end %>
   </div>

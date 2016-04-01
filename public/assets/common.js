@@ -18998,5 +18998,11 @@
       window.location.href="/fishtrip/search/?q="+location;
     });
 
+    $(".hotel-item").click(function(e){
+      e.preventDefault();
+      url = "/booking/"+$(this).attr("data-hotelid");  
+      window.location.href=url;
+    })
+
   });
 

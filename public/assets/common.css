@@ -9794,14 +9794,19 @@ hr {
 /* line 341, /Users/timlentse/dev/tan90.cn/app/assets/stylesheets/commons.scss */
 .city-desc {
   text-align: center;
-  font-size: 1.3em;
+  font-size: 1.2em;
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
   position: absolute;
   bottom: 0px;
   left: 0px;
-  width: 220px;
+  width:200px;
   padding: 10px 0;
+  margin-left:25px;
+  margin-bottom:30px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* line 352, /Users/timlentse/dev/tan90.cn/app/assets/stylesheets/commons.scss */
