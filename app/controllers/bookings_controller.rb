@@ -72,8 +72,8 @@ class BookingsController < ApplicationController
     @filter_args[:cc1] = params[:country]
   end
 
-  def find_city_by_full_name(full_name=params[:city_unique])
-    @city = BookingCity.find_by(:full_name=>full_name)
+  def find_city_by_full_name
+    @city = BookingCity.find_by(:country_code=>params[:country],:full_name=>params[:city_unique])
     render_404 unless @city
   end
 

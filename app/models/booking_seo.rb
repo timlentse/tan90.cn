@@ -168,7 +168,7 @@ class BookingSeo
   def get_landmarks_with_city
     landmarks = []
     return if @location.name.empty? 
-    BookingLandmark.where(:city=>@location.name).find_each do |landmark|
+    BookingLandmark.where(:country_code=>@location.country_code,:city=>@location.name).find_each do |landmark|
       a_text = @lang=='cn' ? "#{landmark.name_cn}附近酒店" : landmark.name
       landmarks.push({:text=>a_text,:url=>"/booking/landmark/#{landmark.id}/"})
     end
