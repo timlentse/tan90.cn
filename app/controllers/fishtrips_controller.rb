@@ -3,13 +3,13 @@ class FishtripsController < ApplicationController
 
   def index
     if @spider_track
-      log
-      redirect_to 'http://www.fishtrip.cn/?referral_id=587681955', :status=>302
-    else
       @page_type = 'index'
       @seo = FishtripSeo.new(@page_type, [])
       @tdk = @seo.tdk
       @footer_links = @seo.get_footer_links
+    else
+      log
+      redirect_to 'http://www.fishtrip.cn/?referral_id=587681955', :status=>302
     end
   end
 
