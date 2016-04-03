@@ -58,7 +58,8 @@ class BookingsController < ApplicationController
     @hotel = BookingHotel.find_by(:id=>params[:id])
     render_404 unless @hotel
     redirect_to "#{@hotel.hotel_url}?aid=897435", :status=>302 and return unless @spider_tracked
-    find_city_by_full_name(@hotel.city_unique)
+    params[:country],params[:city_unique] = @hotel.cc1,@hotel.city_unique
+    find_city_by_full_name
     set_seo_elements('detail')
     @comments = BookingReview.find_comments_with_hotel(@hotel, @language)
     @nearby_hotels = @hotel.get_nearby_hotels
