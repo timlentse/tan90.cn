@@ -1,0 +1,17 @@
+<article class="container" style="margin-top:50px">
+  <p>共查询到<span style="color:red;font-size:1.3em"><%= @count %></span>个代理</p>
+  <div id="proxy-list" class="row">
+    <%= render "proxy" %>
+  </div>
+  <p class="attention" style="color:#999">注：表中的代理来源于网络，不确保所有都能用，后台任务会每天更新一次，确保可用性，代理资源有限，请合理合法使用。</p>
+  <p style="color:#999">联系我：<a href="mailto:tinglenxan@gmail.com">tinglenxan@gmail.com</a></p>
+  <div class="row">
+    <nav>
+      <ul class="pager">
+        <% if @proxies.size==20 %>
+          <li class="next"><a data-page='2'>下一页<span aria-hidden="true">&rarr;</span></a></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</article>

@@ -1,0 +1,20 @@
+<table class="table table-hover table-bordered table-responsive" style="color:#777">
+  <tr class="active" style="font-size:1.2em;font-weight:bold">
+    <td class="active">IP</td>
+    <td class="success">Port</td>
+    <td class="info">类型</td>
+    <td class="warning">匿名性</td>
+    <td class="danger">位置</td>
+    <td class="info">更新时间</td>
+  </tr>
+  <% @proxies.each do |proxy| %>
+    <tr>
+      <td class="active"><%=proxy.ip%></td>
+      <td class="success"><%=proxy.port%></td>
+      <td class="info"><%=proxy.http_type%></td>
+      <td class="warning"><%=proxy.safety%></td>
+      <td class="danger"><%=proxy.location%></td>
+      <td class="info"><%= human_readable_time_format(proxy.updated_at)%></td>
+    </tr>
+  <% end %>
+</table>
