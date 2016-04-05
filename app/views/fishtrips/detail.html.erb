@@ -37,6 +37,8 @@
       <a class="btn btn-warning pull-right" href="<%= @hotel.shared_uri %>" rel="nofollow">预订房间</a>
       </p>
       <hr>
+      <%= render 'rooms' %>
+      <hr>
       <ul>
         <% unless @tuijian.empty? %>
           <li><strong><%= @hotel.name %>推荐理由</strong></li>

@@ -22,12 +22,18 @@
         <% end %>
         <span class='pull-right score'>用户评分：<%= hotel.score  %></span>
         </p>
-
+        <% rooms=JSON.parse(hotel.rooms) %>
+        <% if rooms and !rooms.empty? %>
+          <ul style="display:none">
+            <% rooms.each do |room| %>
+              <li><p style="color:#9b9b9b"><%= room['info'] %><span class="pull-right"><%= room['price'] %><span></p></li>
+            <% end %>
+          </ul>
+        <% end %>
         <% if hotel.price==0 %>
-          <p class="booking"><a href="/<%= hotel.fishtrip_hotel_id %>/" target="_blank" class="btn btn-primary btn-xs" role="button">查看详情</a> 
+          <p class="booking"><a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/" target="_blank" class="btn btn-primary" role="button">查看详情</a> 
         <% else %>
-          <p class="booking"> 
-          <a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/" target="_blank" class="btn btn-primary" role="button">预订</a> 
+          <p class="booking"><a href="/fishtrip/<%= hotel.fishtrip_hotel_id %>/" target="_blank" class="btn btn-primary" role="button">预订</a> 
           <span class="pull-right"><span class="dollor-sign">￥</span><strong class="price"><%= hotel.price %></strong></span>
           </p>
         <% end %>

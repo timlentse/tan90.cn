@@ -40,6 +40,7 @@ class FishtripsController < ApplicationController
     @breadcrumb = @seo.get_breadcrumb
     @recommend_hotels = FishtripHotel.select_recommend_hotels(@hotel.city_id, @hotel.id)
     @seo_articles = FishtripArticle.find_seo_article({:city_en=>@hotel.city_en,:country=>@hotel.country})
+    @rooms = JSON.parse(@hotel.rooms)
   end
 
   def articles
