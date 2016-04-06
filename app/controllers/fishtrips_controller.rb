@@ -32,7 +32,7 @@ class FishtripsController < ApplicationController
     @hotel = FishtripHotel.find_by(:fishtrip_hotel_id=>params[:id])
     render_404 unless @hotel
     redirect_to @hotel.shared_uri, :status=>302 and return unless @spider_tracked
-    @tuijian = @hotel.tuijian.nil? ? [] : JSON.parse(@hotel.tuijian)
+    @tuijian = @hotel.tuijian.empty? ? [] : JSON.parse(@hotel.tuijian)
     @comments = @hotel.fishtrip_comments
     @seo = FishtripSeo.new(@page_type, @hotel)
     @footer_links = @seo.get_footer_links
