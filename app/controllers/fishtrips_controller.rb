@@ -2,6 +2,7 @@ class FishtripsController < ApplicationController
   before_action :set_params
 
   def country
+    redirect_to "http://www.fishtrip.cn/#{@target_args[:country]}/?referral_id=587681955", :status=>302 and return unless @spider_tracked
     @page_type = 'country'
     @hotels = FishtripHotel.search_hot(@target_args[:country])
     if @hotels.empty?
@@ -16,6 +17,7 @@ class FishtripsController < ApplicationController
   end
 
   def city_list_by_get
+    redirect_to "http://www.fishtrip.cn/#{@target_args[:country]}/#{params[:city_en]}/?referral_id=587681955", :status=>302 and return unless @spider_tracked
     @page_type = 'city'
     @target_args[:city_id] = find_city_id(params[:city_en])
     render_list_page
