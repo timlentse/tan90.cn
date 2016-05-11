@@ -9427,12 +9427,10 @@ hr {
 
 /* line 94, /Users/timlentse/dev/tan90.cn/app/assets/stylesheets/commons.scss */
 .search {
-  margin-top: 10%;
-  margin-bottom: 10%;
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  padding-top: 20px;
-  padding-bottom: 10px;
+  background-image:url(/assets/banner.jpeg);
+  padding-top: 10%;
+  padding-bottom: 10%;
+  width:1140px;
 }
 
 /* line 101, /Users/timlentse/dev/tan90.cn/app/assets/stylesheets/commons.scss */
