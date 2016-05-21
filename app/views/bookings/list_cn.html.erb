@@ -1,3 +1,4 @@
+<%= render 'layouts/hengfu' %>
 <% number = @location.number_of_hotels==0 ? @hotels.size : @location.number_of_hotels %>
 <article class="container">
   <div class="row description">查询到<%= "#{@location.name_cn}共有#{number}" %>家酒店</div>

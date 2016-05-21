@@ -4,12 +4,16 @@
   <div class='row col-md-9' id="hotel-list">
     <%= render 'landmark_cn' %>
   </div>
-  <% unless @location.content.empty? %>
-    <div class='col-md-3 landmark-desc'>
+  <div class='col-md-3 landmark-desc'>
+    <% unless @location.content.empty? %>
       <h3><%= @location.name_cn %>简介</h3>
       <p><%= @location.content %></p>
-    </div>
-  <% end %>
+    <% end %>
+    <%= render 'layouts/booking_sousuo' %>
+    <%= render 'layouts/bianhengfu' %>
+    <%= render 'layouts/bianhengfu_2' %>
+    <%= render 'layouts/bianhengfu_3' %>
+  </div>
   <% if @hotels.size==21 %>
     <nav id="pagination">
       <ul class="pager">
