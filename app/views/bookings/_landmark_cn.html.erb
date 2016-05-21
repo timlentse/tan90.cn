@@ -1,6 +1,6 @@
 <% location_name = @location.name_cn %>
 <% @hotels.each_with_index do |hotel, ix| %>
-  <div class="hotel-item clearfix">
+  <div class="hotel-item clearfix" data-hotelid="<%= hotel.id %>">
     <div class="hotel-pic"> 
       <a href="/booking/<%= hotel.id %>/" target="_blank">
         <img class="hotel-img" src="<%= hotel.photo_url %>" alt="<%= location_name %>酒店-图片_<%= ix %>">
