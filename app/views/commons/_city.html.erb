@@ -3,7 +3,7 @@
     <h2 class="city-title"><%= FishtripSeo::COUNTRY[country] %>热门民宿</h2>
     <% cities.each do |city| %>
       <div class="col-xs-12 col-sm-6 col-md-4 cus-padding">
-        <div class="thumbnail">
+        <div class="thumbnail" style="margin-bottom:5px">
           <a href="/fishtrip/<%= "#{country}/#{city.name_en}" %>/" target="_blank">
             <img src="<%= city.img %>">
           </a>
