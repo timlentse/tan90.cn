@@ -1,5 +1,22 @@
-class FishtripsController < ApplicationController
+class Fishtrip::HotelsController < ApplicationController
   before_action :set_params
+
+  def show
+    @page_type = 'detail'
+    @hotel = FishtripHotel.find_by(:fishtrip_hotel_id=>params[:id])
+    render_404 unless @hotel
+    redirect_to @hotel.shared_uri, :status=>302 and return unless @spider_tracked
+    @tuijian = @hotel.tuijian.empty? ? [] : JSON.parse(@hotel.tuijian)
+    @comments = @hotel.fishtrip_comments
+    @seo = FishtripSeo.new(@page_type, @hotel)
+    @footer_links = @seo.get_footer_links
+    @tdk = @seo.tdk
+    @breadcrumb = @seo.get_breadcrumb
+    @recommend_hotels = FishtripHotel.select_recommend_hotels(@hotel.city_id, @hotel.id)
+    @seo_articles = FishtripArticle.find_seo_article({:city_en=>@hotel.city_en,:country=>@hotel.country})
+    @rooms = JSON.parse(@hotel.rooms)
+  end
+
 
   def country
     redirect_to "http://www.fishtrip.cn/#{@target_args[:country]}/?referral_id=587681955", :status=>302 and return unless @spider_tracked
@@ -29,22 +46,6 @@ class FishtripsController < ApplicationController
     render 'list.js.erb'
   end
 
-  def detail
-    @page_type = 'detail'
-    @hotel = FishtripHotel.find_by(:fishtrip_hotel_id=>params[:id])
-    render_404 unless @hotel
-    redirect_to @hotel.shared_uri, :status=>302 and return unless @spider_tracked
-    @tuijian = @hotel.tuijian.empty? ? [] : JSON.parse(@hotel.tuijian)
-    @comments = @hotel.fishtrip_comments
-    @seo = FishtripSeo.new(@page_type, @hotel)
-    @footer_links = @seo.get_footer_links
-    @tdk = @seo.tdk
-    @breadcrumb = @seo.get_breadcrumb
-    @recommend_hotels = FishtripHotel.select_recommend_hotels(@hotel.city_id, @hotel.id)
-    @seo_articles = FishtripArticle.find_seo_article({:city_en=>@hotel.city_en,:country=>@hotel.country})
-    @rooms = JSON.parse(@hotel.rooms)
-  end
-
   def articles
     @page_type = 'article'
     @article = FishtripArticle.find_by(:article_id=>params[:article_id])
@@ -58,7 +59,7 @@ class FishtripsController < ApplicationController
   def query_by_get
     @page_type = 'query'
     @target_args[:city_id] = search_city_by_keyword
-    render_page
+    render_list_page
   end
 
   def query_by_post

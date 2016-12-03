@@ -1,6 +1,6 @@
-class ClockHotelsController < ApplicationController
+class Clockhotel::HotelsController < ApplicationController
 
-  def detail
+  def show
     @hotel = ClockHotel.find_by(:elong_id=>params[:id])
     render_404 unless @hotel
     @page_type = 'detail'

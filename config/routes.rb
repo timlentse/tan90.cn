@@ -2,26 +2,31 @@ Rails.application.routes.draw do
   root 'commons#index'
 
   # Router for fishtrip
-  get '/fishtrip//search/'=>'fishtrips#query_by_get'
-  post '/fishtrip/search/'=>'fishtrips#query_by_post'
-  get '/fishtrip/:id/'=>'fishtrips#detail', id: /\d+/
-  get '/fishtrip/articles/:article_id/'=>'fishtrips#articles', article_id: /\d{4}/
-  get '/fishtrip/:country/'=>'fishtrips#country', country: /[a-zA-Z_]+/
-  get '/fishtrip/:country/:city_en/'=>'fishtrips#city_list_by_get'
-  post '/fishtrip/:country/:city_en/'=>'fishtrips#city_list_by_post'
+  namespace :fishtrip do
+    get "/:id", to: "hotels#show", id: /\d+/
+    get '/search', to: 'hotels#query_by_get'
+    post '/search', to: 'hotels#query_by_post'
+    get '/articles/:article_id', to: 'hotels#articles', article_id: /\d{4}/
+    get '/:country', to: 'hotels#country', country: /[a-zA-Z_]+/
+    get '/:country/:city_en', to: 'hotels#city_list_by_get'
+    post '/:country/:city_en', to: 'hotels#city_list_by_post'
+  end
 
   # Router for booking
-  get '/booking/:country/'=>'bookings#country', country: /[a-z]{2}/
-  get '/booking/:country/:city_unique/'=>'bookings#city_list_by_get', country: /[a-z]{2}/, city_unique: /[a-z\-\d]+/
-  post '/booking/:country/:city_unique/'=>'bookings#city_list_by_post', country: /[a-z]{2}/, city_unique: /[a-z\-\d]+/
-  get '/booking/landmark/:id/'=>'bookings#landmark', id: /\d+/
-  get '/booking/airport/:iata/'=>'bookings#airport', iata: /[a-z]{3}/
-  get '/booking/:id'=>'bookings#detail',id:/\d+/
+  namespace :booking do
+    get '/:country'=>'hotels#country', country: /[a-z]{2}/
+    get '/:country/:city_unique'=>'hotels#city_list_by_get', country: /[a-z]{2}/, city_unique: /[a-z\-\d]+/
+    post '/:country/:city_unique'=>'hotels#city_list_by_post', country: /[a-z]{2}/, city_unique: /[a-z\-\d]+/
+    get '/landmark/:id'=>'hotels#landmark', id: /\d+/
+    get '/airport/:iata'=>'hotels#airport', iata: /[a-z]{3}/
+    get '/:id'=>'hotels#show',id:/\d+/
+    get '/:country/:city_unique/review.html'=>'hotels#city_review', country: /[a-z]{2}/, city_unique: /[a-z\-\d]+/
+  end
 
-  # Router for booking review
-  get '/booking/:country/:city_unique/review.html'=>'bookings#city_review', country: /[a-z]{2}/, city_unique: /[a-z\-\d]+/
 
   # Router for clock hotels
-  get '/clockhotel/:city_name_en/'=>'clock_hotels#list', city_name_en: /[A-Za-z_]+/
-  get '/clockhotel/:id/'=>'clock_hotels#detail',:id=>/\d+/
+  namespace :clockhotel do
+    get '/:id'=>'hotels#show',:id=>/\d+/
+    get '/:city_name_en'=>'hotels#list', city_name_en: /[A-Za-z_]+/
+  end
 end

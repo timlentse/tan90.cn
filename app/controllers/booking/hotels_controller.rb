@@ -1,4 +1,4 @@
-class BookingsController < ApplicationController
+class Booking::HotelsController < ApplicationController
   before_action :set_params
   before_action :find_city_by_full_name, only:['city_list_by_get','city_list_by_post', 'city_review']
   before_action :find_landmark_by_id, only: ['landmark'] 
@@ -53,7 +53,7 @@ class BookingsController < ApplicationController
     render "review_#{@language}"
   end
 
-  def detail
+  def show
     @hotel = BookingHotel.find_by(:id=>params[:id])
     render_404 unless @hotel
     redirect_to "#{@hotel.hotel_url}?aid=897435", :status=>302 and return unless @spider_tracked
@@ -62,7 +62,7 @@ class BookingsController < ApplicationController
     set_seo_elements('detail')
     @comments = BookingReview.find_comments_with_hotel(@hotel, @language)
     @nearby_hotels = @hotel.get_nearby_hotels
-    render "detail_#{@language}"
+    render "show_#{@language}"
   end
 
   private
