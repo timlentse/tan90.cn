@@ -6,7 +6,6 @@ class BookingsController < ApplicationController
   def country
     @cities = BookingCity.where("country_code=? and city_ranking>0", params[:country])
     render_404 if @cities.empty?
-    # @language = Constant::LANG_CN_CC.include?(params[:country]) ? "cn" : "en"
     @language = get_language
     @seo = BookingSeo.new(@cities,'country', @language)
     @tdk = @seo.get_tdk
