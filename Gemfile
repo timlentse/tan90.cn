@@ -13,17 +13,11 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'sprockets-rails', '>=2.1.4'
 
-# See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
-
-# Use Unicorn as the app server
-gem 'unicorn'
 
 # Use whenever to define crontab 
 gem 'whenever', '~> 0.9.4'
@@ -34,6 +28,8 @@ gem "voight_kampff"
 
 # Use redis for cache
 gem 'redis'
+
+gem 'puma'
 
 # Use bootstrap
 gem 'bootstrap-sass', '~> 3.3.5'
@@ -55,4 +51,3 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
 end
-
