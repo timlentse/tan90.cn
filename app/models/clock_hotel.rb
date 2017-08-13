@@ -1,13 +1,11 @@
 class ClockHotel < ActiveRecord::Base
-
-  def self.search(args={})
-    @page_id = args[:page]
-    conditions = args.reject{|k,v| k.to_s=='page'}
-    if @page_id and @page_id.to_i>1
-      @hotels = self.where(conditions).offset((@page_id.to_i-1)*20).limit(20)
-    else
-      @hotels = self.where(conditions).limit(20)
-    end
+  def self.search(args = {})
+    @page_id = (args[:page] || 1).to_i
+    args.delete(:page)
+    @hotels = self.where(args).offset((@page_id-1)*Settings.kaminari_perpage).limit(Settings.kaminari_perpage)
   end
 
+  def booking_url
+    "http://m.elong.com/clockhotel/#{elong_id}/"
+  end
 end

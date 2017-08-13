@@ -1,0 +1,25 @@
+// Add more hotels to list-view
+$('#hotel-list').html('<%= escape_javascript(render partial: 'hotel', collection: @hotels) %>');
+<% if @hotels.size < Settings.kaminari_perpage %>
+    $('.pager').html('<li class="previous"><a data-page="<%= params[:page].to_i-1 %>"><span aria-hidden="true">&larr;</span>Next</a></li>')
+<% elsif params[:page]=='1'%>
+    $('.pager').html('<li class="next"><a data-page="<%= params[:page].to_i+1 %>">Next<span aria-hidden="true">&rarr;</span></a></li>')
+<% else %>
+    $('.pager').html('<li class="previous"><a data-page="<%= params[:page].to_i-1 %>"><span aria-hidden="true">&larr;</span>Previous</a></li><li class="next"><a data-page="<%= params[:page].to_i+1 %>">Next<span aria-hidden="true">&rarr;</span></a></li>');
+<% end %>
+
+  $(".pager > li > a ").click(function (e) {
+    e.preventDefault();
+    var pageId = $(this).attr('data-page');
+    $.ajax({
+      type: "GET",
+      url: window.location.href,
+      data: { page: pageId },
+      dataType: "script",
+      success: function (msg) {
+      },
+      error: function(msg) { 
+        console.log(msg.responseText);
+      }
+    });
+  });

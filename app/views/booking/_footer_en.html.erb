@@ -1,0 +1,39 @@
+<footer class="footer">
+  <div class='container seo-area'>
+    <% if @seo.has_keywords? %>
+      <div id="keywords" class="clearfix">
+        <h3 class='head'><%= @landmark.name %>热门搜索</h3>
+        <ul>
+          <% @seo.get_keywords.each do |keyword| %>
+            <li><p class="keyword"><%= keyword %></p></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <% if @location.is_a? BookingCity %>
+      <% if @landmarks && !@landmarks.empty? %>
+        <div id="landmarks" class="clearfix">
+          <h3 class='head'>Hot landmarks in <%= @location.name %></h3>
+          <ul>
+            <% @landmarks.each do |landmark| %>
+              <li><p><a href="<%= landmark[:url] %>"><%= landmark[:text] %></a></p></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <% unless @location.airports.empty? %>
+        <div id="airports" class="clearfix">
+          <h3 class='head'>Airports in <%= @location.name %></h3>
+          <ul>
+            <% @location.seo_airports.each do |airport| %>
+              <li><p><a href="<%= airport[:url] %>"><%= airport[:text] %></a></p></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="clearfix">
+        <p class='pull-right'><a href="/booking/<%= @location.country_code %>/<%= @location.full_name %>/review.html">Hotel reviews in <%= @location.name %></a></p>
+      </div>
+    <% end %>
+  </div>
+</footer>

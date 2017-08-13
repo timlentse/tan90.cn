@@ -1,0 +1,56 @@
+<article class="container cus-padding">
+  <div class="col-md-6 cus-padding" id="desc">
+    <div class="thumbnail">
+      <a href="<%= booking_path(@hotel) %>/">
+        <img src="<%= @hotel.photo_url %>" alt="<%= "#{@hotel.name_cn}图片" %>">
+      </a>
+    </div>
+    <div class="isr" >
+      <h2 class="itr-head"><a href="<%= booking_path(@hotel) %>/"><%= @hotel.name_cn.empty? ? @hotel.name : @hotel.name_cn %></a>
+        <span class="pull-right"><strong class="price"><%= @hotel.minrate %></strong> <%= @hotel.currencycode %></span>
+      </h2>
+      <p style="padding-left:10px;"><%= @hotel.desc_cn %></p>
+      <div class="ratings">
+        <p class="pull-right"><%= @hotel.review_score %>分</p>
+        <p>
+        <% if @hotel.review_score.nil? %>
+          <% 5.times do %> <span class="glyphicon glyphicon-star-empty"></span> <% end %>
+        <% else %>
+          <% review_score=(@hotel.review_score/2).to_i+1 %>
+          <% review_score.times { %><span class="glyphicon glyphicon-star"></span><% } %>
+        <% end %>
+        </p>
+      </div>
+    </div>
+    <div class="sider-bar">
+      <p>
+      <a class="btn btn-info" href="<%= booking_path(@hotel) %>/">查看更多房型</a>
+      <a class="btn btn-warning pull-right" href="<%= booking_path(@hotel) %>/">预订房间</a>
+      </p>
+    </div>
+    <%= render 'nearby_hotel' %>
+  </div>
+  <div class="col-md-6 cus-padding" >
+    <div class="comment">
+      <h3 class="comment-title"><%= @hotel.name_cn.empty? ? @hotel.name : @hotel.name_cn %>点评</h3>
+    </div>
+    <hr>
+    <% @comments.each do |comment| %>
+      <div class="isr ratings">
+        <% if comment.score.nil? %>
+          <% 5.times do %> <span class="glyphicon glyphicon-star-empty"></span> <% end %>
+        <% else %>
+          <% comment_score = (comment.score.to_i/2).to_i %>
+          <% comment_score.times { %>
+            <span class="glyphicon glyphicon-star"></span>
+          <% } %>
+        <% end %>
+        <%= comment.score %>分 <span class="author"><%= comment.author %></span>
+        <span class="pull-right"><%= comment.comment_time %></span>
+        <p class="content"><%= comment.good %> </p>
+      </div>
+    <% end %>
+  </div>
+  </div>
+</article>
+<%= render 'footer_cn' %>

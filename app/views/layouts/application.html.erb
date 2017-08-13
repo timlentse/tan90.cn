@@ -12,7 +12,6 @@
     <link rel='favicon' href='/favicon.ico'>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application',media: 'all' %>
-    <%= render 'layouts/baidu_tongji' %>
     <%= csrf_meta_tags %>
   </head>
   <body>
@@ -20,8 +19,8 @@
     <%= render 'layouts/breadcrumb' %>
     <%= yield %>
     <%= render 'layouts/cnzz' %>
-    <%= render 'layouts/ad' %>
-    <%= render 'layouts/sogou_ad' %>
+    <%# <%= render 'layouts/ad' %>
+    <%# <%= render 'layouts/sogou_ad' %>
     <p class="copy">Copyright © tan90.cn 2014-<%= Time.now.strftime("%Y") %> All Rights Reserved </p>
   </body>
   <script>
@@ -31,7 +30,7 @@ $(".pager > li > a ").click(function (e) {
   var pageId = $(this).attr('data-page');
 
   $.ajax({
-    type: "POST",
+    type: "GET",
     url: window.location.href,
     data: { page: pageId },
     dataType: "script",

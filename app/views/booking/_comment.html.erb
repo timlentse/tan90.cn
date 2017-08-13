@@ -1,0 +1,8 @@
+<% if @comments and !@comments.empty? %>
+  <div class="comments">
+    <h3 class="head"> <%= @location.name_cn %>酒店点评</h3>
+    <% @comments.each do |k, comment| %>
+      <p class="hotel-comment"><%= k %>点评:<%= comment.good %></p>
+    <% end %>
+  </div>
+<% end %>

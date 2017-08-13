@@ -1,26 +1,24 @@
-<% if @breadcrumb and !@breadcrumb.empty? %>
-  <nav class='container' id="breadcrumb">
-    <% if @is_mobile %>
-      <ol class="breadcrumb">
-        <% @breadcrumb.each do |crumb| %>
-          <% if crumb[:url] %>
-            <li><a href="<%= crumb[:url] %>"><%= crumb[:text] %></a></li>
-          <% else %>
-            <li class="active"><h1 class='breadcrumb-last'><%= crumb[:text] %></h1></li>
-          <% end %>
+<% return unless @seo %>
+<nav class='container' id="breadcrumb">
+  <% if is_device_mobile? %>
+    <ol class="breadcrumb">
+      <% @seo.get_breadcrumb.each do |crumb| %>
+        <% if crumb[:url] %>
+          <li><a href="<%= crumb[:url] %>"><%= crumb[:text] %></a></li>
+        <% else %>
+          <li class="active"><h1 class='breadcrumb-last'><%= crumb[:text] %></h1></li>
         <% end %>
-      </ol>
-    <% else %>
-      <ul>
-        <% @breadcrumb.each do |crumb| %>
-          <% if crumb[:url] %>
-            <li style="display:inline"><a href="<%= crumb[:url] %>" class="label label-comment"><%= crumb[:text] %></a></li>
-          <% else %>
-            <li style="display:inline"><h1 class="label label-last"><%= crumb[:text] %></h1></li>
-          <% end %>
+      <% end %>
+    </ol>
+  <% else %>
+    <ul>
+      <% @seo.get_breadcrumb.each do |crumb| %>
+        <% if crumb[:url] %>
+          <li style="display:inline"><a href="<%= crumb[:url] %>" class="label label-comment"><%= crumb[:text] %></a></li>
+        <% else %>
+          <li style="display:inline"><h1 class="label label-last"><%= crumb[:text] %></h1></li>
         <% end %>
-      </ul>
-    <% end %>
-  </nav>
-<% end %>
-
+      <% end %>
+    </ul>
+  <% end %>
+</nav>

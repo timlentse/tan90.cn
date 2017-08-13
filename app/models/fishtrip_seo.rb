@@ -1,13 +1,12 @@
 class FishtripSeo
-
-  COUNTRY={'taiwan'=>'台湾', 'japan'=>'日本', 'thailand'=>'泰国', 'korea'=>'韩国'}
+  COUNTRY = { 'taiwan'=>'台湾', 'japan'=>'日本', 'thailand'=>'泰国', 'korea'=>'韩国' }
 
   def initialize(page_type, addition_object)
     @page_type = page_type
-    if @page_type=='detail'
+    if @page_type == 'detail'
       @obj = addition_object
       @pre_desc = @obj.name
-    elsif @page_type=='article'
+    elsif @page_type == 'article'
       @obj = addition_object
     else
       @pre_desc = addition_object.map(&:name).join('，')
@@ -19,17 +18,19 @@ class FishtripSeo
   end
 
   def get_breadcrumb
-    case @page_type 
+    case @page_type
     when 'country'
-      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿"}]
+      [{text: '首页', url: '/'}, {text: "#{@country}民宿"}]
     when 'query'
-      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/fishtrip/#{@country_en}/"},{:text=>"#{@city_name}民宿搜索页"}]
+      [{text: '首页', url: '/'}, {text: "#{@country}民宿", url: "/fishtrip/#{@country_en}/"},{text: "#{@city_name}民宿搜索页"}]
     when 'city'
-      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/fishtrip/#{@country_en}/"},{:text=>"#{@city_name}民宿"}]
+      [{text: '首页', url: '/'}, {text: "#{@country}民宿", url: "/fishtrip/#{@country_en}/"},{text: "#{@city_name}民宿"}]
     when 'detail'
-      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/fishtrip/#{@country_en}/"},{:text=>"#{@country}#{@city_name}民宿", :url=>"/fishtrip/#{@country_en}/#{@obj.city_en}/"}, {:text=>@obj.name}]
+      [{text: '首页', url: '/'}, {text: "#{@country}民宿", url: "/fishtrip/#{@country_en}/"},{text: "#{@country}#{@city_name}民宿", url: "/fishtrip/#{@country_en}/#{@obj.city_en}/"}, {:text=>@obj.name}]
     when 'article'
-      [{:text=>'首页', :url=>'/'}, {:text=>"#{@country}民宿", :url=>"/fishtrip/#{@country_en}/"},{:text=>"#{@country}#{@city_name}民宿", :url=>"/fishtrip/#{@country_en}/#{@obj.city_en}/"}, {:text=>@obj.title}]
+      [{text: '首页', url: '/'}, {text: "#{@country}民宿", url: "/fishtrip/#{@country_en}/"},{text: "#{@country}#{@city_name}民宿", url: "/fishtrip/#{@country_en}/#{@obj.city_en}/"}, {text: @obj.title}]
+    else
+      []
     end
   end
 
@@ -74,13 +75,11 @@ class FishtripSeo
   end
 
   def get_footer_links
-    @links = {}
-    if @country_en
-      @links[@country_en] = FishtripCity.where(:country=>@country_en).map do |city|
-        {'uri'=>"/fishtrip/#{city.country}/#{city.name_en}/", 'text'=>"#{city.name}民宿"}
-      end
+    return {} unless @country_en
+    links = {}
+    links[@country_en] = FishtripCity.where(country: @country_en).map do |city|
+      { uri: "/fishtrip/#{city.country}/#{city.name_en}/", text: "#{city.name}民宿" }
     end
-    @links
+    links
   end
-
 end

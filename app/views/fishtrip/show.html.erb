@@ -1,0 +1,81 @@
+<article class="container cus-padding">
+  <div id="hotel-desc" class="col-md-6 cus-padding">
+    <div class="thumbnail">
+      <a href="<%= @hotel.unique_link %>" rel="nofollow">
+        <img src="<%= @hotel.image_url %>" alt="<%= "#{@hotel.name}图片" %>">
+      </a>
+    </div>
+    <div class="isr" >
+      <h2 class="itr-head"><a href="<%= @hotel.unique_link %>" rel="nofollow"><%= @hotel.name %></a>
+        <span class="price pull-right">￥<%= @hotel.price %></span>
+      </h2>
+      <p style="padding-left:10px;"><%= @hotel.desc %></p>
+      <div class="ratings">
+        <p class="pull-right"><a href="<%= @hotel.unique_link %>" rel="nofollow"><%= @hotel.comment %></a></p>
+        <p>
+        <% if @hotel.score.nil? %>
+          <%= 4.times do %>
+            <span class="glyphicon glyphicon-star-empty"></span>
+          <% end %>
+        <% else %>
+          <% @hotel.score.to_i.times{ %>
+            <span class="glyphicon glyphicon-star"></span>
+          <% } %>
+          <% if (@hotel.score-@hotel.score.to_i)>0 %>
+            <span class="glyphicon glyphicon-star-empty"></span>
+          <% end %>
+        <% end %>
+        <%= @hotel.score %> 分
+        </p>
+      </div>
+    </div>
+    <div class="sider-bar">
+      <p>
+      <a class="btn btn-info" href="<%= @hotel.unique_link %>" rel='nofollow'>查看更多房型</a>
+      <a class="btn btn-warning pull-right" href="<%= @hotel.unique_link %>" rel="nofollow">预订房间</a>
+      </p>
+      <!-- 房型 -->
+      <div class="rooms">
+        <ul>
+          <% @hotel.rooms.each do |room| %>
+            <li><p style="color:#9b9b9b"><%= room.info %><span class="pull-right">￥<%= room.price %>元起</span></p></li>
+          <% end %>
+        </ul>
+      </div>
+      <ul>
+        <% unless @tuijian.empty? %>
+          <li><strong><%= @hotel.name %>推荐理由</strong></li>
+          <% @tuijian.each do |tuijian|  %>
+            <li> <%= tuijian %> </li>
+          <% end %>
+        <% end %>
+        <% if @hotel.traffic %>
+          <li><strong>怎么去<%= @hotel.name %></strong></li>
+          <li> <%= @hotel.traffic %> </li>
+        <% end %>
+      </ul>
+    </div>
+    <%= render 'seo_articles' %>
+  </div>
+  <div class="col-md-6 cus-padding" >
+    <div class="comment"> <h3 class="comment-title"><%= @hotel.name %>点评</h3></div>
+    <% @hotel.comments.each do |comment| %>
+      <div class="isr ratings">
+        <% if comment.score.nil? %>
+          <% 4.times do %><span class="glyphicon glyphicon-star-empty"></span><% end %>
+        <% else %>
+          <% comment.score.to_i.times do %><span class="glyphicon glyphicon-star"></span><% end %>
+          <% if (comment.score-comment.score.to_i) > 0 %>
+            <span class="glyphicon glyphicon-star-empty"></span>
+          <% end %>
+        <% end %>
+        <%= comment.score %>分 <span class="author"><%= comment.author %></span>
+        <span class="pull-right"><%= comment.comment_time %></span>
+        <p class="content"><%= comment.content %> </p>
+      </div>
+    <% end %>
+  </div>
+  </div>
+  <%= render 'recommend_hotel' %>
+</article>
+<%= render 'footer' %>

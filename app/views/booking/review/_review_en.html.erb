@@ -1,0 +1,29 @@
+<div class="hotel-item clearfix">
+  <div class="hotel-pic">
+    <a href="<%= booking_path(hotel) %>/" target="_blank">
+      <img class="hotel-img" src="<%= hotel.photo_url %>" alt="Hotel images in <%= @location.name %>_<%= hotel.name %>">
+    </a>
+  </div>
+  <div class="hotel-body">
+    <a href="<%= booking_path(hotel) %>/" target="_blank">
+      <p class="hotel-name"><%= hotel.name %></p>
+    </a>
+    <% hotel_comments = @reviews[hotel.id] %>
+    <% if hotel_comments %>
+      <ul>
+        <% hotel_comments.each do |comment| %>
+          <li><p class="hotel-comment"><%= comment[0].empty? ? comment[1] : comment[0] %></p></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <% if hotel.minrate == 0 %>
+      <p class="booking pull-right"><a href="<%= booking_path(hotel) %>/" target="_blank" class="btn btn-warning" role="button">View detail</a> 
+    <% else %>
+      <p class="booking">
+      <strong class="price"><%= hotel.minrate %></strong><%= hotel.currencycode %>/ per night
+      <a href="<%= booking_path(hotel) %>/" target="_blank" class="btn btn-warning pull-right" role="button">Select your room</a> 
+      </p>
+    <% end %>
+  </div>
+</div>
+<hr>

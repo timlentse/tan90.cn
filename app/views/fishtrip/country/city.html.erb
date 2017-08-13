@@ -1,0 +1,15 @@
+<article class="container">
+  <div id="hotel-list" class="row cus-padding">
+    <%= render partial: 'hotel', collection: @hotels %>
+  </div>
+  <% if @hotels.size == Settings.kaminari_perpage %>
+    <div id="pagination">
+      <nav>
+        <ul class="pager">
+          <li class="next"><a data-page='2'>下一页<span aria-hidden="true">&rarr;</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  <% end %>
+</article>
+<%= render 'footer' %>

@@ -1,0 +1,41 @@
+<footer class="footer">
+  <div class='container seo-area'>
+    <%= render 'booking/comment' unless params[:controller] == 'booking' %>
+    <% if @seo.has_keywords? %>
+      <div id="keywords" class="clearfix">
+        <h3 class='head'><%= @location.name_cn %>热门搜索</h3>
+        <ul>
+          <% @seo.get_keywords.each do |keyword| %>
+            <li><p class="keyword"><%= keyword %></p></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <% if @location.is_a? BookingCity %>
+      <% if @landmarks && !@landmarks.empty? %>
+        <div id="landmarks" class="clearfix">
+          <h3 class='head'><%= @location.name_cn %>热门地标</h3>
+          <ul>
+            <% @landmarks.each do |landmark| %>
+              <li><p><a href="<%= landmark[:url] %>"><%= landmark[:text] %></a></p></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <% unless @location.airports.empty? %>
+        <div id="airports" class="clearfix">
+          <h3 class='head'><%= @location.name_cn %>机场附近酒店</h3>
+          <ul>
+            <% @location.seo_airports.each do |airport| %>
+              <li><p><a href="<%= airport[:url] %>"><%= airport[:text] %>附近酒店</a></p></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%# <%= render 'layouts/friendlinks' %>
+      <div class="clearfix">
+        <p class='pull-right'><a href="/booking/<%= @location.country_code %>/<%= @location.full_name %>/review.html"><%= @location.name_cn %>酒店评论</a></p>
+      </div>
+    <% end %>
+  </div>
+</footer>

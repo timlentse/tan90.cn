@@ -1,7 +1,6 @@
 class ClockHotelDetail < ActiveRecord::Base
-
   def self.parse_each_field(hotel_id)
-    found = self.find_by(:hotel_id=>hotel_id)
+    found = self.find_by(hotel_id: hotel_id)
     return unless found
     hotel_detail = {}
     [:room_json,:desc_json,:comment_json].each do |md|

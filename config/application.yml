@@ -1,0 +1,13 @@
+defaults: &defaults
+  qiniu:
+  kaminari_perpage: 21
+  booking_aid: 897435
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

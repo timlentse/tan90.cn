@@ -1,0 +1,31 @@
+<div class="hotel-item clearfix" data-hotelid="<%= hotel.id %>">
+  <div class="hotel-pic"> 
+    <a href="<%= booking_path(hotel) %>/" target="_blank">
+      <img class="hotel-img" src="<%= hotel.photo_url %>" alt="<%= @location.name_cn %>酒店图片_<%= hotel.name_cn %>">
+    </a>
+  </div>
+  <div class="hotel-body">
+    <p class="hotel-name">
+    <a href="<%= booking_path(hotel) %>/" target="_blank"><%= hotel.name_cn.empty? ? hotel.name : hotel.name_cn %></a>
+    </p>
+    <p> 
+    <% if hotel.star > 0 %>
+      <% hotel.star.times { %><span class="glyphicon glyphicon-star star"></span><% } %>
+    <% end %>
+    </p>
+    <p class="location"><strong><%="位置："%></strong><%= @location.name_cn %></p>
+    <p class='address'><strong><%= "地址：" %></strong><%= hotel.address_cn.empty? ? hotel.address : hotel.address_cn %></p>
+    <p class="hotel-desc hidden-xs"><%= "#{hotel.name_cn}简介：#{hotel.desc_cn.empty? ? hotel.desc_zh : hotel.desc_cn }" %></p>
+    <% if @comments[hotel.id] %>
+      <p class="hotel-comment hidden-xs">用户点评：<%= @comments[hotel.id] %></p>
+    <% end %>
+    <% if hotel.minrate.nil? %>
+      <p class="booking"><a href="<%= booking_path(hotel) %>/" target="_blank" class="btn btn-primary btn-xs" role="button">查看详情</a> 
+    <% else %>
+      <p class="booking"> 
+      <a class="btn btn-success pull-right" href="<%= booking_path(hotel) %>/" target="_blank">预订</a>
+      <strong class="price"><%= hotel.minrate %></strong><span class="cy-code"><%= hotel.currencycode %></span>
+      </p>
+    <% end %>
+  </div>
+</div>

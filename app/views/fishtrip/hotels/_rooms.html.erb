@@ -1,7 +1,0 @@
-<% if @rooms and !@rooms.empty? %>
-  <ul>
-    <% @rooms.each do |room| %>
-      <li><p style="color:#9b9b9b"><%= room['info'] %><span class="pull-right"><%= room['price'] %><span></p></li>
-    <% end %>
-  </ul>
-<% end %>

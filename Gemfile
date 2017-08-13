@@ -1,7 +1,7 @@
-source 'https://rubygems.org'
+source 'https://gems.ruby-china.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.8'
 # Use mysql2 as the database for Active Record
 gem 'mysql2','0.3.18'
 # Use SCSS for stylesheets
@@ -17,7 +17,12 @@ gem 'sprockets-rails', '>=2.1.4'
 gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-# gem 'turbolinks'
+gem 'turbolinks'
+
+# Paginate
+gem 'kaminari'
+
+gem 'settingslogic'
 
 # Use whenever to define crontab 
 gem 'whenever', '~> 0.9.4'
@@ -28,6 +33,7 @@ gem "voight_kampff"
 
 # Use redis for cache
 gem 'redis'
+# gem 'redis-objects'
 
 gem 'puma'
 
@@ -35,8 +41,6 @@ gem 'puma'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
-
-# gem 'elong_hotel_api', :source=>'http://192.168.14.103:8808'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -49,5 +53,4 @@ group :development, :test do
   gem 'spring'
   # Use Capistrano for deployment
   gem 'capistrano-rails'
-  gem 'capistrano-rvm'
 end

@@ -1,0 +1,27 @@
+<div class="col-xs-6 col-sm-4 col-md-2 rc-hotel">
+  <div class="thumbnail">
+    <a href="<%= hotel.unique_link %>" target="_blank">
+      <img src="<%= hotel.image_url %>" alt="<%= hotel.name %>">
+    </a>
+    <div class="caption">
+      <p class="rc-hotel-name">
+      <a href="<%= hotel.unique_link %>" target="_blank"><%= hotel.name %></a>
+      </p>
+      <% if hotel.comment.empty? %>
+        <p class='com-overview'>
+        <% if hotel.price > 0 %>
+          <span class="dollor-sign">￥</span><strong class="price"><%= hotel.price %></strong>
+        <% end %>
+        <a href="<%= hotel.unique_link %>">查看点评</a>
+        </p>
+      <% else %>
+        <p class='com-overview'>
+        <% if hotel.price>0 %>
+          <span class="dollor-sign">￥</span><strong class="price"><%= hotel.price %></strong>
+        <% end %>
+        <a href="<%= hotel.unique_link %>"><%= hotel.comment %></a> 
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>

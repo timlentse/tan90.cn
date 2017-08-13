@@ -140,6 +140,7 @@ hr{
   color:#0286a0;
   background-color:#e2f3f8;
   margin:0;
+  font-size:1.1em;
   padding:10px 10px;
 }
 .rc-hotel{
@@ -157,6 +158,8 @@ hr{
 }
 .comment-title{
   font-size:1.3em;
+  margin-top:0;
+  margin-bottom:0;
   text-align:center;
 }
 .author{
@@ -239,7 +242,15 @@ h1.label {
 }
 .hotel-name a {
   color:#0896ff;
-
+}
+.rc-hotel-name{
+  color: #0896ff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rc-hotel-name a{
+  color:#0896ff;
 }
 .phone{
   white-space: nowrap;
@@ -529,4 +540,7 @@ hr{
 .city-minsu{
   margin-bottom:0px;
   color:#999;
+}
+.nearby-hotel .thumbnail img{
+  height: 120px;
 }

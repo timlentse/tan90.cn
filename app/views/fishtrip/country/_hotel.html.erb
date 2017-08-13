@@ -1,0 +1,36 @@
+<div class="col-xs-12 col-sm-6 col-md-4 cus-padding">
+  <div class="thumbnail">
+    <a href="<%= hotel.unique_link %>" target="_blank">
+      <img src="<%= hotel.image_url %>" alt="<%= "#{hotel.country_name}#{hotel.city}民宿图片_#{hotel.name}" %>">
+    </a>
+    <div class="caption">
+      <p class="hotel-name">
+      <a href="<%= hotel.unique_link %>" target="_blank"><%= hotel.name %></a>
+      </p>
+      <p class="desc"><%= "#{hotel.name}简介:#{hotel.desc}" %></p>
+      <p class="location"><strong><%="位置："%></strong><%= hotel.country_name %>-<%= hotel.city %></p>
+      <p class='address'><strong><%= "地址：" %></strong><%= hotel.address %></p>
+
+      <p class='com-overview'>
+      <% if hotel.comment.empty? %>
+        <a href="<%= hotel.unique_link %>">查看点评</a>
+      <% else %>
+        <a href="<%= hotel.unique_link %>"><%= hotel.comment %></a> 
+      <% end %>
+      <span class='pull-right score'>用户评分：<%= hotel.score  %></span>
+      </p>
+      <ul style="display:none">
+        <% hotel.rooms.each do |room| %>
+          <li><p style="color:#9b9b9b"><%= room['info'] %><span class="pull-right"><%= room['price'] %><span></p></li>
+        <% end %>
+      </ul>
+      <% if hotel.price == 0 %>
+        <p class="booking"><a href="<%= hotel.unique_link %>" target="_blank" class="btn btn-primary" role="button">查看详情</a> 
+      <% else %>
+        <p class="booking"><a href="<%= hotel.unique_link %>" target="_blank" class="btn btn-primary" role="button">预订</a> 
+        <span class="pull-right"><span class="dollor-sign">￥</span><strong class="price"><%= hotel.price %></strong></span>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="clearfix"></div>
+<section id='recommend-hotels'>
+  <% unless @recommend_hotels[0..5].empty? %>
+    <div class="clearfix">
+      <h2 class="rc-title">推荐民宿</h2>
+      <%= render partial: 'hot_hotel', collection: @recommend_hotels[0..5], as: :hotel %>
+    </div>
+  <% end %>
+  <% unless @recommend_hotels[6..11].empty? %>
+    <div class="clearfix">
+      <h2 class="rc-title">本周热卖</h2>
+      <%= render partial: 'hot_hotel', collection: @recommend_hotels[6..12], as: :hotel %>
+    </div>
+  <% end %>
+</section>

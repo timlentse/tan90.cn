@@ -1,0 +1,24 @@
+<article class="container">
+  <div class="row description">查询到<%= "#{@location.name_cn}共有#{@location.number_of_hotels}" %>家酒店</div>
+  <div class='row col-md-9' id="hotel-list">
+    <%= render partial: 'booking/hotel_cn', collection: @hotels, as: :hotel %>
+  </div>
+  <div class='col-md-3 landmark-desc'>
+    <% unless @location.content.empty? %>
+      <h3><%= @location.name_cn %>简介</h3>
+      <p><%= @location.content %></p>
+    <% end %>
+    <%= render 'layouts/booking_sousuo' %>
+    <%= render 'layouts/bianhengfu' %>
+    <%= render 'layouts/bianhengfu_2' %>
+    <%= render 'layouts/bianhengfu_3' %>
+  </div>
+  <% if @hotels.size == Settings.kaminari_perpage %>
+    <nav id="pagination">
+      <ul class="pager">
+        <li class="next"><a data-page='2'>下一页<span aria-hidden="true">&rarr;</span></a></li>
+      </ul>
+    </nav>
+  <% end %>
+</article>
+<%= render 'booking/footer_cn' %>

@@ -1,0 +1,20 @@
+<div class="nearby-hotels clearfix">
+  <h3>附近酒店</h3>
+  <% @hotel.get_nearby_hotels.each do |hotel| %>
+    <div class="col-xs-6 col-sm-4 col-md-4 nearby-hotel">
+      <div class="thumbnail">
+        <a href="<%= booking_path(@hotel) %>/" target="_blank">
+          <img src="<%= hotel.photo_url %>" alt="<%= hotel.name_cn %>图片">
+        </a>
+        <div class='caption'>
+          <p class="hotel-name">
+          <a href="<%= booking_path(@hotel) %>/" target="_blank"><%= hotel.name_cn %></a>
+          </p>
+          <p class='com-overview'>地址：<%= hotel.address_cn %></p>
+          <p class='com-overview'><span class="dollor-sign"></span><strong class="price"><%= hotel.minrate %></strong><%= hotel.currencycode %> 起/晚
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
