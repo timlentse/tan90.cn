@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170812091555) do
+ActiveRecord::Schema.define(version: 20170820103545) do
 
   create_table "booking_airports", force: :cascade do |t|
     t.string   "name",             limit: 255,  default: "",   null: false
@@ -46,14 +46,13 @@ ActiveRecord::Schema.define(version: 20170812091555) do
   add_index "booking_cities", ["deeplink"], name: "ix_depthlink", using: :btree
 
   create_table "booking_hot_destinations", force: :cascade do |t|
-    t.string   "name_cn",         limit: 50,  default: "",   null: false
-    t.string   "name_en",         limit: 128, default: "",   null: false
-    t.string   "number_of_hotel", limit: 64,  default: "",   null: false
-    t.string   "cc",              limit: 2,   default: "",   null: false
-    t.integer  "cate",            limit: 1,                  null: false
-    t.boolean  "is_show",                     default: true, null: false
-    t.datetime "updated_at",                                 null: false
-    t.datetime "created_at",                                 null: false
+    t.string   "name_cn",         limit: 50,  default: "", null: false
+    t.string   "name_en",         limit: 128, default: "", null: false
+    t.string   "number_of_hotel", limit: 64,  default: "", null: false
+    t.string   "cc",              limit: 2,   default: "", null: false
+    t.integer  "cate",            limit: 1,                null: false
+    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                               null: false
   end
 
   add_index "booking_hot_destinations", ["name_cn"], name: "ix_name_en", using: :btree
@@ -182,11 +181,13 @@ ActiveRecord::Schema.define(version: 20170812091555) do
   add_index "fishtrip_articles", ["article_id"], name: "ux_article_id", unique: true, using: :btree
 
   create_table "fishtrip_cities", force: :cascade do |t|
-    t.string  "name_en",          limit: 50,  default: "", null: false
-    t.string  "name",             limit: 10,  default: "", null: false
-    t.string  "country",          limit: 10,  default: "", null: false
-    t.integer "number_of_hotels", limit: 4,   default: 0,  null: false
-    t.string  "img",              limit: 255, default: "", null: false
+    t.string   "name_en",          limit: 50,  default: "", null: false
+    t.string   "name",             limit: 10,  default: "", null: false
+    t.string   "country",          limit: 50,  default: "", null: false
+    t.integer  "number_of_hotels", limit: 4,   default: 0,  null: false
+    t.string   "img",              limit: 255, default: "", null: false
+    t.datetime "updated_at",                                null: false
+    t.datetime "created_at",                                null: false
   end
 
   add_index "fishtrip_cities", ["name_en"], name: "ix_country", using: :btree
@@ -205,32 +206,28 @@ ActiveRecord::Schema.define(version: 20170812091555) do
   add_index "fishtrip_comments", ["fishtrip_hotel_id"], name: "ix_hotel_id", using: :btree
 
   create_table "fishtrip_hotels", force: :cascade do |t|
-    t.string   "uri",               limit: 128,                          default: "",   null: false
-    t.string   "name",              limit: 256,                          default: "",   null: false
-    t.string   "address",           limit: 256,                          default: "",   null: false
-    t.integer  "price",             limit: 4,                                           null: false
-    t.string   "comment",           limit: 128,                          default: "",   null: false
-    t.string   "city",              limit: 50,                           default: "",   null: false
-    t.string   "shared_uri",        limit: 128,                          default: "",   null: false
-    t.string   "image_uri",         limit: 128,                          default: "",   null: false
-    t.string   "fishtrip_hotel_id", limit: 11,                           default: "",   null: false
-    t.string   "city_en",           limit: 50,                           default: "",   null: false
-    t.string   "country",           limit: 50,                           default: "",   null: false
-    t.integer  "city_id",           limit: 4,                                           null: false
-    t.string   "desc",              limit: 5000,                         default: "",   null: false
-    t.string   "tuijian",           limit: 5000,                         default: "",   null: false
-    t.string   "traffic",           limit: 5000,                         default: "",   null: false
-    t.decimal  "score",                          precision: 2, scale: 1, default: 0.0,  null: false
-    t.integer  "page_id",           limit: 4,                                           null: false
-    t.string   "rooms",             limit: 3000,                         default: "[]", null: false
-    t.datetime "updated_at",                                                            null: false
-    t.datetime "created_at",                                                            null: false
+    t.string   "name",              limit: 256,                          default: "",  null: false
+    t.string   "address",           limit: 256,                          default: "",  null: false
+    t.integer  "price",             limit: 4,                                          null: false
+    t.string   "comment",           limit: 128,                          default: "",  null: false
+    t.string   "city",              limit: 50,                           default: "",  null: false
+    t.string   "image_uri",         limit: 128,                          default: "",  null: false
+    t.string   "fishtrip_hotel_id", limit: 11,                           default: "",  null: false
+    t.string   "city_en",           limit: 50,                           default: "",  null: false
+    t.string   "country",           limit: 50,                           default: "",  null: false
+    t.integer  "city_id",           limit: 4,                                          null: false
+    t.string   "desc",              limit: 5000,                         default: "",  null: false
+    t.string   "tuijian",           limit: 5000,                         default: "",  null: false
+    t.string   "traffic",           limit: 5000,                         default: "",  null: false
+    t.decimal  "score",                          precision: 2, scale: 1, default: 0.0, null: false
+    t.integer  "page_id",           limit: 4,                                          null: false
+    t.datetime "updated_at",                                                           null: false
+    t.datetime "created_at",                                                           null: false
   end
 
   add_index "fishtrip_hotels", ["city_id"], name: "ix_city_id", using: :btree
   add_index "fishtrip_hotels", ["name"], name: "ix_country", length: {"name"=>255}, using: :btree
   add_index "fishtrip_hotels", ["page_id"], name: "ix_page_id", using: :btree
-  add_index "fishtrip_hotels", ["uri"], name: "ix_fish_id", using: :btree
 
   create_table "fishtrip_rooms", force: :cascade do |t|
     t.string   "info",       limit: 255
