@@ -8,7 +8,7 @@ class FishtripHotel < ActiveRecord::Base
   def self.search(args={})
     @page_id = args[:page]
     conditions = args.reject{|k,v| k.to_s=='page'}
-    if @page_id and @page_id.to_i>1
+    if @page_id and @page_id.to_i > 1
       @hotels = self.where(conditions).offset((@page_id.to_i-1)*21).order(:page_id).limit(21)
     else
       @hotels = self.where(conditions).order(:page_id).limit(21)
@@ -34,5 +34,9 @@ class FishtripHotel < ActiveRecord::Base
 
   def unique_link
     "/fishtrip/#{fishtrip_hotel_id}/"
+  end
+
+  def shared_uri
+    "http://www.fishtrip.cn/houses/hm#{fishtrip_hotel_id}/?referral_id=587681955"
   end
 end
