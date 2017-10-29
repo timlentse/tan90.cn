@@ -335,6 +335,9 @@ h1.label {
 .landmark-desc{
   background-color:#fff;
 }
+.landmark-desc p{
+  color: #999;
+}
 hr{
   margin-bottom:0px;
   margin-top:5px;
@@ -543,4 +546,7 @@ hr{
 }
 .nearby-hotel .thumbnail img{
   height: 120px;
+}
+.comments .hotel-comment{
+  display: none;
 }
